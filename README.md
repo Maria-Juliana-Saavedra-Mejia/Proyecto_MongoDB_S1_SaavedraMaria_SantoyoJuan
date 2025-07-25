@@ -104,6 +104,141 @@ Con base en la información anterior, se procederá a crear una base de datos en
 
 <div style="text-align: center;">
 
-
+## Instalación General
 
 </div>
+
+Los archivos relacionados con la BBDD de la Secretaria de Salud , se encuentran en la
+plataforma Github, estos archivos se encuentran en formato json y se dividen en 5 partes:
+
+- ddl.json: Este archivo contiene el script para crear la base de datos y definir las colecciones correspondientes.
+
+- dml.json: Este archivo contiene ejemplos de datos para gestionar los Hospitales, facilitando la inserción inicial de información.
+
+- dql_select.json: En este archivo se encuentran las consultas relacionadas con pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo.
+
+- dql_funciones.json: Se definen los procedimientos y funciones para añadir, actualizar y mostrar datos dentro del sistema.
+
+- Diagrama.jpg: En ese archiv se mestran los direntes diagramas realizados. 
+
+---
+
+<div style="text-align: center;">
+
+## Planificación 
+
+</div>
+
+## Ejecución 
+
+Una vez se analizó la información requerida por La Secretaria de Salud, se inició la creación del modelo conceptual. Este modelo proporciona una descripción de alto nivel de las necesidades de información que están detrás del diseño de una base de datos. Representa los conceptos principales de la base de datos y las relaciones entre ellos.
+
+---
+
+
+## Construcción del Modelo Conceptual
+
+En esta sección del documento se adjunta la información correspondiente al modelo
+conceptual el cual es el más abstracto de todos los modelos a implementar en el documento,
+este es fundamental para identificar entidades clave del negocio y del sistema, así como para
+establecer relaciones entre ellas.
+
+
+**Descripción**
+
+Se diseñó el modelo conceptual identificando cada una de las entidades, sus atributos y las
+relaciones entre ellas. Este modelo conceptual proporciona una visión clara y estructurada de
+cómo se organizan y conectan los diferentes elementos de la base de datos.
+
+- **Las Entidades y Atributos**
+
+1. Hospital
+
+    - id: identificador único del hospital.
+    - nombre: nombre del hospital.
+    - id_AreasEspecializadas: Areas en las que se especializa
+    - id_director: departamento correspondiente.
+
+2. ÁreaEspecializada
+
+    - id: identificador del área especializada.
+    - nombre: nombre del área.
+    - descripcion: descripción del área.
+
+3. MédicoPersonal
+
+    - NumeroColegiatura: identificador único del médico o personal.
+    - nombre: nombre completo.
+    - especialidad: especialidad médica.
+    - Salario: Cantidad de dinero que gana mensualmente.
+    - Teléfono: Numero de teléfono.
+
+4. Paciente
+
+    - id: identificador único del paciente.
+    - nombre: nombre del paciente.
+    - Dirección: Dirección.
+    - Correo: correo electronico.
+    - dirección: dirección.
+    - teléfono: teléfono de contacto.
+    - id_SegurosMedicos: identificador del seguro del paciente.
+
+5. SegurosMedicos
+
+    - id: identificador único.
+    - nombre: nombre del responsable.
+
+6. VisitaMedica
+
+    - id: identificador de la visita médica.
+    - fecha: fecha de la visita.
+    - Hora: hora de la visita.
+    - id_Medico: identificador único del medico.
+    - id_Paciente: identificador único del paciente.
+    - id_Diagnostico: identificador único del paciente.
+
+7. Diagnostico
+
+    - id: identificador del diagnóstico.
+    - descripcion: descripción del diagnóstico.
+    - id_Tratamientos: identificador único de tratamientos.
+
+8. Tratamientos
+
+    - id: identificador del tratamiento.
+    - descripcion: detalle del tratamiento.
+    - nombre: duración estimada o real.
+    - Costo: valor del tratamiento.
+    - id_AreasEspecializadas: identificador del area del hospital que realiza este tratamiento.
+
+9. Medicamentos
+
+id: identificador del medicamento.
+id_Inventario: Identificador del medicamento dentro del inventario.
+Tipo: tipo de medicamento.
+Nombre: nombre medicamento.
+
+10. Inventario
+
+id: identificador del inventario.
+Disponibilidad: Cantidad de medicamentos en stock.
+id_Medicamentos: identificador unico de los medicamentos dentro del inventario.
+id_Fabricante:identificador unico de los fabricantes de los medicamentos.
+
+11. Fabricante
+
+id: identificador del fabricante.
+nombre: nombre del fabricante.
+
+12. Resultado
+
+id: identificador del resultado.
+Descripcion: descripcion del resultado obtenido en el tratamiento.
+
+13. HistorialMedico
+
+id: identificador HistorialMedico.
+id_Diagnostico: nombre de la entidad.
+
+
+
