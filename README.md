@@ -122,7 +122,7 @@ plataforma Github, estos archivos se encuentran en formato json y se dividen en 
 
 - Readme.md : Contiene toda la documentacion del proyecto. 
 
-- Diagrama.jpg: En ese archivo se mestra el diagrama físico. 
+- Diagrama.jpg: En ese archivo se muestran los diagramas realizados. 
 
 ---
 
@@ -359,9 +359,96 @@ Un historial médico puede contener muchos diagnósticos.
 
 
 **Diagrama** 
+```
+graph TD
+    %% Entitie
+    Hospitales[Hospitales]
+    AreasEspecializadas[AreasEspecializadas]
+    Pacientes[Pacientes]
+    MedicosYPersonal[MedicosYPersonal]
+    SegurosMedicos[SegurosMedicos]
+    HistorialMedico[HistorialMedico]
+    VisitasMedicas[VisitasMedicas]
+    Diagnosticos[Diagnosticos]
+    Tratamientos[Tratamientos]
+    Medicamentos[Medicamentos]
+    Resultados[Resultados]
+    Inventario[Inventario]
+    Fabricante[Fabricante]
+   
+    %% Attributes as ovals
+    idHospital((id))
+    idDirector((id_Director))
+    idAreasEspecializadas((id_AreasEspecializadas))
+    NombreHospital((Nombre))
+    
+    idAreaEspecializada((id))
+    DescripcionArea((Descripcion))
+    NombreArea((Nombre))
 
+    idPacientes((id))
+    idHistorialMedico((id_HistorialMedico))
+	TelefonoPaciente((Telefono))
+	idSegurosMedicos((id_SegurosMedicos))
+    NombrePaciente((Nombre))
+    DireccionPaciente((Direccion))
+    CorreoPaciente((Correo))
+	
+	NumeroColegiatura((NumeroColegiatura))
+	NombreMedicoYPersonal((Nombre))
+	Especialidad((Especialidad))
+	Salario((Salario))
+	TelefonoMedicoYPersonal((Telefono))
+	
+	idSegurosMedicos((id))
+	NombreSeguro((Nombre))
+	
+	idHistorial((id))
+	id_DiagnosticoEnElHostorial((id_Diagnostico))
+	
+	idVisitasMedicas((id))
+	HoraVisita((Visita))
+	FechaVisita((Fecha))
+	idMedico((id_Medico))
+	idPaciente((id_Paciente))
+	idDiagnostico((id_Diagnostico))
+	
+	idDiagnostico((Diagnostico))
+	
+	
+	
+	
+	
+	
+	
+    PId((product_id))
+    PName((name))
+    PPrice((price))
 
+    PayId((payment_id))
+    PayMethod((method))
+    PayAmount((amount))
 
+    %% Relationships
+    User --> UId
+    User --> UName
+    User --> UEmail
 
+    Order --> OId
+    Order --> ODate
+    Order -->|placed by| User
 
+    Product --> PId
+    Product --> PName
+    Product --> PPrice
+    Order -->|contains| Product
+
+    Payment --> PayId
+    Payment --> PayMethod
+    Payment --> PayAmount
+    Payment -->|pays for| Order
+    Payment -->|made by| User
+    
+
+```
 
