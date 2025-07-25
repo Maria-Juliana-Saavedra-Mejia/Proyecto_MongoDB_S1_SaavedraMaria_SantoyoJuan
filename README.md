@@ -1,3 +1,4 @@
+
 <div style="text-align: center;">
 
 ## **SISTEMA HOSPITALARIO**
@@ -213,32 +214,33 @@ cómo se organizan y conectan los diferentes elementos de la base de datos.
 
 9. Medicamentos
 
-id: identificador del medicamento.
-id_Inventario: Identificador del medicamento dentro del inventario.
-Tipo: tipo de medicamento.
-Nombre: nombre medicamento.
+    - id: identificador del medicamento.
+    - id_Inventario: Identificador del medicamento dentro del inventario.
+    - Tipo: tipo de medicamento.
+    - Nombre: nombre medicamento.
 
 10. Inventario
 
-id: identificador del inventario.
-Disponibilidad: Cantidad de medicamentos en stock.
-id_Medicamentos: identificador unico de los medicamentos dentro del inventario.
-id_Fabricante:identificador unico de los fabricantes de los medicamentos.
+    - id: identificador del inventario.
+    - Disponibilidad: Cantidad de medicamentos en stock.
+    - id_Medicamentos: identificador unico de los medicamentos dentro del inventario.
+    - id_Fabricante:identificador unico de los fabricantes de los medicamentos.
 
 11. Fabricante
 
-id: identificador del fabricante.
+    - id: identificador del fabricante.
 nombre: nombre del fabricante.
 
 12. Resultado
 
-id: identificador del resultado.
-Descripcion: descripcion del resultado obtenido en el tratamiento.
+    - id: identificador del resultado.
+    - Descripcion: descripcion del resultado obtenido en el tratamiento.
 
 13. HistorialMedico
 
-id: identificador HistorialMedico.
-id_Diagnostico: nombre de la entidad.
+    - id: identificador HistorialMedico.
+    - id_Diagnostico: nombre de la entidad.
 
+- **Las Entidades y Atributos**
 
 
