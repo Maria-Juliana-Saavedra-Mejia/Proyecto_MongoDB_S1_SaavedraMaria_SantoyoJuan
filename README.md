@@ -120,7 +120,9 @@ plataforma Github, estos archivos se encuentran en formato json y se dividen en 
 
 - dql_funciones.json: Se definen los procedimientos y funciones para añadir, actualizar y mostrar datos dentro del sistema.
 
-- Diagrama.jpg: En ese archiv se mestran los direntes diagramas realizados. 
+- Readme.md : Contiene toda la documentacion del proyecto. 
+
+- Diagrama.jpg: En ese archivo se mestra el diagrama físico. 
 
 ---
 
@@ -241,6 +243,125 @@ nombre: nombre del fabricante.
     - id: identificador HistorialMedico.
     - id_Diagnostico: nombre de la entidad.
 
-- **Las Entidades y Atributos**
+- **Relaciones y Cardinalidades**
+
+1. Hospital – MédicoPersonal
+
+Cardinalidad:
+
+Un hospital tiene uno o muchos médicos.
+Un médico trabaja en muchos hospitales.
+(N:M)
+
+2. Hospital – ÁreaEspecializada
+
+Cardinalidad:
+
+Un hospital tiene una o varias áreas especializadas.
+Un área especializada pertenece a un muchos hospitales.
+(N:M)
+
+3. Hospital – Paciente
+
+Cardinalidad:
+
+Un hospital atiende a uno o varios pacientes.
+Un paciente es atendido por un solo hospital.
+(1:N)
+
+4. Paciente – SegurosMedicos
+
+Cardinalidad:
+
+Un paciente tiene un solo seguro médico.
+Un seguro médico puede estar asociado a varios pacientes.
+(N:1)
+
+5. Paciente – VisitaMedica
+
+Cardinalidad:
+
+Un paciente puede tener muchas visitas médicas.
+Cada visita médica está asociada a un solo paciente.
+(1:N)
+
+6. MédicoPersonal – VisitaMedica
+
+Cardinalidad:
+
+Un médico puede realizar muchas visitas médicas.
+Cada visita médica es atendida por un solo médico.
+(1:N)
+
+7. VisitaMedica – Diagnóstico
+
+Cardinalidad:
+
+Una visita médica puede generar uno o varios diagnósticos.
+Cada diagnóstico proviene de una única visita médica.
+(1:N)
+
+8. Diagnóstico – Tratamientos
+
+Cardinalidad:
+
+Un diagnóstico puede requerir varios tratamientos.
+Un tratamiento puede ser aplicado a varios diagnósticos.
+(N:M)
+
+9. Tratamiento – ÁreaEspecializada
+
+Cardinalidad:
+
+Un tratamiento es aplicado por una sola área especializada.
+Un área especializada puede realizar varios tratamientos.
+(1:N)
+
+10. Tratamiento – Medicamentos
+
+Cardinalidad:
+
+Un tratamiento puede usar varios medicamentos.
+Un medicamento puede usarse en varios tratamientos.
+(N:M)
+
+11. Medicamento – Inventario
+
+Cardinalidad:
+
+Un medicamento está en un inventario.
+Un inventario puede contener muchos medicamentos.
+(1:N)
+
+12. Inventario – Fabricante
+
+Cardinalidad:
+
+Un fabricante puede proveer muchos medicamentos al inventario.
+Un inventario puede registrar medicamentos de un solo fabricante.
+(1:N)
+
+13. Tratamiento – Resultado
+
+Cardinalidad:
+
+Un tratamiento puede generar un resultado.
+Un resultado está ligado a un tratamiento.
+(1:1)
+
+14. Diagnóstico – HistorialMedico
+
+Cardinalidad:
+
+Un diagnóstico forma parte del historial médico.
+Un historial médico puede contener muchos diagnósticos.
+(1:N)
+
+
+**Diagrama** 
+
+
+
+
 
 
