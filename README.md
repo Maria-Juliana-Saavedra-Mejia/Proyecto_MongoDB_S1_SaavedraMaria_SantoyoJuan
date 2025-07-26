@@ -505,24 +505,29 @@ graph TD
     Fabricante --> idFabricantes
     Fabricante --> NombreFabricante
 
-    User --> UId
-    User --> UName
-    User --> UEmail
+    Hospitales --> |tienen| AreasEspecializada
+    Hospitales --> |tienen| Pacientes
+    Hospitales --> |tienen| MedicosYPersonal
 
-    Order --> OId
-    Order --> ODate
-    Order -->|placed by| User
+    Pacientes --> |tienen| SegurosMedicos
+    Pacientes --> HistorialMedico
+    Pacientes --> VisitasMedicas
 
-    Product --> PId
-    Product --> PName
-    Product --> PPrice
-    Order -->|contains| Product
+    MedicosYPersonal --> VisitasMedicas
 
-    Payment --> PayId
-    Payment --> PayMethod
-    Payment --> PayAmount
-    Payment -->|pays for| Order
-    Payment -->|made by| User
+    VisitasMedicas --> Diagnosticos
+
+    HistorialMedico --> Diagnosticos
     
+    Diagnosticos --> Tratamientos
+
+    Tratamientos --> Resultados
+    Tratamientos --> |tienen| Medicamentos
+
+    Medicamentos --> Inventario
+
+    Inventario --> |tienen| Fabricante
+
+
 ```
 
