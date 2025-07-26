@@ -591,6 +591,52 @@ normalización y la especificación de claves principales y externas.
 
 **Descripción**
 
+- **Las Entidades y Atributos**
+
+1. Hospital 
+    - id: INT PRIMARY KEY.
+    - id_director: INT NOT NULL FOREING KEY.
+    - id_AreasEspecializadas: INT NOT NULL FOREING KEY.
+    - nombre: varchar(100) NOT NULL.
+
+2. AreasEspecializadas
+   - id: INT PRIMARY KEY.
+   - 
+
+3. MedicosYPersonal 
+    - id: INT PRIMARY KEY.
+
+4. Pacientes 
+    - id: INT PRIMARY KEY.
+
+5. SegurosMedicos
+    - id: INT PRIMARY KEY.
+
+6. HistorialMedico
+    - id: INT PRIMARY KEY.
+
+7. VisitasMedicas
+    - id: INT PRIMARY KEY.
+
+8. Diagnosticos
+    - id: INT PRIMARY KEY.
+
+9. Tratamientos
+    - id: INT PRIMARY KEY.
+
+10. Resultados
+    - id: INT PRIMARY KEY.
+
+11. Medicamentos
+    - id: INT PRIMARY KEY.
+
+12. Inventario
+    - id: INT PRIMARY KEY.
+
+13. Fabricante
+    - id: INT PRIMARY KEY.
+
+
 **Diagrama**
 
 ```mermaid
