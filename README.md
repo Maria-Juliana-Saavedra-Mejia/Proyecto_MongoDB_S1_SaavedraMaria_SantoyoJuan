@@ -1,5 +1,5 @@
 
-<div style="text-align: center;">
+<div align: center;>
 
 ## **SISTEMA HOSPITALARIO**
 
@@ -19,7 +19,7 @@
 </div>
 
 ---
-<div style="text-align: center;">
+<div align: center;>
 
 ## Introducción
 
@@ -47,7 +47,7 @@ desarrollo de la base de datos necesaria para la gestión eficiente del sistema 
 
 
 ---
-<div style="text-align: center;">
+<div align: center;>
 
 ## Caso de Estudio
 
@@ -126,7 +126,7 @@ plataforma Github, estos archivos se encuentran en formato json y se dividen en 
 
 ---
 
-<div style="text-align: center;">
+<div align: center;>
 
 ## Planificación 
 
