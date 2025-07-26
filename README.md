@@ -531,7 +531,7 @@ graph TD
 
 ```
 
-## Construcción del Modelo Conceptual
+## Construcción del Modelo Lógico
 
 En esta sección del documento se adjunta la información correspondiente al modelo lógico el
 cual es el representa la estructura de los datos sin detalles de implementación física,
