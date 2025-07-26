@@ -357,9 +357,9 @@ Un diagnóstico forma parte del historial médico.
 Un historial médico puede contener muchos diagnósticos.
 (1:N)
 
-
 **Diagrama** 
-```
+
+```mermaid
 graph TD
     %% Entitie
     Hospitales[Hospitales]
@@ -414,22 +414,44 @@ graph TD
 	idDiagnostico((id_Diagnostico))
 	
 	idDiagnostico((Diagnostico))
+	DescripcionDiagnostico((Descripcion))
+	idTratamientos((id_Tratamientos))
 	
+	idTratamientos((id))
+	idAreasEspecializadasTratamientos((id_AreasEspecializadas))
+	NombreTratamiento((Nombre))
+	CostoTratamiento((Costo))
+	DescripcionTratamientos((Descripcion))
 	
+	idMedicamentos((id))
+	idInventario((id_Inventario))
+	NombreMedicamentos((Nombre))
+	TipoMedicamentos((Tipo))
 	
-	
-	
-	
-	
-    PId((product_id))
-    PName((name))
-    PPrice((price))
+	idResultados((id))
+	DescripcionResultados((Descripcion))
 
-    PayId((payment_id))
-    PayMethod((method))
-    PayAmount((amount))
+	idInventario((id))
+	DisponiilidadInventario((Disponobilidad))
+	idFabricante((id_Fabricante))
+	idMedicamentosInventario((id_Medicamentos))
+	
+	idFabricantes((id))
+	NombreFabricante((Nombre))
+	
+
 
     %% Relationships
+    
+    Hospitales --> idHospital
+    Hospitales --> idDirector
+    Hospitales --> idAreasEspecializadas
+    Hospitales --> NombreHospital
+
+    AreasEspecializadas --> idAreaEspecializada
+    AreasEspecializadas --> DescripcionArea
+    AreasEspecializadas --> NombreArea
+    
     User --> UId
     User --> UName
     User --> UEmail
