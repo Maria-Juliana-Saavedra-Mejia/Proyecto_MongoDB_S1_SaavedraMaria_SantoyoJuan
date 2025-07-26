@@ -415,7 +415,7 @@ graph TD
 	
 	idDiagnostico((Diagnostico))
 	DescripcionDiagnostico((Descripcion))
-	idTratamientos((id_Tratamientos))
+	idTratamiento((id_Tratamientos))
 	
 	idTratamientos((id))
 	idAreasEspecializadasTratamientos((id_AreasEspecializadas))
@@ -424,7 +424,7 @@ graph TD
 	DescripcionTratamientos((Descripcion))
 	
 	idMedicamentos((id))
-	idInventario((id_Inventario))
+	idInventari((id_Inventario))
 	NombreMedicamentos((Nombre))
 	TipoMedicamentos((Tipo))
 	
@@ -451,7 +451,60 @@ graph TD
     AreasEspecializadas --> idAreaEspecializada
     AreasEspecializadas --> DescripcionArea
     AreasEspecializadas --> NombreArea
+
+    Pacientes --> idPacientes
+    Pacientes --> idHistorialMedico
+    Pacientes --> TelefonoPaciente
+    Pacientes --> idSegurosMedicos
+    Pacientes --> NombrePaciente
+    Pacientes --> DireccionPaciente
+    Pacientes --> CorreoPaciente
     
+    MedicosYPersonal --> NumeroColegiatura
+    MedicosYPersonal --> NombreMedicoYPersonal
+    MedicosYPersonal --> Especialidad
+    MedicosYPersonal --> Salario
+    MedicosYPersonal --> TelefonoMedicoYPersonal
+
+    SegurosMedicos --> idSegurosMedicos
+    SegurosMedicos --> NombreSeguro
+
+    HistorialMedico --> idHistorial
+    HistorialMedico --> id_DiagnosticoEnElHostorial
+
+    VisitasMedicas --> idVisitasMedicas
+    VisitasMedicas --> HoraVisita
+    VisitasMedicas --> FechaVisita
+    VisitasMedicas --> idMedico
+    VisitasMedicas --> idPaciente
+    VisitasMedicas --> CorreoPaciente
+
+    Diagnosticos --> idDiagnostico
+    Diagnosticos --> DescripcionDiagnostico
+    Diagnosticos --> idTratamiento
+
+    Tratamientos --> idTratamientos
+    Tratamientos --> idAreasEspecializadasTratamientos
+    Tratamientos --> NombreTratamiento
+    Tratamientos --> CostoTratamiento
+    Tratamientos --> DescripcionTratamientos
+
+    Medicamentos --> idMedicamentos
+    Medicamentos --> idInventari
+    Medicamentos --> NombreMedicamentos
+    Medicamentos --> TipoMedicamentos
+
+    Resultados --> idResultados
+    Resultados --> DescripcionResultados
+
+    Inventario --> idInventario
+    Inventario --> DisponiilidadInventario
+    Inventario --> idFabricante
+    Inventario --> idMedicamentosInventario
+
+    Fabricante --> idFabricantes
+    Fabricante --> NombreFabricante
+
     User --> UId
     User --> UName
     User --> UEmail
@@ -471,6 +524,5 @@ graph TD
     Payment -->|pays for| Order
     Payment -->|made by| User
     
-
 ```
 
