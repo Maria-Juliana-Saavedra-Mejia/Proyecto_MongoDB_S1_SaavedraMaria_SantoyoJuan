@@ -1,29 +1,78 @@
 
-<div align: center;>
+<h3 align="center";>
 
-## **SISTEMA HOSPITALARIO**
+**SISTEMA HOSPITALARIO**
+
+</h3>
+
+<br>
+<br>
+<br>
+
+<h3 align="center";>
 
 **Maria Juliana Saavedra Mejia**
 
+</h3>
+
+<h3 align="center";>
+
 **Juan David Santoyo Jaimes**
+
+</h3>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3 align="center";>
 
 **S1**
 
+</h3>
+
+<h3 align="center";>
+
+**Pedro Felipe Gómez Bonilla**
+
+</h3>
+
+<br>
+<br>
+<br>
+<br>
+
+<h3 align="center";>
+
 **CAMPUSLANDS**
+
+</h3>
+
+<h3 align="center";>
 
 **RUTA NODE**
 
+</h3>
+
+<h3 align="center";>
+
 **BUCARAMANGA, SANTANDER**
 
+</h3>
+
+<h3 align="center";>
+
 **2025**
-</div>
+
+</h3>
 
 ---
-<div align: center;>
+<h1 align="center";>
 
 ## Introducción
 
-</div>
+</h1>
 
 Este documento servirá como una guía detallada del proceso completo de diseño,
 estructuración e implementación de una base de datos para un Sistema Hospitalario de la Secretaría de salud de Bucaramanga. El objetivo principal es gestionar eficazmente los datos e información generados por los hospitales, pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo. Inicialmente, se analizará el caso de estudio junto con sus requerimientos específicos. A partir de esta investigación, se procederá a desarrollar un modelo conceptual detallado donde se identificarán las entidades principales, sus atributos y las relaciones entre ellas. Este paso determina las bases para comprender la estructura esencial de la gestión del sistema hospitalario.
@@ -47,11 +96,11 @@ desarrollo de la base de datos necesaria para la gestión eficiente del sistema 
 
 
 ---
-<div align: center;>
+<h1 align="center";>
 
 ## Caso de Estudio
 
-</div>
+</h1>
 
 
 La Secretaria de Salud ha pedido la creación de un diseño inicial de un software que permita manejar los datos e información que se generan sobre los Hospitales de la ciudad de Bucaramanga. Por lo que comenzamos estructurando los requerimientos dados:
@@ -103,11 +152,11 @@ Con base en la información anterior, se procederá a crear una base de datos en
 
 ---
 
-<div style="text-align: center;">
+<h1 align="center";>
 
 ## Instalación General
 
-</div>
+</h1>
 
 Los archivos relacionados con la BBDD de la Secretaria de Salud , se encuentran en la
 plataforma Github, estos archivos se encuentran en formato json y se dividen en 5 partes:
@@ -126,11 +175,11 @@ plataforma Github, estos archivos se encuentran en formato json y se dividen en 
 
 ---
 
-<div align: center;>
+<h1 align="center";>
 
 ## Planificación 
 
-</div>
+</h1>
 
 ## Ejecución 
 
