@@ -598,8 +598,8 @@ erDiagram
     HOSPITAL {
         int id PK
         string nombre
-        int id_AreasEspecializadas
-        int id_director
+        int id_AreasEspecializadas FK
+        int id_director FK
     }
     AREA_ESPECIALIZADA {
         int id PK
@@ -619,7 +619,7 @@ erDiagram
         string Direccion
         string Correo
         string Telefono
-        int id_SegurosMedicos
+        int id_SegurosMedicos FK
     }
     SEGUROS_MEDICOS {
         int id PK
@@ -628,34 +628,34 @@ erDiagram
     VISITA_MEDICA {
         int id PK
         string fecha
-        string Hora
-        int id_Medico
-        int id_Paciente
-        int id_Diagnostico
+        string Hora 
+        int id_Medico FK
+        int id_Paciente FK
+        int id_Diagnostico FK
     }
     DIAGNOSTICO {
         int id PK
         string descripcion
-        int id_Tratamientos
+        int id_Tratamientos FK
     }
     TRATAMIENTO {
         int id PK
         string descripcion
         string nombre
         float Costo
-        int id_AreasEspecializadas
+        int id_AreasEspecializadas FK
     }
     MEDICAMENTO {
         int id PK
-        int id_Inventario
+        int id_Inventario FK
         string Tipo
         string Nombre
     }
     INVENTARIO {
         int id PK
         string Disponibilidad
-        int id_Medicamentos
-        int id_Fabricante
+        int id_Medicamentos FK
+        int id_Fabricante FK
     }
     FABRICANTE {
         int id PK
@@ -667,7 +667,7 @@ erDiagram
     }
     HISTORIAL_MEDICO {
         int id PK
-        int id_Diagnostico
+        int id_Diagnostico FK
     }
 
     HOSPITAL }|..|{ MEDICO_PERSONAL : emplea
