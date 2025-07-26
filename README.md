@@ -591,3 +591,100 @@ normalización y la especificación de claves principales y externas.
 
 **Descripción**
 
+**Diagrama**
+
+```mermaid
+erDiagram
+    HOSPITAL {
+        int id PK
+        string nombre
+        int id_AreasEspecializadas
+        int id_director
+    }
+    AREA_ESPECIALIZADA {
+        int id PK
+        string nombre
+        string descripcion
+    }
+    MEDICO_PERSONAL {
+        int NumeroColegiatura PK
+        string nombre
+        string especialidad
+        float Salario
+        string Telefono
+    }
+    PACIENTE {
+        int id PK
+        string nombre
+        string Direccion
+        string Correo
+        string Telefono
+        int id_SegurosMedicos
+    }
+    SEGUROS_MEDICOS {
+        int id PK
+        string nombre
+    }
+    VISITA_MEDICA {
+        int id PK
+        string fecha
+        string Hora
+        int id_Medico
+        int id_Paciente
+        int id_Diagnostico
+    }
+    DIAGNOSTICO {
+        int id PK
+        string descripcion
+        int id_Tratamientos
+    }
+    TRATAMIENTO {
+        int id PK
+        string descripcion
+        string nombre
+        float Costo
+        int id_AreasEspecializadas
+    }
+    MEDICAMENTO {
+        int id PK
+        int id_Inventario
+        string Tipo
+        string Nombre
+    }
+    INVENTARIO {
+        int id PK
+        string Disponibilidad
+        int id_Medicamentos
+        int id_Fabricante
+    }
+    FABRICANTE {
+        int id PK
+        string nombre
+    }
+    RESULTADO {
+        int id PK
+        string Descripcion
+    }
+    HISTORIAL_MEDICO {
+        int id PK
+        int id_Diagnostico
+    }
+
+    HOSPITAL }|..|{ MEDICO_PERSONAL : emplea
+    HOSPITAL }|..|{ AREA_ESPECIALIZADA : especializa
+    HOSPITAL ||--o{ PACIENTE : atiende
+    PACIENTE }|--|| SEGUROS_MEDICOS : seguro
+    PACIENTE ||--o{ VISITA_MEDICA : consulta
+    MEDICO_PERSONAL ||--o{ VISITA_MEDICA : realiza
+    VISITA_MEDICA ||--o{ DIAGNOSTICO : produce
+    DIAGNOSTICO }|..|{ TRATAMIENTO : requiere
+    TRATAMIENTO }|--|| AREA_ESPECIALIZADA : aplica
+    TRATAMIENTO }|..|{ MEDICAMENTO : usa
+    MEDICAMENTO ||--o{ INVENTARIO : pertenece
+    INVENTARIO ||--o{ MEDICAMENTO : contiene
+    INVENTARIO }|--|| FABRICANTE : provee
+    TRATAMIENTO ||--|| RESULTADO : genera
+    DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : registra
+
+```
+
