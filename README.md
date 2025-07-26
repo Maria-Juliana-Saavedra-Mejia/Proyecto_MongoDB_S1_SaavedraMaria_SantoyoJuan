@@ -531,3 +531,14 @@ graph TD
 
 ```
 
+## Construcción del Modelo Conceptual
+
+En esta sección del documento se adjunta la información correspondiente al modelo lógico el
+cual es el representa la estructura de los datos sin detalles de implementación física,
+enfocándose en las entidades, atributos, relaciones y claves de la base de datos.Este modelo
+ayuda a comprender la organización de los datos y sus interconexiones, permitiendo la
+normalización y la especificación de claves principales y externas.
+
+
+**Descripción**
+
