@@ -893,39 +893,142 @@ clave primaria única que identifique cada fila de forma inequívoca.
 
 **Diagrama**
 ```mermaid
-graph LR
-    subgraph ANTES["SIN NORMALIZAR"]
-        direction TB
-        A1["Hospital<br/>❌ Solo una área<br/>id_AreasEspecializadas: ObjectId"]
-        B1["Paciente<br/>❌ Campos duplicados<br/>Dirección y dirección<br/>❌ Inconsistencia de nombres"]
-        C1["VisitaMedica<br/>❌ Solo un diagnóstico<br/>id_Diagnostico: ObjectId"]  
-        D1["Diagnostico<br/>❌ Solo un tratamiento<br/>id_Tratamientos: ObjectId"]
-    end
+erDiagram
+    HOSPITAL {
+        int id PK
+        string nombre
+        int director_id FK
+    }
+    
+    AREA_ESPECIALIZADA {
+        int id PK
+        string nombre
+        string descripcion
+    }
+    
+    HOSPITAL_AREA {
+        int hospital_id FK
+        int area_id FK
+    }
+    
+    MEDICO_PERSONAL {
+        int numero_colegiatura PK
+        string nombre
+        string especialidad
+        float salario
+        string telefono
+        int hospital_id FK
+    }
+    
+    PACIENTE {
+        int id PK
+        string nombre
+        string direccion
+        string correo
+        string telefono
+        int seguro_medico_id FK
+        int hospital_id FK
+    }
+    
+    SEGUROS_MEDICOS {
+        int id PK
+        string nombre
+    }
+    
+    VISITA_MEDICA {
+        int id PK
+        date fecha
+        time hora
+        int medico_id FK
+        int paciente_id FK
+    }
+    
+    DIAGNOSTICO {
+        int id PK
+        string descripcion
+    }
+    
+    VISITA_DIAGNOSTICO {
+        int visita_id FK
+        int diagnostico_id FK
+    }
+    
+    TRATAMIENTO {
+        int id PK
+        string descripcion
+        string nombre
+        float costo
+    }
+    
+    DIAGNOSTICO_TRATAMIENTO {
+        int diagnostico_id FK
+        int tratamiento_id FK
+    }
+    
+    MEDICAMENTO {
+        int id PK
+        string tipo
+        string nombre
+        int fabricante_id FK
+    }
+    
+    TRATAMIENTO_MEDICAMENTO {
+        int tratamiento_id FK
+        int medicamento_id FK
+    }
+    
+    FABRICANTE {
+        int id PK
+        string nombre
+    }
+    
+    INVENTARIO {
+        int id PK
+        int disponibilidad
+        int medicamento_id FK
+        string ubicacion
+        date fecha_ingreso
+    }
+    
+    TRATAMIENTO_AREA {
+        int tratamiento_id FK
+        int area_id FK
+    }
+    
+    RESULTADO {
+        int id PK
+        string descripcion
+        int tratamiento_id FK
+    }
+    
+    HISTORIAL_MEDICO {
+        int id PK
+        int diagnostico_id FK
+        int paciente_id FK
+        date fecha_registro
+    }
 
-    subgraph DESPUES["PRIMERA FORMA NORMAL"]
-        direction TB
-        A2["Hospital<br/>✅ Múltiples áreas<br/>areasEspecializadas: Array ObjectId<br/>✅ Nombre consistente: director"]
-        B2["Paciente<br/>✅ Sin duplicados<br/>direccion: String único<br/>✅ Nombres consistentes<br/>✅ Relación con hospital"]
-        C2["VisitaMedica<br/>✅ Múltiples diagnósticos<br/>diagnosticos: Array ObjectId<br/>✅ Fecha como ISODate"]
-        D2["Diagnostico<br/>✅ Múltiples tratamientos<br/>tratamientos: Array ObjectId<br/>✅ Referencia a visita"]
-    end
-
-    %% Flechas de transformación ordenadas
-    A1 ==>|"NORMALIZACIÓN<br/>1FN"| A2
-    B1 ==>|"NORMALIZACIÓN<br/>1FN"| B2
-    C1 ==>|"NORMALIZACIÓN<br/>1FN"| C2
-    D1 ==>|"NORMALIZACIÓN<br/>1FN"| D2
-
-    %% Estilos
-    classDef problematico fill:#ffebee,stroke:#f44336,stroke-width:2px,color:#000
-    classDef solucionado fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
-    classDef principio fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
-    classDef referencia fill:#fff3e0,stroke:#ff9800,stroke-width:1px,color:#000
-
-    class A1,B1,C1,D1 problematico
-    class A2,B2,C2,D2 solucionado
-    class P1,P2,P3,P4 principio
-    class E1,E2,E3,E4,E5 referencia
+    %% Relaciones
+    HOSPITAL ||--o{ HOSPITAL_AREA : "tiene"
+    AREA_ESPECIALIZADA ||--o{ HOSPITAL_AREA : "pertenece"
+    HOSPITAL ||--o{ MEDICO_PERSONAL : "emplea"
+    HOSPITAL ||--o{ PACIENTE : "atiende"
+    PACIENTE }|--|| SEGUROS_MEDICOS : "tiene"
+    PACIENTE ||--o{ VISITA_MEDICA : "realiza"
+    MEDICO_PERSONAL ||--o{ VISITA_MEDICA : "atiende"
+    VISITA_MEDICA ||--o{ VISITA_DIAGNOSTICO : "genera"
+    DIAGNOSTICO ||--o{ VISITA_DIAGNOSTICO : "pertenece"
+    DIAGNOSTICO ||--o{ DIAGNOSTICO_TRATAMIENTO : "requiere"
+    TRATAMIENTO ||--o{ DIAGNOSTICO_TRATAMIENTO : "aplica"
+    TRATAMIENTO ||--o{ TRATAMIENTO_AREA : "se_aplica_en"
+    AREA_ESPECIALIZADA ||--o{ TRATAMIENTO_AREA : "permite"
+    TRATAMIENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "usa"
+    MEDICAMENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "es_usado_en"
+    MEDICAMENTO }|--|| FABRICANTE : "fabricado_por"
+    MEDICAMENTO ||--|| INVENTARIO : "tiene_stock"
+    TRATAMIENTO ||--o{ RESULTADO : "genera"
+    DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : "registra"
+    PACIENTE ||--o{ HISTORIAL_MEDICO : "posee"
 ```
 
 
