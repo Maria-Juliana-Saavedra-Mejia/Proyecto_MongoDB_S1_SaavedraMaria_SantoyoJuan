@@ -70,7 +70,7 @@
 ---
 <h1 align="center";>
 
-## Introducción
+# Introducción
 
 </h1>
 
@@ -98,7 +98,7 @@ desarrollo de la base de datos necesaria para la gestión eficiente del sistema 
 ---
 <h1 align="center";>
 
-## Caso de Estudio
+# Caso de Estudio
 
 </h1>
 
@@ -153,7 +153,7 @@ Con base en la información anterior, se procederá a crear una base de datos en
 ---
 <h1 align="center";>
 
-## Requisitos del Sistema
+# Requisitos del Sistema
 
 </h1>
 
@@ -176,7 +176,7 @@ Para ejecutar correctamente los scripts y configurar el sistema hospitalario, es
 
 <h1 align="center";>
 
-## Instalación y Configuración 
+# Instalación y Configuración 
 
 </h1>
 
@@ -199,7 +199,7 @@ plataforma Github, estos archivos se encuentran en formato json y se dividen en 
 
 <h1 align="center";>
 
-## Planificación 
+# Planificación 
 
 </h1>
 
@@ -631,6 +631,7 @@ normalización y la especificación de claves principales y externas.
     - especialidad: String (100) NOT NULL.
     - salario: Double NOT NULL.
     - telefono: String (25) NOT NULL.
+    - id_Hospital: INT NOT NULL FOREING KEY.
 
 4. Paciente
     - id: INT PRIMARY KEY.
@@ -639,6 +640,7 @@ normalización y la especificación de claves principales y externas.
     - correo: String (100) NOT NULL.
     - telefono: String (25) NOT NULL
     - id_SegurosMedicos: INT NOT NULL FOREING KEY.
+    - id_Hospital: INT NOT NULL FOREING KEY.
 
 
 5. SegurosMedicos
@@ -796,6 +798,7 @@ erDiagram
         string especialidad
         float Salario
         string Telefono
+        int id_Hospital FK
     }
     PACIENTE {
         int id PK
@@ -804,6 +807,7 @@ erDiagram
         string Correo
         string Telefono
         int id_SegurosMedicos FK
+        int id_Hospital FK
     }
     SEGUROS_MEDICOS {
         int id PK
@@ -887,8 +891,88 @@ clave primaria única que identifique cada fila de forma inequívoca.
 
 **Descripción**
 
+Una tabla está en 1FN si cumple con los siguientes criterios:
+
+-  Todos los atributos contienen valores atómicos (indivisibles).
+
+- No debe haber grupos repetitivos de columnas.
+
+- Cada columna debe contener un solo valor en cada fila.
 
 
+**Descripción Técnica**
+   
+1. Hospital :
+
+     Se encuentra en 1FN, ya que cuenta con una clave primaria única (id) y cada columna tiene valores atómicos, únicos y no repetitivos.
+
+2. area_especializada :
+
+    Se encuentra en 1FN, ya que cuenta con una clave primaria (id) y los atributos contienen valores atómicos y no multivaluados.
+
+3. hospital_area :
+
+    Se encuentra en 1FN, ya que está compuesta por claves foráneas (hospital_id, area_id) que juntas forman una clave primaria compuesta, sin repetición y con datos atómicos.
+
+4. medico_personal :
+
+    Se encuentra en 1FN, ya que su clave primaria (numero_colegiatura) identifica de forma única a cada médico y sus columnas contienen valores no repetitivos y atómicos.
+
+5. paciente : 
+
+    Se encuentra en 1FN, con una clave primaria (id) única y columnas que no contienen grupos repetitivos ni valores múltiples.
+
+6. seguros_medicos :
+
+    Se encuentra en 1FN, ya que su identificador (id) es único y cada atributo tiene un valor atómico y no repetitivo.
+
+7. visita_medica :
+
+    Se encuentra en 1FN, al tener una clave primaria (id) única, y sus columnas son todas atómicas (como fecha, hora, etc.).
+
+8. diagnostico :
+
+    Se encuentra en 1FN, ya que el campo id es la clave primaria, y no existen atributos multivaluados o compuestos.
+
+9. visita_diagnostico :
+
+    Se encuentra en 1FN, al contar con una clave compuesta (visita_id, diagnostico_id) y columnas con valores no repetitivos.
+
+10. tratamiento :
+
+    Se encuentra en 1FN, ya que tiene una clave primaria (id) y valores únicos y atómicos por cada atributo.
+
+11. diagnostico_tratamiento :
+
+    Se encuentra en 1FN, al tener una clave compuesta (diagnostico_id, tratamiento_id) sin duplicados y con datos no multivaluados.
+
+12. medicamento :
+
+    Se encuentra en 1FN, ya que cuenta con una clave primaria (id) y cada columna contiene un solo valor por fila.
+
+13. tratamiento_medicamento :
+
+    Se encuentra en 1FN, con clave compuesta entre tratamiento_id y medicamento_id, sin datos multivaluados ni repetidos.
+
+14. fabricante :
+
+    Se encuentra en 1FN, ya que su clave primaria (id) garantiza unicidad y sus columnas son simples y atómicas.
+
+15. inventario :
+
+    Se encuentra en 1FN, ya que tiene un identificador único (id) y no existen valores repetitivos o multivaluados en sus columnas.
+
+16. tratamiento_area : 
+
+    Se encuentra en 1FN, con clave compuesta entre tratamiento_id y area_id, y columnas atómicas y sin redundancia.
+
+17. resultado :
+
+    Se encuentra en 1FN, ya que su clave primaria (id) es única y todos los atributos contienen valores atómicos.
+
+18. historial_medico :
+
+    Se encuentra en 1FN, ya que su clave (id) es única, y los datos no se repiten ni están agrupados en conjuntos o listas.
 
 
 **Diagrama**
@@ -917,7 +1001,7 @@ erDiagram
         string especialidad
         float salario
         string telefono
-        int hospital_id FK
+        int id_Hospital FK
     }
     
     PACIENTE {
@@ -927,7 +1011,7 @@ erDiagram
         string correo
         string telefono
         int seguro_medico_id FK
-        int hospital_id FK
+        int id_Hospital FK
     }
     
     SEGUROS_MEDICOS {
@@ -1044,9 +1128,86 @@ entre los atributos no clave y la clave primaria.
 
 **Descripción**
 
+Una tabla está en 2FN si cumple con los siguientes criterios:
 
+- Está en 1FN.
 
+- Todos los atributos no clave (no pertenecientes a una clave primaria compuesta)
+dependen completamente de la clave primaria.
 
+**Descripción Técnica**
+
+1. hospital :
+
+    Se encuentra en 2FN, ya que cuenta con una clave primaria única (id) y cada columna depende completamente de esta clave primaria, sin dependencias parciales.
+
+2. area_especializada :
+
+    Se encuentra en 2FN, ya que cuenta con una clave primaria única (id) y todos los atributos (nombre, descripcion) dependen completamente de ella.
+
+3. hospital_area :
+
+    Se encuentra en 2FN, ya que su clave compuesta (hospital_id, area_id) no tiene dependencias parciales: ambas columnas representan la totalidad de la clave, y no hay atributos adicionales.
+
+4. medico_personal :
+
+    Se encuentra en 2FN, ya que todos los atributos (nombre, especialidad, salario, telefono, hospital_id) dependen por completo del identificador único (numero_colegiatura).
+
+5. paciente :
+
+    Se encuentra en 2FN, dado que los atributos (nombre, direccion, correo, telefono, seguro_medico_id, hospital_id) dependen exclusivamente del identificador (id), sin dependencias parciales.
+
+6. seguros_medicos :
+
+    Se encuentra en 2FN, ya que su atributo nombre depende completamente de su clave primaria (id).
+
+7. visita_medica :
+
+    Se encuentra en 2FN, ya que todos los atributos (fecha, hora, medico_id, paciente_id) dependen directamente de la clave primaria (id).
+
+8. diagnostico :
+
+    Se encuentra en 2FN, porque descripcion depende directamente de la clave primaria (id).
+
+9. visita_diagnostico :
+
+    Se encuentra en 2FN, ya que su clave está compuesta (visita_id, diagnostico_id) y no hay atributos adicionales que dependan parcialmente de una sola parte de la clave.
+
+10. tratamiento :
+
+    Se encuentra en 2FN, ya que los atributos (descripcion, nombre, costo) dependen completamente de su clave primaria (id).
+
+11. diagnostico_tratamiento :
+
+    Se encuentra en 2FN, ya que todos los atributos dependen completamente de la clave compuesta (diagnostico_id, tratamiento_id).
+
+12. medicamento :
+
+    Se encuentra en 2FN, porque los atributos (tipo, nombre, fabricante_id) dependen directamente de la clave primaria (id), sin dependencias parciales.
+
+13. tratamiento_medicamento :
+
+    Se encuentra en 2FN, ya que tiene clave compuesta (tratamiento_id, medicamento_id) sin atributos adicionales y, por tanto, sin dependencias parciales.
+
+14. fabricante :
+
+    Se encuentra en 2FN, ya que nombre depende completamente del identificador único (id).
+
+15. inventario : 
+
+    Se encuentra en 2FN, dado que todos los atributos (disponibilidad, medicamento_id, ubicacion, fecha_ingreso) dependen totalmente del identificador (id).
+
+16. tratamiento_area :
+
+    Se encuentra en 2FN, ya que la clave compuesta (tratamiento_id, area_id) no tiene atributos adicionales que generen dependencias parciales.
+
+17. resultado : 
+
+    Se encuentra en 2FN, porque tanto descripcion como tratamiento_id dependen de la clave primaria (id) sin ambigüedad.
+
+18. historial_medico :
+
+    Se encuentra en 2FN, ya que los atributos (diagnostico_id, paciente_id, fecha_registro) dependen completamente del identificador (id).
 
 **Diagrama**
 ```mermaid
@@ -1188,9 +1349,6 @@ erDiagram
     PACIENTE ||--o{ HISTORIAL_MEDICO : "posee"
 ```
 
-
-
-
 ## Tercera Forma Normal (3FN)
 
 En esta sección del documento se adjunta la información correspondiente a la Tercera Forma
@@ -1202,8 +1360,106 @@ más.
 
 **Descripción**
 
+Una tabla está en 3NF si cumple con los siguientes criterios:
 
+- Está en 2NF.
 
+- No hay dependencias transitivas: ningún atributo no clave depende de otro atributo no
+clave.
+
+**Descripción Técnica**
+
+1. hospital :
+
+    Se encuentra en 3FN, ya que está en 2FN y en cada columna no hay dependencias transitivas con la clave primaria (id).
+    
+2. area_especializada :
+
+    Se encuentra en 3FN, ya que todos sus atributos (nombre, descripcion) dependen únicamente de la clave primaria (id), sin dependencias transitivas.
+    
+3. hospital_area :
+
+    Se encuentra en 3FN, ya que está en 2FN, no tiene atributos adicionales y no existen dependencias transitivas entre sus claves foráneas.
+
+4. medico :
+
+    Se encuentra en 3FN, ya que sus atributos (nombre, salario, telefono, hospital_id, especialidad_id) dependen directamente de la clave primaria (numero_colegiatura) y no hay dependencia transitiva.
+
+5. especialidad :
+
+    Se encuentra en 3FN, ya que nombre depende directamente de su clave (id) y no existen otras dependencias.
+
+6. paciente :
+
+    Se encuentra en 3FN, ya que los atributos (nombre, correo, telefono, seguro_medico_id, hospital_id, direccion_id) dependen solo de la clave primaria (id) y no de otros atributos entre sí.
+
+7. direccion :
+
+    Se encuentra en 3FN, porque calle, ciudad y codigo_postal dependen directamente de id, sin relaciones transitivas.
+
+8. seguros_medicos :
+
+    Se encuentra en 3FN, ya que nombre depende solo de la clave primaria (id).
+
+9. visita_medica :
+
+    Se encuentra en 3FN, dado que todos sus atributos (fecha, hora, medico_id, paciente_id) dependen directamente de la clave (id).
+
+10. visita_diagnostico :
+
+    Se encuentra en 3FN, ya que está en 2FN, no tiene atributos adicionales y no hay dependencia transitiva entre las claves.
+
+11. diagnostico :
+
+    Se encuentra en 3FN, dado que descripcion depende directamente de la clave primaria (id).
+
+12. diagnostico_tratamiento :
+
+    Se encuentra en 3FN, ya que su clave compuesta (diagnostico_id, tratamiento_id) no tiene atributos adicionales ni dependencias transitivas.
+
+13. tratamiento :
+
+    Se encuentra en 3FN, ya que los atributos (descripcion, nombre, tipo_tratamiento_id) dependen directamente de la clave (id) y no hay dependencia entre atributos no clave.
+
+14. tipo_tratamiento :
+
+    Se encuentra en 3FN, ya que nombre y costo_base dependen solo de id, sin dependencias transitivas.
+
+15. tratamiento_area :
+
+    Se encuentra en 3FN, ya que no tiene atributos adicionales y ambas claves foráneas forman su clave compuesta, sin dependencias transitivas.
+
+16. tratamiento_medicamento :
+
+    Se encuentra en 3FN, ya que ambas columnas (tratamiento_id, medicamento_id) forman la clave compuesta y no hay más atributos ni dependencias.
+
+17. medicamento :
+
+    Se encuentra en 3FN, ya que los atributos (nombre, fabricante_id, tipo_medicamento_id) dependen únicamente de la clave primaria (id), sin relaciones transitivas entre ellos.
+
+18. tipo_medicamento :
+
+    Se encuentra en 3FN, ya que su atributo nombre depende directamente de su clave primaria (id).
+
+19. fabricante :
+
+    Se encuentra en 3FN, ya que nombre depende únicamente de id, sin otras dependencias.
+    
+20. inventario :
+
+    Se encuentra en 3FN, ya que todos los atributos (disponibilidad, medicamento_id, ubicacion_id, fecha_ingreso) dependen solo de id, sin dependencia transitiva entre ellos.
+
+21. ubicacion :
+
+    Se encuentra en 3FN, ya que edificio, piso y estante dependen únicamente del identificador (id).
+
+22. resultado :
+
+    Se encuentra en 3FN, ya que sus atributos (descripcion, tratamiento_id) dependen de la clave (id) y no de otras columnas.
+
+23. historial_medico :
+
+    Se encuentra en 3FN, ya que los campos (diagnostico_id, paciente_id, fecha_registro) dependen directamente del identificador único (id) y no de otros campos.
 
 
 **Diagrama**
@@ -1387,254 +1643,19 @@ erDiagram
         date fecha_registro
     }
 ```
-
-## Análisis del Modelo Original
-
-**Problemas Identificados:**
-
-- **Hospital:** `id_AreasEspecializadas` como campo simple no puede manejar múltiples áreas.
-- **Paciente:** Atributo "dirección" duplicado.
-- **VisitaMedica:** `id_Diagnostico` singular cuando puede haber múltiples diagnósticos.
-- **Diagnostico:** `id_Tratamientos` singular para relación N:M.
-- **Medicamentos/Inventario:** Referencias circulares confusas.
-- **HistorialMedico:** Estructura incompleta.
-
 ---
 
-## Primera Forma Normal (1FN) en MongoDB
+## Construcción del Modelo Físico
 
-**Objetivo:** Estructurar documentos de forma coherente, eliminar duplicaciones y organizar relaciones apropiadamente.
+En esta sección del documento se adjunta el modelo físico realizado, el cual , describe la
+estructura real de la base de datos, incluyendo detalles como las tablas, columnas, tipos de
+datos, restricciones y relaciones entre tablas. Es el último paso en el proceso de modelado de
+datos, después del modelo lógico, y se utiliza para generar la estructura física de la base de
+datos en un sistema de gestión de bases de datos (DBMS).
 
-### Cambio 1: Hospital - Manejo de Múltiples Áreas
+**Descripción**
 
-❌ **ANTES:**
-
-```javascript
-Hospital: {
-    _id: ObjectId,
-    nombre: String,
-    id_AreasEspecializadas: ObjectId,  // Solo una área
-    id_director: ObjectId
-}
-
-✅ **DESPUÉS (1FN):**
-
-```javascript
-Hospital: {
-    _id: ObjectId("64a1b2c3d4e5f6789012345a"),
-    nombre: "Hospital San Juan",
-    areasEspecializadas: [
-        ObjectId("64a1b2c3d4e5f6789012345b"),
-        ObjectId("64a1b2c3d4e5f6789012345c"),
-        ObjectId("64a1b2c3d4e5f6789012345d")
-    ],
-    director: ObjectId("64a1b2c3d4e5f6789012345e")
-}
-```
-
-### Cambio 2: Paciente - Eliminación de Duplicación
-
-❌ **ANTES:**
-
-```javascript
-Paciente: {
-    _id: ObjectId,
-    nombre: String,
-    Dirección: String,  // Duplicado
-    Correo: String,
-    dirección: String,  // Duplicado
-    teléfono: String,
-    id_SegurosMedicos: ObjectId
-}
-```
-
-✅ **DESPUÉS (1FN):**
-
-```javascript
-Paciente: {
-    _id: ObjectId("64a1b2c3d4e5f6789012346a"),
-    nombre: "María González",
-    direccion: "Carrera 15 #32-45, Bogotá",
-    correo: "maria.gonzalez@email.com",
-    telefono: "+57 300 123 4567",
-    seguroMedico: ObjectId("64a1b2c3d4e5f6789012346b"),
-    hospital: ObjectId("64a1b2c3d4e5f6789012345a")
-}
-```
-
-### Cambio 3: Visita Médica - Múltiples Diagnósticos
-
-❌ **ANTES:**
-
-```javascript
-VisitaMedica: {
-    _id: ObjectId,
-    fecha: Date,
-    Hora: String,
-    id_Medico: ObjectId,
-    id_Paciente: ObjectId,
-    id_Diagnostico: ObjectId
-}
-```
-
-✅ **DESPUÉS (1FN):**
-
-```javascript
-VisitaMedica: {
-    _id: ObjectId("64a1b2c3d4e5f6789012347a"),
-    fecha: ISODate("2025-01-15T09:00:00Z"),
-    hora: "09:00",
-    medico: ObjectId("64a1b2c3d4e5f6789012347b"),
-    paciente: ObjectId("64a1b2c3d4e5f6789012346a"),
-    diagnosticos: [
-        ObjectId("64a1b2c3d4e5f6789012347c"),
-        ObjectId("64a1b2c3d4e5f6789012347d")
-    ]
-}
-```
-
-### Cambio 4: Diagnóstico - Múltiples Tratamientos
-
-❌ **ANTES:**
-
-```javascript
-Diagnostico: {
-    _id: ObjectId,
-    descripcion: String,
-    id_Tratamientos: ObjectId
-}
-```
-
-✅ **DESPUÉS (1FN):**
-
-```javascript
-Diagnostico: {
-    _id: ObjectId("64a1b2c3d4e5f6789012347c"),
-    descripcion: "Hipertensión arterial",
-    visitaMedica: ObjectId("64a1b2c3d4e5f6789012347a"),
-    tratamientos: [
-        ObjectId("64a1b2c3d4e5f6789012348a"),
-        ObjectId("64a1b2c3d4e5f6789012348b")
-    ]
-}
-```
-
----
-
-## Segunda Forma Normal (2FN) en MongoDB
-
-En MongoDB, 2FN se enfoca en evitar dependencias parciales en documentos embebidos complejos. Todas las colecciones principales mantienen dependencias funcionales completas.
-
----
-
-## Tercera Forma Normal (3FN) en MongoDB
-
-**Objetivo:** Eliminar dependencias transitivas reorganizando referencias.
-
-### Cambio Principal: Medicamentos - Inventario - Fabricante
-
-❌ **ANTES (Dependencia Transitiva):**
-
-```javascript
-Medicamentos: {
-    _id: ObjectId,
-    id_Inventario: ObjectId,
-    Tipo: String,
-    Nombre: String
-}
-
-Inventario: {
-    _id: ObjectId,
-    Disponibilidad: Number,
-    id_Medicamentos: ObjectId,
-    id_Fabricante: ObjectId
-}
-```
-
-✅ **DESPUÉS (3FN):**
-
-```javascript
-Medicamentos: {
-    _id: ObjectId("64a1b2c3d4e5f6789012349a"),
-    tipo: "Antihipertensivo",
-    nombre: "Losartán 50mg",
-    fabricante: ObjectId("64a1b2c3d4e5f6789012349b"),
-    inventario: {
-        disponibilidad: 150,
-        ubicacion: "Estante A-12",
-        fechaIngreso: ISODate("2025-01-10T00:00:00Z")
-    }
-}
-
-Fabricante: {
-    _id: ObjectId("64a1b2c3d4e5f6789012349b"),
-    nombre: "Laboratorios ABC S.A."
-}
-```
-
----
-
-## Esquema Final Normalizado MongoDB
-
-```javascript
-// hospitals
-{
-    _id, nombre, director, areasEspecializadas: [ObjectId], medicos: [ObjectId]
-}
-
-// areasEspecializadas
-{ _id, nombre, descripcion }
-
-// medicoPersonal
-{ _id, numeroColegiatura, nombre, especialidad, salario, telefono, hospitales: [ObjectId] }
-
-// pacientes
-{ _id, nombre, direccion, correo, telefono, seguroMedico, hospital, historialMedico }
-
-// segurosMedicos
-{ _id, nombre }
-
-// visitasMedicas
-{ _id, fecha, hora, medico, paciente, diagnosticos: [ObjectId] }
-
-// diagnosticos
-{ _id, descripcion, visitaMedica, tratamientos: [ObjectId] }
-
-// tratamientos
-{
-    _id, descripcion, nombre, costo, areaEspecializada, medicamentos: [ObjectId],
-    resultado: { _id, descripcion, fecha }
-}
-
-// medicamentos
-{
-    _id, tipo, nombre, fabricante,
-    inventario: { disponibilidad, ubicacion, fechaIngreso, fechaVencimiento }
-}
-
-// fabricantes
-{ _id, nombre }
-
-// historialMedico
-{ _id, paciente, diagnosticos: [ObjectId], fechaCreacion, ultimaActualizacion }
-```
-
-## Beneficios de la Normalización MongoDB
-
-✅ Eliminación de duplicación: campo direccion unificado en pacientes
-
-✅ Relaciones N\:M correctas: arrays de ObjectIds para múltiples referencias
-
-✅ Referencias limpias: sin dependencias circulares entre medicamentos e inventario
-
-✅ Estructura coherente: documentos bien organizados y consistentes
-
-✅ Flexibilidad: fácil consultar y actualizar información relacionada
-
-✅ Performance optimizada: datos relacionados agrupados eficientemente
-
-✅ Escalabilidad: estructura preparada para crecimiento del sistema
-
-✅ Integridad: relaciones correctamente modeladas según cardinalidades
-
-```
+En el codigo que se puede ver a continuación se encuentra el modelo físico para el SISTEMA HOSPITALARIO. Este modelo representa la estructura detallada de la base de datos, diseñada para
+almacenar y gestionar eficientemente la información relacionada con los hospitales, pacientes, medicamentos, historias medicas personal del hospital. Cada tabla está definida
+con sus respectivos atributos, tipos de datos y restricciones, incluyendo claves primarias y
+claves foráneas que garantizan la integridad y coherencia de los datos.
