@@ -668,20 +668,90 @@ normalización y la especificación de claves principales y externas.
 
 - **Relaciones y Cardinalidades**
 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
+1. Hospital - Médico Personal:
+
+    - Un hospital puede emplear a varios médicos, y un médico puede trabajar en varios hospitales.
+
+    - Relación N:M (muchos a muchos)
+
+2. Hospital - Área Especializada:
+
+    - Un hospital puede tener varias áreas especializadas, y una misma área puede estar presente en varios hospitales.
+
+    - Relación N:M (muchos a muchos)
+
+3. Hospital - Paciente:
+
+    - Un hospital atiende a muchos pacientes, pero un paciente solo es atendido en un hospital.
+
+    - Relación 1:N (uno a muchos)
+
+4. Paciente - Seguros Médicos:
+
+    - Cada paciente tiene un solo seguro médico, pero un seguro médico puede ser compartido por varios pacientes.
+
+    - Relación N:1 (muchos a uno)
+
+5. Paciente - Visita Médica:
+
+    - Un paciente puede tener múltiples visitas médicas, pero cada visita médica está asociada a un solo paciente.
+
+    - Relación 1:N (uno a muchos)
+
+6. Médico Personal - Visita Médica:
+
+    - Un médico puede realizar muchas visitas médicas, pero cada visita médica es realizada por un único médico.
+
+    - Relación 1:N (uno a muchos)
+
+7. Visita Médica - Diagnóstico:
+
+    - Una visita médica puede generar varios diagnósticos, pero cada diagnóstico está ligado a una única visita.
+
+    - Relación 1:N (uno a muchos)
+
+8. Diagnóstico - Tratamiento:
+
+    - Un diagnóstico puede requerir varios tratamientos, y un tratamiento puede ser usado en distintos diagnósticos.
+
+    - Relación N:M (muchos a muchos)
+
+9. Tratamiento - Área Especializada:
+
+    - Un tratamiento se aplica en una única área especializada, pero una misma área puede aplicar varios tratamientos.
+
+    - Relación N:1 (muchos a uno)
+
+10. Tratamiento - Medicamento:
+
+    - Un tratamiento puede usar varios medicamentos, y un medicamento puede ser usado en múltiples tratamientos.
+
+    - Relación N:M (muchos a muchos)
+
+11. Inventario - Medicamento:
+
+    - Un inventario puede contener varios medicamentos, pero un medicamento está en un solo inventario.
+
+    - Relación 1:N (uno a muchos)
+
+12. Inventario - Fabricante:
+
+    - Cada inventario está abastecido por un fabricante, pero un fabricante puede proveer varios inventarios.
+
+    - Relación N:1 (muchos a uno)
+
+13. Tratamiento - Resultado:
+
+    - Cada tratamiento genera un único resultado, y un resultado es generado por un único tratamiento.
+
+    - Relación 1:1 (uno a uno)
+
+14. Diagnóstico - Historial Médico:
+
+    - Un diagnóstico puede registrarse en varios historiales médicos, pero un historial médico solo tiene un diagnóstico.
+
+    - Relación 1:N (uno a muchos)
+
 
 **Diagrama**
 
@@ -778,9 +848,68 @@ erDiagram
     DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : registra
 
 ```
-# Proceso de Normalización MongoDB
+## Normalización del Modelo Lógico
 
-Una vez establecido el modelo conceptual y lógico, se procede con el proceso de normalización específico para MongoDB. Este proceso optimiza la estructura de documentos, elimina redundancias y organiza las relaciones de manera eficiente para bases de datos NoSQL.
+En esta sección del documento se adjunta la normalización realizada al modelo lógico, es un
+proceso para organizar los datos de forma eficiente y coherente, eliminando la redundancia y
+las inconsistencias. Este proceso se enfoca en estructurar las tablas de la base de datos
+según reglas específicas, conocidas como formas normales, para mejorar la integridad de los
+datos y facilitar su manipulación.
+
+## Primera Forma Normal (1FN)
+
+En esta sección del documento se adjunta la información correspondiente a la primera forma
+de normalización que implica que cada celda de una tabla contenga un único valor atómico, es
+decir, que no pueda ser dividido en partes más pequeñas. Además, la tabla debe tener una
+clave primaria única que identifique cada fila de forma inequívoca.
+
+**Descripción**
+
+
+
+
+
+**Diagrama**
+
+
+
+## Segunda Forma Normal (2FN)
+
+En esta sección del documento se adjunta la información correspondiente a la Segunda Forma
+Normal (2FN), un paso crucial en el proceso de normalización de bases de datos. La 2FN se
+enfoca en resolver un problema específico que puede surgir cuando se trabaja con claves
+primarias compuestas, es decir, cuando una clave primaria está formada por dos o más
+atributos. El objetivo principal de esta segunda forma es eliminar las dependencias parciales
+entre los atributos no clave y la clave primaria.
+
+**Descripción**
+
+
+
+
+
+**Diagrama**
+
+
+
+
+
+## Tercera Forma Normal (3FN)
+
+En esta sección del documento se adjunta la información correspondiente a la Tercera Forma
+Normal (3FN), un paso crucial en el proceso de normalización de bases de datos. Su objetivo
+principal es eliminar las dependencias transitivas, lo que significa que ningún atributo no clave
+puede depender directamente de la clave primaria a través de otro atributo no clave. Esto
+garantiza que cada columna no clave esté directamente vinculada a la clave primaria y nada
+más.
+
+**Descripción**
+
+
+
+
+
+**Diagrama**
 
 ## Análisis del Modelo Original
 
