@@ -892,6 +892,41 @@ clave primaria única que identifique cada fila de forma inequívoca.
 
 
 **Diagrama**
+```mermaid
+graph LR
+    subgraph ANTES["SIN NORMALIZAR"]
+        direction TB
+        A1["Hospital<br/>❌ Solo una área<br/>id_AreasEspecializadas: ObjectId"]
+        B1["Paciente<br/>❌ Campos duplicados<br/>Dirección y dirección<br/>❌ Inconsistencia de nombres"]
+        C1["VisitaMedica<br/>❌ Solo un diagnóstico<br/>id_Diagnostico: ObjectId"]  
+        D1["Diagnostico<br/>❌ Solo un tratamiento<br/>id_Tratamientos: ObjectId"]
+    end
+
+    subgraph DESPUES["PRIMERA FORMA NORMAL"]
+        direction TB
+        A2["Hospital<br/>✅ Múltiples áreas<br/>areasEspecializadas: Array ObjectId<br/>✅ Nombre consistente: director"]
+        B2["Paciente<br/>✅ Sin duplicados<br/>direccion: String único<br/>✅ Nombres consistentes<br/>✅ Relación con hospital"]
+        C2["VisitaMedica<br/>✅ Múltiples diagnósticos<br/>diagnosticos: Array ObjectId<br/>✅ Fecha como ISODate"]
+        D2["Diagnostico<br/>✅ Múltiples tratamientos<br/>tratamientos: Array ObjectId<br/>✅ Referencia a visita"]
+    end
+
+    %% Flechas de transformación ordenadas
+    A1 ==>|"NORMALIZACIÓN<br/>1FN"| A2
+    B1 ==>|"NORMALIZACIÓN<br/>1FN"| B2
+    C1 ==>|"NORMALIZACIÓN<br/>1FN"| C2
+    D1 ==>|"NORMALIZACIÓN<br/>1FN"| D2
+
+    %% Estilos
+    classDef problematico fill:#ffebee,stroke:#f44336,stroke-width:2px,color:#000
+    classDef solucionado fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+    classDef principio fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+    classDef referencia fill:#fff3e0,stroke:#ff9800,stroke-width:1px,color:#000
+
+    class A1,B1,C1,D1 problematico
+    class A2,B2,C2,D2 solucionado
+    class P1,P2,P3,P4 principio
+    class E1,E2,E3,E4,E5 referencia
+```
 
 
 
@@ -932,6 +967,7 @@ más.
 
 
 **Diagrama**
+
 
 ## Análisis del Modelo Original
 
@@ -1183,4 +1219,3 @@ Fabricante: {
 ✅ Integridad: relaciones correctamente modeladas según cardinalidades
 
 ```
-
