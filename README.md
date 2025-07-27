@@ -778,4 +778,258 @@ erDiagram
     DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : registra
 
 ```
+# Proceso de Normalización MongoDB
+
+Una vez establecido el modelo conceptual y lógico, se procede con el proceso de normalización específico para MongoDB. Este proceso optimiza la estructura de documentos, elimina redundancias y organiza las relaciones de manera eficiente para bases de datos NoSQL.
+
+## Análisis del Modelo Original
+
+**Problemas Identificados:**
+
+- **Hospital:** `id_AreasEspecializadas` como campo simple no puede manejar múltiples áreas.
+- **Paciente:** Atributo "dirección" duplicado.
+- **VisitaMedica:** `id_Diagnostico` singular cuando puede haber múltiples diagnósticos.
+- **Diagnostico:** `id_Tratamientos` singular para relación N:M.
+- **Medicamentos/Inventario:** Referencias circulares confusas.
+- **HistorialMedico:** Estructura incompleta.
+
+---
+
+## Primera Forma Normal (1FN) en MongoDB
+
+**Objetivo:** Estructurar documentos de forma coherente, eliminar duplicaciones y organizar relaciones apropiadamente.
+
+### Cambio 1: Hospital - Manejo de Múltiples Áreas
+
+❌ **ANTES:**
+
+```javascript
+Hospital: {
+    _id: ObjectId,
+    nombre: String,
+    id_AreasEspecializadas: ObjectId,  // Solo una área
+    id_director: ObjectId
+}
+
+✅ **DESPUÉS (1FN):**
+
+```javascript
+Hospital: {
+    _id: ObjectId("64a1b2c3d4e5f6789012345a"),
+    nombre: "Hospital San Juan",
+    areasEspecializadas: [
+        ObjectId("64a1b2c3d4e5f6789012345b"),
+        ObjectId("64a1b2c3d4e5f6789012345c"),
+        ObjectId("64a1b2c3d4e5f6789012345d")
+    ],
+    director: ObjectId("64a1b2c3d4e5f6789012345e")
+}
+```
+
+### Cambio 2: Paciente - Eliminación de Duplicación
+
+❌ **ANTES:**
+
+```javascript
+Paciente: {
+    _id: ObjectId,
+    nombre: String,
+    Dirección: String,  // Duplicado
+    Correo: String,
+    dirección: String,  // Duplicado
+    teléfono: String,
+    id_SegurosMedicos: ObjectId
+}
+```
+
+✅ **DESPUÉS (1FN):**
+
+```javascript
+Paciente: {
+    _id: ObjectId("64a1b2c3d4e5f6789012346a"),
+    nombre: "María González",
+    direccion: "Carrera 15 #32-45, Bogotá",
+    correo: "maria.gonzalez@email.com",
+    telefono: "+57 300 123 4567",
+    seguroMedico: ObjectId("64a1b2c3d4e5f6789012346b"),
+    hospital: ObjectId("64a1b2c3d4e5f6789012345a")
+}
+```
+
+### Cambio 3: Visita Médica - Múltiples Diagnósticos
+
+❌ **ANTES:**
+
+```javascript
+VisitaMedica: {
+    _id: ObjectId,
+    fecha: Date,
+    Hora: String,
+    id_Medico: ObjectId,
+    id_Paciente: ObjectId,
+    id_Diagnostico: ObjectId
+}
+```
+
+✅ **DESPUÉS (1FN):**
+
+```javascript
+VisitaMedica: {
+    _id: ObjectId("64a1b2c3d4e5f6789012347a"),
+    fecha: ISODate("2025-01-15T09:00:00Z"),
+    hora: "09:00",
+    medico: ObjectId("64a1b2c3d4e5f6789012347b"),
+    paciente: ObjectId("64a1b2c3d4e5f6789012346a"),
+    diagnosticos: [
+        ObjectId("64a1b2c3d4e5f6789012347c"),
+        ObjectId("64a1b2c3d4e5f6789012347d")
+    ]
+}
+```
+
+### Cambio 4: Diagnóstico - Múltiples Tratamientos
+
+❌ **ANTES:**
+
+```javascript
+Diagnostico: {
+    _id: ObjectId,
+    descripcion: String,
+    id_Tratamientos: ObjectId
+}
+```
+
+✅ **DESPUÉS (1FN):**
+
+```javascript
+Diagnostico: {
+    _id: ObjectId("64a1b2c3d4e5f6789012347c"),
+    descripcion: "Hipertensión arterial",
+    visitaMedica: ObjectId("64a1b2c3d4e5f6789012347a"),
+    tratamientos: [
+        ObjectId("64a1b2c3d4e5f6789012348a"),
+        ObjectId("64a1b2c3d4e5f6789012348b")
+    ]
+}
+```
+
+---
+
+## Segunda Forma Normal (2FN) en MongoDB
+
+En MongoDB, 2FN se enfoca en evitar dependencias parciales en documentos embebidos complejos. Todas las colecciones principales mantienen dependencias funcionales completas.
+
+---
+
+## Tercera Forma Normal (3FN) en MongoDB
+
+**Objetivo:** Eliminar dependencias transitivas reorganizando referencias.
+
+### Cambio Principal: Medicamentos - Inventario - Fabricante
+
+❌ **ANTES (Dependencia Transitiva):**
+
+```javascript
+Medicamentos: {
+    _id: ObjectId,
+    id_Inventario: ObjectId,
+    Tipo: String,
+    Nombre: String
+}
+
+Inventario: {
+    _id: ObjectId,
+    Disponibilidad: Number,
+    id_Medicamentos: ObjectId,
+    id_Fabricante: ObjectId
+}
+```
+
+✅ **DESPUÉS (3FN):**
+
+```javascript
+Medicamentos: {
+    _id: ObjectId("64a1b2c3d4e5f6789012349a"),
+    tipo: "Antihipertensivo",
+    nombre: "Losartán 50mg",
+    fabricante: ObjectId("64a1b2c3d4e5f6789012349b"),
+    inventario: {
+        disponibilidad: 150,
+        ubicacion: "Estante A-12",
+        fechaIngreso: ISODate("2025-01-10T00:00:00Z")
+    }
+}
+
+Fabricante: {
+    _id: ObjectId("64a1b2c3d4e5f6789012349b"),
+    nombre: "Laboratorios ABC S.A."
+}
+```
+
+---
+
+## Esquema Final Normalizado MongoDB
+
+```javascript
+// hospitals
+{
+    _id, nombre, director, areasEspecializadas: [ObjectId], medicos: [ObjectId]
+}
+
+// areasEspecializadas
+{ _id, nombre, descripcion }
+
+// medicoPersonal
+{ _id, numeroColegiatura, nombre, especialidad, salario, telefono, hospitales: [ObjectId] }
+
+// pacientes
+{ _id, nombre, direccion, correo, telefono, seguroMedico, hospital, historialMedico }
+
+// segurosMedicos
+{ _id, nombre }
+
+// visitasMedicas
+{ _id, fecha, hora, medico, paciente, diagnosticos: [ObjectId] }
+
+// diagnosticos
+{ _id, descripcion, visitaMedica, tratamientos: [ObjectId] }
+
+// tratamientos
+{
+    _id, descripcion, nombre, costo, areaEspecializada, medicamentos: [ObjectId],
+    resultado: { _id, descripcion, fecha }
+}
+
+// medicamentos
+{
+    _id, tipo, nombre, fabricante,
+    inventario: { disponibilidad, ubicacion, fechaIngreso, fechaVencimiento }
+}
+
+// fabricantes
+{ _id, nombre }
+
+// historialMedico
+{ _id, paciente, diagnosticos: [ObjectId], fechaCreacion, ultimaActualizacion }
+```
+
+## Beneficios de la Normalización MongoDB
+
+✅ Eliminación de duplicación: campo direccion unificado en pacientes
+
+✅ Relaciones N\:M correctas: arrays de ObjectIds para múltiples referencias
+
+✅ Referencias limpias: sin dependencias circulares entre medicamentos e inventario
+
+✅ Estructura coherente: documentos bien organizados y consistentes
+
+✅ Flexibilidad: fácil consultar y actualizar información relacionada
+
+✅ Performance optimizada: datos relacionados agrupados eficientemente
+
+✅ Escalabilidad: estructura preparada para crecimiento del sistema
+
+✅ Integridad: relaciones correctamente modeladas según cardinalidades
+
+```
 
