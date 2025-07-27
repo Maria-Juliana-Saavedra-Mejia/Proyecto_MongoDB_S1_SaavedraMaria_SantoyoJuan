@@ -1049,7 +1049,144 @@ entre los atributos no clave y la clave primaria.
 
 
 **Diagrama**
+```mermaid
+erDiagram
+    HOSPITAL {
+        int id PK
+        string nombre
+        int director_id FK
+    }
+    
+    AREA_ESPECIALIZADA {
+        int id PK
+        string nombre
+        string descripcion
+    }
+    
+    HOSPITAL_AREA {
+        int hospital_id FK
+        int area_id FK
+    }
+    
+    MEDICO_PERSONAL {
+        int numero_colegiatura PK
+        string nombre
+        string especialidad
+        float salario
+        string telefono
+        int hospital_id FK
+    }
+    
+    PACIENTE {
+        int id PK
+        string nombre
+        string direccion
+        string correo
+        string telefono
+        int seguro_medico_id FK
+        int hospital_id FK
+    }
+    
+    SEGUROS_MEDICOS {
+        int id PK
+        string nombre
+    }
+    
+    VISITA_MEDICA {
+        int id PK
+        date fecha
+        time hora
+        int medico_id FK
+        int paciente_id FK
+    }
+    
+    DIAGNOSTICO {
+        int id PK
+        string descripcion
+    }
+    
+    VISITA_DIAGNOSTICO {
+        int visita_id FK
+        int diagnostico_id FK
+    }
+    
+    TRATAMIENTO {
+        int id PK
+        string descripcion
+        string nombre
+        float costo
+    }
+    
+    DIAGNOSTICO_TRATAMIENTO {
+        int diagnostico_id FK
+        int tratamiento_id FK
+    }
+    
+    MEDICAMENTO {
+        int id PK
+        string tipo
+        string nombre
+        int fabricante_id FK
+    }
+    
+    TRATAMIENTO_MEDICAMENTO {
+        int tratamiento_id FK
+        int medicamento_id FK
+    }
+    
+    FABRICANTE {
+        int id PK
+        string nombre
+    }
+    
+    INVENTARIO {
+        int id PK
+        int disponibilidad
+        int medicamento_id FK
+        string ubicacion
+        date fecha_ingreso
+    }
+    
+    TRATAMIENTO_AREA {
+        int tratamiento_id FK
+        int area_id FK
+    }
+    
+    RESULTADO {
+        int id PK
+        string descripcion
+        int tratamiento_id FK
+    }
+    
+    HISTORIAL_MEDICO {
+        int id PK
+        int diagnostico_id FK
+        int paciente_id FK
+        date fecha_registro
+    }
 
+    %% Relaciones
+    HOSPITAL ||--o{ HOSPITAL_AREA : "tiene"
+    AREA_ESPECIALIZADA ||--o{ HOSPITAL_AREA : "pertenece"
+    HOSPITAL ||--o{ MEDICO_PERSONAL : "emplea"
+    HOSPITAL ||--o{ PACIENTE : "atiende"
+    PACIENTE }|--|| SEGUROS_MEDICOS : "tiene"
+    PACIENTE ||--o{ VISITA_MEDICA : "realiza"
+    MEDICO_PERSONAL ||--o{ VISITA_MEDICA : "atiende"
+    VISITA_MEDICA ||--o{ VISITA_DIAGNOSTICO : "genera"
+    DIAGNOSTICO ||--o{ VISITA_DIAGNOSTICO : "pertenece"
+    DIAGNOSTICO ||--o{ DIAGNOSTICO_TRATAMIENTO : "requiere"
+    TRATAMIENTO ||--o{ DIAGNOSTICO_TRATAMIENTO : "aplica"
+    TRATAMIENTO ||--o{ TRATAMIENTO_AREA : "se_aplica_en"
+    AREA_ESPECIALIZADA ||--o{ TRATAMIENTO_AREA : "permite"
+    TRATAMIENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "usa"
+    MEDICAMENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "es_usado_en"
+    MEDICAMENTO }|--|| FABRICANTE : "fabricado_por"
+    MEDICAMENTO ||--|| INVENTARIO : "tiene_stock"
+    TRATAMIENTO ||--o{ RESULTADO : "genera"
+    DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : "registra"
+    PACIENTE ||--o{ HISTORIAL_MEDICO : "posee"
+```
 
 
 
@@ -1070,7 +1207,186 @@ más.
 
 
 **Diagrama**
+```mermaid
+erDiagram
+    HOSPITAL ||--o{ HOSPITAL_AREA : "tiene"
+    HOSPITAL ||--o{ MEDICO : "emplea"
+    HOSPITAL ||--o{ PACIENTE : "atiende"
+    
+    HOSPITAL {
+        int id PK
+        string nombre
+        int director_id FK
+    }
 
+    AREA_ESPECIALIZADA ||--o{ HOSPITAL_AREA : "pertenece"
+    AREA_ESPECIALIZADA ||--o{ TRATAMIENTO_AREA : "permite"
+    
+    AREA_ESPECIALIZADA {
+        int id PK
+        string nombre
+        string descripcion
+    }
+
+    HOSPITAL_AREA {
+        int hospital_id FK
+        int area_id FK
+    }
+
+    MEDICO ||--o{ VISITA_MEDICA : "atiende"
+    MEDICO }|--|| ESPECIALIDAD : "tiene"
+    
+    MEDICO {
+        int numero_colegiatura PK
+        string nombre
+        float salario
+        string telefono
+        int hospital_id FK
+        int especialidad_id FK
+    }
+    
+    ESPECIALIDAD {
+        int id PK
+        string nombre
+    }
+
+    PACIENTE }|--|| SEGUROS_MEDICOS : "tiene"
+    PACIENTE ||--o{ VISITA_MEDICA : "realiza"
+    PACIENTE ||--o{ HISTORIAL_MEDICO : "posee"
+    PACIENTE }|--|| DIRECCION : "reside_en"
+    
+    PACIENTE {
+        int id PK
+        string nombre
+        string correo
+        string telefono
+        int seguro_medico_id FK
+        int hospital_id FK
+        int direccion_id FK
+    }
+    
+    DIRECCION {
+        int id PK
+        string calle
+        string ciudad
+        string codigo_postal
+    }
+
+    SEGUROS_MEDICOS {
+        int id PK
+        string nombre
+    }
+
+    VISITA_MEDICA ||--o{ VISITA_DIAGNOSTICO : "genera"
+    
+    VISITA_MEDICA {
+        int id PK
+        date fecha
+        time hora
+        int medico_id FK
+        int paciente_id FK
+    }
+
+    VISITA_DIAGNOSTICO {
+        int visita_id FK
+        int diagnostico_id FK
+    }
+
+    DIAGNOSTICO ||--o{ VISITA_DIAGNOSTICO : "pertenece"
+    DIAGNOSTICO ||--o{ DIAGNOSTICO_TRATAMIENTO : "requiere"
+    DIAGNOSTICO ||--o{ HISTORIAL_MEDICO : "registra"
+    
+    DIAGNOSTICO {
+        int id PK
+        string descripcion
+    }
+
+    DIAGNOSTICO_TRATAMIENTO {
+        int diagnostico_id FK
+        int tratamiento_id FK
+    }
+
+    TRATAMIENTO ||--o{ DIAGNOSTICO_TRATAMIENTO : "aplica"
+    TRATAMIENTO ||--o{ TRATAMIENTO_AREA : "se_aplica_en"
+    TRATAMIENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "usa"
+    TRATAMIENTO ||--o{ RESULTADO : "genera"
+    TRATAMIENTO }|--|| TIPO_TRATAMIENTO : "es_de_tipo"
+    
+    TRATAMIENTO {
+        int id PK
+        string descripcion
+        string nombre
+        int tipo_tratamiento_id FK
+    }
+    
+    TIPO_TRATAMIENTO {
+        int id PK
+        string nombre
+        float costo_base
+    }
+
+    TRATAMIENTO_AREA {
+        int tratamiento_id FK
+        int area_id FK
+    }
+
+    TRATAMIENTO_MEDICAMENTO {
+        int tratamiento_id FK
+        int medicamento_id FK
+    }
+
+    MEDICAMENTO ||--o{ TRATAMIENTO_MEDICAMENTO : "es_usado_en"
+    MEDICAMENTO }|--|| FABRICANTE : "fabricado_por"
+    MEDICAMENTO ||--|| INVENTARIO : "tiene_stock"
+    MEDICAMENTO }|--|| TIPO_MEDICAMENTO : "es_de_tipo"
+    
+    MEDICAMENTO {
+        int id PK
+        string nombre
+        int fabricante_id FK
+        int tipo_medicamento_id FK
+    }
+    
+    TIPO_MEDICAMENTO {
+        int id PK
+        string nombre
+    }
+
+    FABRICANTE {
+        int id PK
+        string nombre
+    }
+
+    INVENTARIO }|--|| UBICACION : "en_ubicacion"
+    
+    INVENTARIO {
+        int id PK
+        int disponibilidad
+        int medicamento_id FK
+        int ubicacion_id FK
+        date fecha_ingreso
+    }
+    
+    UBICACION {
+        int id PK
+        string edificio
+        string piso
+        string estante
+    }
+
+    RESULTADO {
+        int id PK
+        string descripcion
+        int tratamiento_id FK
+    }
+
+    HISTORIAL_MEDICO {
+        int id PK
+        int diagnostico_id FK
+        int paciente_id FK
+        date fecha_registro
+    }
+```
 
 ## Análisis del Modelo Original
 
