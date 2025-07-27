@@ -151,15 +151,37 @@ La Secretaria de Salud ha pedido la creación de un diseño inicial de un softwa
 Con base en la información anterior, se procederá a crear una base de datos en MongoDB con el objetivo de agrupar y relacionar los datos de los Hospitales de la ciudad de Bucaramanga, así como la información de los pacientes.
 
 ---
+<h1 align="center";>
+
+## Requisitos del Sistema
+
+</h1>
+
+Para ejecutar correctamente los scripts y configurar el sistema hospitalario, es necesario contar con el siguiente software instalado:
+
+- MongoDB versión 4.x o superior
+
+    -  Sitio oficial: https://www.mongodb.com/try/download/community
+
+- MongoDB Compass (opcional, para visualización gráfica de datos)
+
+    - Sitio oficial: https://www.mongodb.com/products/compass
+
+- Git (para clonar el repositorio desde GitHub)
+
+    - Sitio oficial: 
+    https://github.com/Maria-Juliana-Saavedra-Mejia/Proyecto_MongoDB_S1_SaavedraMaria_SantoyoJuan
+
+---
 
 <h1 align="center";>
 
-## Instalación General
+## Instalación y Configuración 
 
 </h1>
 
 Los archivos relacionados con la BBDD de la Secretaria de Salud , se encuentran en la
-plataforma Github, estos archivos se encuentran en formato json y se dividen en 5 partes:
+plataforma Github, estos archivos se encuentran en formato json y se dividen en 6 partes:
 
 - ddl.json: Este archivo contiene el script para crear la base de datos y definir las colecciones correspondientes.
 
