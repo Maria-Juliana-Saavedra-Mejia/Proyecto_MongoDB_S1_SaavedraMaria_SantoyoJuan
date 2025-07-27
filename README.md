@@ -231,7 +231,6 @@ cómo se organizan y conectan los diferentes elementos de la base de datos.
     - nombre: nombre del paciente.
     - Dirección: Dirección.
     - Correo: correo electronico.
-    - dirección: dirección.
     - teléfono: teléfono de contacto.
     - id_SegurosMedicos: identificador del seguro del paciente.
 
@@ -597,45 +596,92 @@ normalización y la especificación de claves principales y externas.
     - id: INT PRIMARY KEY.
     - id_director: INT NOT NULL FOREING KEY.
     - id_AreasEspecializadas: INT NOT NULL FOREING KEY.
-    - nombre: varchar(100) NOT NULL.
+    - nombre: String (100) NOT NULL.
 
 2. AreasEspecializadas
    - id: INT PRIMARY KEY.
-   - 
+   - nombre: String (100) NOT NULL.
+   - descripcion: String (500) NOT NULL.
 
-3. MedicosYPersonal 
-    - id: INT PRIMARY KEY.
+3. Medico_Personal 
+    - NumeroColegiatura: INT PRIMARY KEY.
+    - nombre: String (100) NOT NULL.
+    - especialidad: String (100) NOT NULL.
+    - salario: Double NOT NULL.
+    - telefono: String (25) NOT NULL.
 
-4. Pacientes 
+4. Paciente
     - id: INT PRIMARY KEY.
+    - nombre: String (100) NOT NULL.
+    - direccion: String (100) NOT NULL.
+    - correo: String (100) NOT NULL.
+    - telefono: String (25) NOT NULL
+    - id_SegurosMedicos: INT NOT NULL FOREING KEY.
+
 
 5. SegurosMedicos
     - id: INT PRIMARY KEY.
+    - nombre: String (100) NOT NULL.
 
 6. HistorialMedico
     - id: INT PRIMARY KEY.
+    - id_Diagnostico: INT NOT NULL FOREING KEY.
 
 7. VisitasMedicas
     - id: INT PRIMARY KEY.
+    - fecha: Date NOT NULL.
+    - id_Medico: INT NOT NULL FOREING KEY.
+    - id_Paciente: INT NOT NULL FOREING KEY.
+    - id_Diagnostico: INT NOT NULL FOREING KEY.
 
 8. Diagnosticos
     - id: INT PRIMARY KEY.
+    - descripcion: String (500) NOT NULL.
+    - id_Tratamientos: INT NOT NULL FOREING KEY.
 
 9. Tratamientos
     - id: INT PRIMARY KEY.
+    - descripcion: String (500) NOT NULL.
+    - nombre: String (100) NOT NULL.
+    - Costo: Double NOT NULL.
+    - id_AreasEspecializadas: INT NOT NULL FOREING KEY.
 
 10. Resultados
     - id: INT PRIMARY KEY.
+    - descripcion: String (500) NOT NULL.
 
 11. Medicamentos
     - id: INT PRIMARY KEY.
+    - id_Inventario: INT NOT NULL FOREING KEY.
+    - tipo: String (100) NOT NULL.
+    - nombre: String (100) NOT NULL.
 
 12. Inventario
     - id: INT PRIMARY KEY.
+    - Disponibilidad: INT NOT NULL.
+    - id_Medicamentos: INT NOT NULL FOREING KEY.
+    - id_Fabricante: INT NOT NULL FOREING KEY.
 
 13. Fabricante
     - id: INT PRIMARY KEY.
+    - nombre: String (100) NOT NULL.
 
+- **Relaciones y Cardinalidades**
+
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
 
 **Diagrama**
 
@@ -726,7 +772,6 @@ erDiagram
     DIAGNOSTICO }|..|{ TRATAMIENTO : requiere
     TRATAMIENTO }|--|| AREA_ESPECIALIZADA : aplica
     TRATAMIENTO }|..|{ MEDICAMENTO : usa
-    MEDICAMENTO ||--o{ INVENTARIO : pertenece
     INVENTARIO ||--o{ MEDICAMENTO : contiene
     INVENTARIO }|--|| FABRICANTE : provee
     TRATAMIENTO ||--|| RESULTADO : genera
