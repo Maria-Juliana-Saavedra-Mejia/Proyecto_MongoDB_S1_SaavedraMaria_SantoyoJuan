@@ -181,15 +181,15 @@ Para ejecutar correctamente los scripts y configurar el sistema hospitalario, es
 </h1>
 
 Los archivos relacionados con la BBDD de la Secretaria de Salud , se encuentran en la
-plataforma Github, estos archivos se encuentran en formato json y se dividen en 6 partes:
+plataforma Github, estos archivos se encuentran en formato js y se dividen en 6 partes:
 
-- ddl.json: Este archivo contiene el script para crear la base de datos y definir las colecciones correspondientes.
+- ddl.js: Este archivo contiene el script para crear la base de datos y definir las colecciones correspondientes.
 
-- dml.json: Este archivo contiene ejemplos de datos para gestionar los Hospitales, facilitando la inserción inicial de información.
+- dml.js: Este archivo contiene ejemplos de datos para gestionar los Hospitales, facilitando la inserción inicial de información.
 
-- dql_select.json: En este archivo se encuentran las consultas relacionadas con pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo.
+- dql_select.js: En este archivo se encuentran las consultas relacionadas con pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo.
 
-- dql_funciones.json: Se definen los procedimientos y funciones para añadir, actualizar y mostrar datos dentro del sistema.
+- dql_funciones.js: Se definen los procedimientos y funciones para añadir, actualizar y mostrar datos dentro del sistema.
 
 - Readme.md : Contiene toda la documentacion del proyecto. 
 
@@ -2017,7 +2017,7 @@ db.createCollection("Diagnostico_Tratamiento", {
 ```
 
 ```
-db.createCollection("Ubicación", {
+db.createCollection("Ubicacion", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
