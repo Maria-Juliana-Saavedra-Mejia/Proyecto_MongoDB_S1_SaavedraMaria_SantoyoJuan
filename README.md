@@ -2031,3 +2031,18 @@ db.createCollection("Ubicación", {
 });
 ```
 
+```
+db.createCollection("Visita_Diagnostico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "visita_id", "diagnostico_id"],
+      properties: {
+        _id: { bsonType: "int" }, 
+        visita_id: { bsonType: "int" },
+        diagnostico_id: { bsonType: "int" },
+      }
+    }
+  }
+});
+```
