@@ -1672,6 +1672,18 @@ use Sistema_Hospitalario
 
 - Creacion de las colecciones 
 
+comenzaremos creando las colecciones junto a sus tipos de datos correspondientes. Para esto usar los siguientes comandos. 
+
+1. Creacion de la coleccion Hospital.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - director_id: int (FK)
+
+
+
 ```
 db.createCollection("Hospital", {
   validator: {
@@ -1687,6 +1699,14 @@ db.createCollection("Hospital", {
   }
 });
 ```
+2. Creacion de la coleccion Hospital_Area.
+
+    - _id: int (PK)
+
+    - area_id: int (FK)
+
+    - director_id: int (FK)
+
 ```
 db.createCollection("Hospital_Area", {
   validator: {
@@ -1702,6 +1722,13 @@ db.createCollection("Hospital_Area", {
   }
 });
 ```
+3. Creacion de la coleccion Area_Especializada.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - descripcion: string
 
 ```
 db.createCollection("Area_Especializada", {
@@ -1718,6 +1745,19 @@ db.createCollection("Area_Especializada", {
   }
 });
 ```
+4. Creacion de la coleccion MedicosYPersonal.
+
+    - numero_colegiatura: int (PK)
+
+    - nombre: string
+
+    - salario: double
+
+    - telefono: string
+
+    - hospital_id: int (FK)
+
+    - especialidad_id: int (FK)
 
 ```
 db.createCollection("MedicosYPersonal", {
@@ -1737,6 +1777,23 @@ db.createCollection("MedicosYPersonal", {
   }
 });
 ```
+5. Creacion de la coleccion Paciente.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - correo: string
+
+    - telefono: string
+
+    - hospital_id: int (FK)
+
+    - especialidad_id: int (FK)
+
+    - seguro_medico_id: int (FK)
+
+    - direccion_id: int (FK)
 
 ```
 db.createCollection("Paciente", {
@@ -1757,6 +1814,11 @@ db.createCollection("Paciente", {
   }
 });
 ```
+6. Creacion de la coleccion Especialidad.
+
+    - _id: int (PK)
+
+    - nombre: string
 
 ```
 db.createCollection("Especialidad", {
@@ -1773,6 +1835,11 @@ db.createCollection("Especialidad", {
 });
 
 ```
+7. Creacion de la coleccion Seguros_Medicos.
+
+    - _id: int (PK)
+
+    - nombre: string
 
 ```
 
@@ -1789,6 +1856,15 @@ db.createCollection("Seguros_Medicos", {
   }
 });
 ```
+8. Creacion de la coleccion Direccion.
+
+    - _id: int (PK)
+
+    - calle: string
+
+    - ciudad: string
+
+    - codigo_postal: string
 
 ```
 db.createCollection("Direccion", {
@@ -1806,6 +1882,18 @@ db.createCollection("Direccion", {
   }
 });
 ```
+9. Creacion de la coleccion Visita_Medica.
+
+    - _id: int (PK)
+
+    - fecha: date
+
+    - hora: string
+
+    - medico_id: int (FK)
+
+    - paciente_id: int (FK)
+
 ```
 db.createCollection("Visita_Medica", {
   validator: {
@@ -1826,6 +1914,15 @@ db.createCollection("Visita_Medica", {
   }
 });
 ```
+10. Creacion de la coleccion Historial_Medico.
+
+    - _id: int (PK)
+
+    - diagnostico_id: int (FK)
+
+    - paciente_id: int (FK)
+
+    - fecha_registro: date
 
 ```
 db.createCollection("Historial_Medico", {
@@ -1843,6 +1940,11 @@ db.createCollection("Historial_Medico", {
   }
 });
 ```
+11. Creacion de la coleccion Diagnostico. 
+
+    - _id: int (PK)
+
+    - descripcion: string
 
 ```
 db.createCollection("Diagnostico", {
@@ -1858,6 +1960,13 @@ db.createCollection("Diagnostico", {
   }
 });
 ```
+12. Creacion de la coleccion Tratamiento_Area.
+
+    - _id: int (PK)
+
+    - tratamiento_id: int (FK)
+
+    - area_id: int (FK)
 
 ```
 db.createCollection("Tratamiento_Area", {
@@ -1874,6 +1983,13 @@ db.createCollection("Tratamiento_Area", {
   }
 });
 ```
+13. Creacion de la coleccion Tratamiento_Medicamento.
+
+    - _id: int (PK)
+
+    - tratamiento_id: int (FK)
+
+    - medicamento_id: int (FK)
 
 ```
 db.createCollection("Tratamiento_Medicamento", {
@@ -1890,6 +2006,15 @@ db.createCollection("Tratamiento_Medicamento", {
   }
 });
 ```
+14. Creacion de la coleccion Tratamiento.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - descripcion: string
+
+    - tipo_tratamiento_id: int (FK)
 
 ```
 db.createCollection("Tratamiento", {
@@ -1907,6 +2032,13 @@ db.createCollection("Tratamiento", {
   }
 });
 ```
+15. Creacion de la coleccion Resultado. 
+
+    - _id: int (PK)
+
+    - descripcion: string
+
+    - tratamiento_id: int (FK)
 
 ```
 db.createCollection("Resultado", {
@@ -1923,6 +2055,13 @@ db.createCollection("Resultado", {
   }
 });
 ```
+16. Creacion de la coleccion Tipo_Tratamiento.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - costo_base: double
 
 ```
 db.createCollection("Tipo_Tratamiento", {
@@ -1939,6 +2078,15 @@ db.createCollection("Tipo_Tratamiento", {
   }
 });
 ```
+17. Creacion de la coleccion Medicamento.
+
+    - _id: int (PK)
+
+    - nombre: string
+
+    - fabricante_id: int (FK)
+
+    - tipo_medicamento_id: int (FK)
 
 ```
 db.createCollection("Medicamento", {
@@ -1956,6 +2104,11 @@ db.createCollection("Medicamento", {
   }
 });
 ```
+18. Creacion de la coleccion Fabricante. 
+
+    - _id: int (PK)
+
+    - nombre: string
 
 ```
 db.createCollection("Fabricante", {
@@ -1971,6 +2124,12 @@ db.createCollection("Fabricante", {
   }
 });
 ```
+19. Creacion de la coleccion Tipo_Medicamento.
+
+    - _id: int (PK)
+
+    - nombre: string
+
 
 ```
 db.createCollection("Tipo_Medicamento", {
@@ -1986,6 +2145,17 @@ db.createCollection("Tipo_Medicamento", {
   }
 });
 ```
+20. Creacion de la coleccion Inventario.
+
+    - _id: int (PK)
+
+    - disponibilidad: int
+
+    - medicamento_id: int (FK)
+
+    - ubicacion_id: int (FK)
+
+    - fecha_ingreso: date
 
 ```
 db.createCollection("Inventario", {
@@ -2004,6 +2174,14 @@ db.createCollection("Inventario", {
   }
 });
 ```
+21. Creacion de la coleccion Diagnostico_Tratamiento.
+
+    - _id: int (PK)
+
+    - diagnostico_id: int (FK)
+
+    - tratamiento_id: int (FK)
+
 ```
 db.createCollection("Diagnostico_Tratamiento", {
   validator: {
@@ -2019,6 +2197,15 @@ db.createCollection("Diagnostico_Tratamiento", {
   }
 });
 ```
+22. Creacion de la coleccion Ubicacion.
+
+    - _id: int (PK)
+
+    - edificio: string
+
+    - piso: string
+
+    - estante: string
 
 ```
 db.createCollection("Ubicacion", {
@@ -2036,6 +2223,13 @@ db.createCollection("Ubicacion", {
   }
 });
 ```
+23. Creacion de la coleccion Visita_Diagnostico.
+
+    - _id: int (PK)
+
+    - visita_id: int (FK)
+
+    - diagnostico_id: int (FK)
 
 ```
 db.createCollection("Visita_Diagnostico", {
@@ -2051,4 +2245,10 @@ db.createCollection("Visita_Diagnostico", {
     }
   }
 });
+```
+
+- Finalmente para listar las colecciones anteriormente creadas utilizamos este comando:
+
+```
+show collections;
 ```
