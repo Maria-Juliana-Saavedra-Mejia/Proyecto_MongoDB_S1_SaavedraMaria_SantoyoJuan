@@ -1489,10 +1489,10 @@ erDiagram
         int area_id FK
     }
 
-    MEDICO ||--o{ VISITA_MEDICA : "atiende"
-    MEDICO }|--|| ESPECIALIDAD : "tiene"
+    MEDICOYPERSONAL ||--o{ VISITA_MEDICA : "atiende"
+    MEDICOYPERSONAL }|--|| ESPECIALIDAD : "tiene"
     
-    MEDICO {
+    MEDICOYPERSONAL {
         int numero_colegiatura PK
         string nombre
         float salario
@@ -1659,3 +1659,92 @@ En el codigo que se puede ver a continuación se encuentra el modelo físico par
 almacenar y gestionar eficientemente la información relacionada con los hospitales, pacientes, medicamentos, historias medicas personal del hospital. Cada tabla está definida
 con sus respectivos atributos, tipos de datos y restricciones, incluyendo claves primarias y
 claves foráneas que garantizan la integridad y coherencia de los datos.
+
+```
+use Sistema_Hospitalario
+```
+
+```
+db.createCollection("Hospital", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "director_id"],
+      properties: {
+        _id: { bsonType: "int" }, 
+        nombre: { bsonType: "string" },
+        director_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+```
+db.createCollection("Hospital_Area", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "area_id"],
+      properties: {
+        _id: { bsonType: "int" }, 
+        area_id
+        director_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+```
+db.createCollection("Area_Especializada", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "descripcion"],
+      properties: {
+        _id: { bsonType: "int" }, 
+        nombre: { bsonType: "string" },
+        descripcion: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+```
+db.createCollection("MedicosYPersonal", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id" ],
+      properties: {
+        numero_colegiatura: { bsonType: "int" }, 
+        nombre: { bsonType: "string" },
+        salario: { bsonType: "float" },
+        telefono: { bsonType: "string" },
+        hospital_id:{ bsonType: "int" },
+        especialidad_id:{ bsonType: "int" }, 
+      }
+    }
+  }
+});
+```
+
+```
+db.createCollection("Paciente", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id" ],
+      properties: {
+        numero_colegiatura: { bsonType: "int" }, 
+        nombre: { bsonType: "string" },
+        salario: { bsonType: "float" },
+        telefono: { bsonType: "string" },
+        hospital_id:{ bsonType: "int" },
+        especialidad_id:{ bsonType: "int" }, 
+      }
+    }
+  }
+});
+```
