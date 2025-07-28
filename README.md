@@ -1664,9 +1664,13 @@ almacenar y gestionar eficientemente la información relacionada con los hospita
 con sus respectivos atributos, tipos de datos y restricciones, incluyendo claves primarias y
 claves foráneas que garantizan la integridad y coherencia de los datos.
 
+- Para Crear y usar la base Base de Datos se utiliza el siguiente comando: 
+
 ```
 use Sistema_Hospitalario
 ```
+
+- Creacion de las colecciones 
 
 ```
 db.createCollection("Hospital", {
@@ -2024,7 +2028,9 @@ db.createCollection("Ubicacion", {
       required: ["_id", "edificio", "piso", "estante"],
       properties: {
         _id: { bsonType: "int" }, 
-        nombre: { bsonType: "string" }
+        edificio: { bsonType: "string" },
+        piso: { bsonType: "string" },
+        estante:{  bsonType: "string" },
       }
     }
   }
