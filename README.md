@@ -1466,7 +1466,7 @@ clave.
 ```mermaid
 erDiagram
     HOSPITAL ||--o{ HOSPITAL_AREA : "tiene"
-    HOSPITAL ||--o{ MEDICO : "emplea"
+    HOSPITAL ||--o{ MEDICOYPERSONAL : "emplea"
     HOSPITAL ||--o{ PACIENTE : "atiende"
     
     HOSPITAL {
