@@ -1687,7 +1687,7 @@ db.createCollection("Hospital_Area", {
       required: ["_id", "area_id"],
       properties: {
         _id: { bsonType: "int" }, 
-        area_id
+        area_id: { bsonType: "int" }, 
         director_id: { bsonType: "int" }
       }
     }
@@ -1720,7 +1720,7 @@ db.createCollection("MedicosYPersonal", {
       properties: {
         numero_colegiatura: { bsonType: "int" }, 
         nombre: { bsonType: "string" },
-        salario: { bsonType: "float" },
+        salario: { bsonType: "double" },
         telefono: { bsonType: "string" },
         hospital_id:{ bsonType: "int" },
         especialidad_id:{ bsonType: "int" }, 
@@ -1803,11 +1803,14 @@ db.createCollection("Visita_Medica", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["_id", "fecha", "hora", "medico_id","paciente_id" ],
+      required: ["_id", "fecha", "hora", "medico_id", "paciente_id"],
       properties: {
-        _id: { bsonType: "int" }, 
+        _id: { bsonType: "int" },
         fecha: { bsonType: "date" },
-        hora: { bsonType: "time" },
+        hora: {
+          bsonType: "string",
+          pattern: "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+        },
         medico_id: { bsonType: "int" },
         paciente_id: { bsonType: "int" }
       }
@@ -1832,4 +1835,56 @@ db.createCollection("Historial_Medico", {
   }
 });
 ```
+
+```
+db.createCollection("Diagnostico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "diagnostico_id", "paciente_id", "fecha_registro" ],
+      properties: {
+        _id: { bsonType: "int" }, 
+        diagnostico_id: { bsonType: "int" },
+        paciente_id: { bsonType: "int" },
+        fecha_registro: { bsonType: "date" }
+      }
+    }
+  }
+});
+```
+
+```
+db.createCollection("Tratamiento_Area", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "diagnostico_id", "paciente_id", "fecha_registro" ],
+      properties: {
+        _id: { bsonType: "int" }, 
+        diagnostico_id: { bsonType: "int" },
+        paciente_id: { bsonType: "int" },
+        fecha_registro: { bsonType: "date" }
+      }
+    }
+  }
+});
+```
+
+```
+db.createCollection("Traamiento_Medicamento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "diagnostico_id", "paciente_id", "fecha_registro" ],
+      properties: {
+        _id: { bsonType: "int" }, 
+        diagnostico_id: { bsonType: "int" },
+        paciente_id: { bsonType: "int" },
+        fecha_registro: { bsonType: "date" }
+      }
+    }
+  }
+});
+```
+
 
