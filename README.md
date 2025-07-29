@@ -3365,3 +3365,130 @@ db.Resultado.aggregate([
 
 Detecta medicamentos clave en tratamientos exitosos, ideal para optimizar inventario y guías clínicas.
 
+*Usuarios*
+// 1. Administrador
+
+use admin;
+
+db.createUser(
+  {
+    user: "directorGeneral",
+    pwd: passwordPrompt(), // Te pedirá la contraseña de forma segura
+    roles: [
+      { role: "root", db: "admin" } // Otorga todos los privilegios en todas las bases de datos
+    ]
+  }
+);
+// 2. Especialista
+db.createUser(
+  {
+    user: "medicoEspecialista",
+    pwd: passwordPrompt(),
+    roles: [
+      // Roles de lectura/escritura en colecciones clave para su función
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Paciente" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Visita_Medica" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Historial_Medico" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Diagnostico" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Visita_Diagnostico" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Resultado" },
+
+      // Roles de solo lectura en colecciones de referencia
+      { role: "read", db: "Sistema_Hospitalario", collection: "MedicosYPersonal" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Especialidad" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Seguros_Medicos" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Direccion" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Area_Especializada" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tipo_Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Fabricante" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tipo_Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Inventario" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Ubicacion" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Area" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Diagnostico_Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Hospital" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Hospital_Area" }
+    ]
+  }
+);
+// 3. Enfermero/a
+db.createUser(
+  {
+    user: "enfermero",
+    pwd: passwordPrompt(),
+    roles: [
+      // Roles de lectura/escritura en colecciones clave para su función
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Visita_Medica" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Historial_Medico" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Diagnostico" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Visita_Diagnostico" },
+
+      // Roles de solo lectura en colecciones de referencia
+      { role: "read", db: "Sistema_Hospitalario", collection: "Paciente" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "MedicosYPersonal" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Especialidad" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tipo_Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Fabricante" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Inventario" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Ubicacion" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tipo_Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Area" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Diagnostico_Tratamiento" }
+    ]
+  }
+);
+
+// 4. Personal Administrativo
+
+db.createUser(
+  {
+    user: "personalAdministrativo",
+    pwd: passwordPrompt(),
+    roles: [
+      // Roles de lectura/escritura para gestión de recursos y configuración
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Hospital" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Hospital_Area" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Area_Especializada" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Seguros_Medicos" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Direccion" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Medicamento" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Fabricante" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Tipo_Medicamento" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Inventario" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Ubicacion" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Especialidad" },
+      { role: "readWrite", db: "Sistema_Hospitalario", collection: "Tipo_Tratamiento" },
+
+      // Roles de solo lectura para información general y consulta
+      { role: "read", db: "Sistema_Hospitalario", collection: "Paciente" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "MedicosYPersonal" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Visita_Medica" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Historial_Medico" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Diagnostico" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Resultado" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Area" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Tratamiento_Medicamento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Diagnostico_Tratamiento" },
+      { role: "read", db: "Sistema_Hospitalario", collection: "Visita_Diagnostico" }
+    ]
+  }
+);
+
+// 5. Personal de Mantenimiento
+
+db.createUser(
+  {
+    user: "personalMantenimiento",
+    pwd: passwordPrompt(),
+    roles: [
+      { role: "clusterMonitor", db: "admin" } 
+    ]
+  }
+);
