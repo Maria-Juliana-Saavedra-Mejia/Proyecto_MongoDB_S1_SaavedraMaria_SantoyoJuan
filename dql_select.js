@@ -158,7 +158,7 @@
 
 //18. Muestra los nombres de los médicos que trabajan en el hospital con ID //1.
 
-    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id:1 },{ _id: 0, nombre: 1})
+    db.MedicosYPersonal.find({ numero_colegiatura: /^002/, hospital_id:1 },{ _id: 0, nombre: 1})
 
 //19. Lista los pacientes asignados al hospital con ID //1.
 
@@ -168,9 +168,9 @@
 
     db.medicamento.find({nombre:/paracetamol/i})
 
-//21. Muestra los trabajadores con `numero_colegiatura` igual a 002.
+//21. Muestra los trabajadores con `numero_colegiatura` igual a 003.
 
-    db.MedicosYPersonal.find({ numero_colegiatura: 2 })
+    db.MedicosYPersonal.find({ numero_colegiatura: /^003/ })
 
 //22. Consulta el inventario de medicamentos con menos de 10 unidades disponibles.
 
@@ -182,11 +182,11 @@
 
 //24. Busca tratamientos de un tipo específico.
 
-    db.Paciente.find({})
+    db.Tratamiento.find({ tipo_tratamiento_id: 1 }
 
 //25. Encuentra medicamentos de un tipo específico.
 
-    db.Tratamiento.find({ tipo_tratamiento_id: 1 })
+    db.Medicamento.find({ tipo_medicamento_id: 1 })
 
 //26. Muestra medicamentos de un fabricante en particular.
 
