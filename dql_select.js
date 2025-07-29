@@ -1,146 +1,493 @@
-1. Estado actual de hospitales
+1. Muestra el nombre de todos los hospitales, ocultando el `_id`.
 
-    1. Listar todos los hospitales con su nombre.
-    2. Contar cuántos médicos hay por hospital.
-    3. Contar cuántas enfermeras hay por hospital (*requiere distinguir roles*).
-    4. Mostrar hospitales con más de 10 áreas especializadas.
-    5. Ver qué director está a cargo de cada hospital.
-    6. Obtener nombres de médicos por hospital.
-    7. Obtener áreas especializadas de cada hospital.
-    8. Listar médicos por especialidad en un hospital.
-    9. Listar hospitales ordenados por cantidad de personal.
-    10. Buscar hospitales que tengan cierta especialidad médica (`$regex`).
+   db.Hospital.find({},{nombre:1,_id:0});
 
-    **Agregaciones avanzadas:**
+2. Muestra todos los medicamentos con sus nombres.
 
-    11. `$lookup` entre `Hospital` y `MedicosYPersonal` para ver total de personal por hospital.
-    12. `$lookup` entre `Hospital` y `Hospital_Area` y `Area_Especializada` para listar áreas por hospital.
-    13. `$group` para contar médicos por especialidad por hospital.
-    14. `$project` para mostrar hospital, cantidad de personal y áreas en una sola vista.
-    15. `$unwind` + `$group` para contar personal por rol y hospital.
+   db.Medicamento.find({},{nombre:1, _id:0, descripcion:1});
 
+3. Lista todas las especialidades médicas disponibles.
 
-2. Inventarios de medicamentos por tipo y disponibilidad
+   db.Especialidad.find();
 
-    16. Listar todos los medicamentos disponibles.
-    17. Ver cantidad de unidades disponibles por medicamento.
-    18. Ver medicamentos con disponibilidad menor a 10.
-    19. Buscar medicamentos por nombre (`$regex`).
-    20. Ver fecha de ingreso más reciente por medicamento.
-    21. Listar medicamentos por tipo.
-    22. Ver medicamentos fabricados por un fabricante específico.
-    23. Listar todos los tipos de medicamentos.
-    24. Buscar ubicaciones con más de 100 unidades en inventario.
-    25. Mostrar inventario ordenado por fecha de ingreso.
+4. Muestra las descripciones de todos los diagnósticos.
 
-    **Agregaciones avanzadas:**
+   db.Diagnostico.find({},{descripcion:1, _id:0});
 
-    26. `$lookup` entre `Inventario` y `Medicamento` para ver nombre y disponibilidad.
-    27. `$group` por `tipo_medicamento_id` para totalizar disponibilidad.
-    28. `$lookup` + `$project` para ver fabricante, tipo y disponibilidad.
-    29. `$unwind` + `$group` para contar medicamentos por ubicación.
-    30. `$group` para sumar disponibilidad por medicamento.
+5. Lista todos los tipos de medicamentos registrados.
 
+   db.Tipo_Medicamento.find({}, {nombre: 1, _id: 0});
 
-3. Historiales clínicos de pacientes por diagnóstico y tratamientos realizados
+6. Muestra los nombres de los tipos de tratamiento existentes.
 
-    31. Listar todos los historiales por paciente.
-    32. Buscar historiales por diagnóstico (`$regex`).
-    33. Ver tratamientos aplicados a un paciente.
-    34. Ver fecha del último historial registrado.
-    35. Mostrar diagnóstico más frecuente por paciente.
-    36. Listar pacientes con más de 3 diagnósticos distintos.
-    37. Ver pacientes diagnosticados en los últimos 30 días.
-    38. Listar tratamientos asociados a un diagnóstico.
-    39. Mostrar descripciones de diagnósticos por historial.
-    40. Ver tratamientos por tipo (quimioterapia, cirugía, etc).
+   db.Tratamiento.find({},{nombre:1});
 
-    **Agregaciones avanzadas:**
+7. Lista todos los fabricantes de medicamentos.
 
-    41. `$lookup` entre `Historial_Medico` y `Diagnostico`.
-    42. `$lookup` entre `Historial_Medico` → `Diagnostico_Tratamiento` → `Tratamiento`.
-    43. `$group` por paciente para contar diagnósticos únicos.
-    44. `$project` para mostrar nombre del tratamiento, fecha y diagnóstico.
-    45. `$unwind` historiales para detectar repeticiones de diagnóstico.
+   db.Fabricante.find({}, {nombre: 1, _id: 0});
 
+8. Muestra el nombre de cada persona registrada en `MedicosYPersonal`.
 
-4. Actividades del personal según área médica y rol
+   db.MedicosYPersonal.find({},{nombre:1 , _id:0 });
 
-    46. Listar todo el personal médico con especialidad.
-    47. Buscar médicos con salario mayor a \$5,000.
-    48. Ver personal asignado a cada área médica.
-    49. Ver cuántos especialistas hay por área.
-    50. Buscar personal por nombre o número de colegiatura (`$regex`).
-    51. Ordenar médicos por salario descendente.
-    52. Listar roles por especialidad (si hay rol en los datos).
-    53. Ver médicos que trabajan en varias áreas (*requiere estructura adicional*).
-    54. Buscar personal en hospitales específicos.
-    55. Ver especialidades con más personal asignado.
+9. Lista los pacientes registrados con su nombre.
 
-    **Agregaciones avanzadas:**
+   db.Paciente.find({},{nombre:1,_id:0});
 
-    56. `$lookup` entre `MedicosYPersonal` y `Especialidad` para obtener nombre de especialidad.
-    57. `$lookup` con `Hospital` para ver en qué hospital trabaja cada médico.
-    58. `$group` por hospital y especialidad para contar médicos.
-    59. `$project` con salario, especialidad y hospital.
-    60. `$group` para calcular salario promedio por especialidad.
+10. Muestra todas las descripciones de los resultados de tratamientos.
 
+    db.Resultado.find({},{descripcion:1, _id:0});
 
-5. Gestión de visitas médicas y estadísticas de enfermedades comunes
+11. Muestra los tratamientos con su nombre y descripción.
 
-    61. Listar todas las visitas médicas con fecha.
-    62. Ver pacientes que han recibido más de 5 visitas.
-    63. Mostrar visitas por día.
-    64. Buscar visitas realizadas por un médico específico.
-    65. Ver horarios más frecuentes de visitas.
-    66. Diagnósticos más comunes en visitas.
-    67. Enfermedades más frecuentes por hospital.
-    68. Ver pacientes atendidos por un médico específico.
-    69. Ver visitas que tienen un diagnóstico específico.
-    70. Ver visitas por rango de fechas.
+    db.Tratamiento.find({},{nombre:1,descripcion:1,_id:0});
 
-    **Agregaciones avanzadas:**
+12. Consulta el inventario con los IDs de medicamentos y su disponibilidad.
 
-    71. `$lookup` entre `Visita_Medica` y `Paciente`.
-    72. `$lookup` entre `Visita_Medica` y `Visita_Diagnostico` → `Diagnostico`.
-    73. `$group` por `diagnostico_id` para contar frecuencia de enfermedades.
-    74. `$project` fecha, paciente y diagnóstico para resumen diario.
-    75. `$unwind` + `$group` por día para visitas promedio.
+    db.Inventario.find({}, {disponibilidad: 1, medicamento_id: 1, _id: 0});
+
+13. Muestra las visitas médicas con fecha, hora y médico asignado.
+
+    db.Visita_Medica.aggregate([
+      {$lookup: {
+          from: "MedicosYPersonal",
+          localField: "medico_id",
+          foreignField: "numero_colegiatura",
+          as: "medico"
+        }
+      },
+      { $unwind: "$medico" },
+      {$project: {
+          _id: 0,
+          fecha: 1,
+          hora: 1,
+          nombre_medico: "$medico.nombre"
+        } }])
+
+14. Consulta todos los diagnósticos-tratamiento.
+
+    db.Diagnostico.aggregate([
+      {$lookup: {
+          from: "Diagnostico_Tratamiento",
+          localField: "_id",
+          foreignField: "diagnostico_id",
+          as: "relacion"
+        } },
+      { $unwind: "$relacion" },
+      {$lookup: {
+          from: "Tratamiento",
+          localField: "relacion.tratamiento_id",
+          foreignField: "_id",
+          as: "tratamiento"
+        }},
+      { $unwind: "$tratamiento" },
+      { $project: {
+          _id: 0,
+          diagnostico: "$descripcion",
+          tratamiento: "$tratamiento.nombre"
+        } }])
+
+15. Consulta los tratamientos-medicamentos registrados.
+
+    db.Medicamento.aggregate([
+      {$lookup: {
+          from: "Tratamiento_Medicamento",
+          localField: "_id",
+          foreignField: "medicamento_id",
+          as: "relacion"
+        }},
+      { $unwind: "$relacion" },
+      {$lookup: {
+          from: "Tratamiento",
+          localField: "relacion.tratamiento_id",
+          foreignField: "_id",
+          as: "tratamiento"
+        }},
+      { $unwind: "$tratamiento" },
+      {$project: {
+          _id: 0,
+          medicamento: "$nombre",
+          tratamiento: "$tratamiento.nombre"
+        }}])
+
+16. Consulta los tratamientos por área médica.
+
+    db.Area_Especializada.aggregate([
+      {$lookup: {
+          from: "Tratamiento_Area",
+          localField: "_id",
+          foreignField: "area_id",
+          as: "relacion"
+        }},
+      { $unwind: "$relacion" },
+      {$lookup: {
+          from: "Tratamiento",
+          localField: "relacion.tratamiento_id",
+          foreignField: "_id",
+          as: "tratamiento"
+        }},
+      { $unwind: "$tratamiento" },
+      {$project: {
+          _id: 0,
+          area: "$nombre",
+          tratamiento: "$tratamiento.nombre"
+        }}])
+
+17. Muestra las áreas asociadas a cada hospital.
+
+    db.Area_Especializada.aggregate([
+      {$lookup: {
+          from: "Hospital_Area",
+          localField: "_id",
+          foreignField: "area_id",
+          as: "relacion"
+        }},
+      { $unwind: "$relacion" },
+      {$lookup: {
+          from: "Hospital",
+          localField: "relacion._id",
+          foreignField: "_id",
+          as: "hospital"
+        }},
+      { $unwind: "$hospital" },
+      {$project: {
+          _id: 0,
+          area: "$nombre",
+          hospital: "$hospital.nombre"
+        }}])
+
+18. Muestra los nombres de los médicos que trabajan en el hospital con ID 1.
+
+    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id: 1 },{ _id: 0, nombre: 1})
+
+19. Lista los pacientes asignados al hospital con ID 1.
+
+    db.Paciente.find({ hospital_id: 1 })
+
+20. Busca medicamentos cuyo nombre contenga "paracetamol".
+
+    db.medicamento.find({nombre:/paracetamol/i})
+
+21. Muestra los trabajadores con `numero_colegiatura` igual a 002.
+
+    db.MedicosYPersonal.find({ numero_colegiatura: 2 })
+
+22. Consulta el inventario de medicamentos con menos de 10 unidades disponibles.
+
+    db.Inventario.find({ disponibilidad: { $lt: 10 } })
+
+23. Ordena los registros de inventario por fecha de ingreso más reciente.
+
+    db.Inventario.find().sort({ fecha_ingreso: -1 })
+
+24. Busca tratamientos de un tipo específico.
 
     
-6.  Consultas combinadas
 
-    76. Pacientes sin historial médico registrado.
-    77. Médicos sin pacientes asignados.
-    78. Medicamentos sin inventario actual.
-    79. Diagnósticos sin tratamientos asignados.
-    80. Tratamientos sin resultados asociados.
-    81. Diagnósticos que usan más de un tratamiento.
-    82. Tratamientos aplicados en múltiples áreas.
-    83. Total invertido por tipo de tratamiento (`costo_base` \* cantidad).
-    84. Ver pacientes por ciudad.
-    85. Buscar pacientes por correo (`$regex`).
+25. Encuentra medicamentos de un tipo específico.
 
-    **Agregaciones avanzadas:**
+    
 
-    86. `$lookup` entre `Paciente` y `Direccion` para ver ciudad.
-    87. `$lookup` entre `Diagnostico_Tratamiento` y `Tratamiento`.
-    88. `$group` para contar tratamientos por tipo.
-    89. `$project` para mostrar nombre del tratamiento, diagnóstico y área.
-    90. `$lookup` en cascada para ver tratamientos y medicamentos usados por paciente.
+26. Muestra medicamentos de un fabricante en particular.
 
+    
 
-7. Consultas combinadas
+27. Consulta todos los pacientes que tienen asignado un seguro médico.
 
-    91. Top 5 diagnósticos más frecuentes.
-    92. Hospital con más visitas registradas.
-    93. Médicos con mayor número de pacientes.
-    94. Costo promedio por tipo de tratamiento.
-    95. Medicamentos más usados por tipo de enfermedad.
-    96. Pacientes con múltiples seguros médicos (*si se modela más adelante*).
-    97. Diagnósticos frecuentes por especialidad médica.
-    98. Promedio de visitas por paciente.
-    99. Porcentaje de ocupación de medicamentos (inventario total vs usado).
-    100. Gráfico de crecimiento de visitas por mes (se puede exportar con datos).
+    db.Paciente.find({ seguro_medico_id: { $exists: true, $ne: null } })
 
+28. Cuenta cuántos pacientes hay por hospital.
 
+    db.Paciente.aggregate([
+      {$group: {
+          _id: "$hospital_id",
+          totalPacientes: { $sum: 1 }
+        } }])
+
+29. Muestra todos los historiales médicos de un paciente.
+
+    
+
+30. Consulta diagnósticos que contengan "asma" en su descripción.
+
+    
+
+31. Cuenta cuántos médicos hay en total por hospital.
+
+    
+
+32. Muestra los hospitales con más de 10 áreas especializadas.
+
+    
+
+33. Relaciona cada hospital con su director (usando su número de colegiatura).
+
+    
+
+34. Muestra el nombre del hospital donde trabaja cada médico.
+
+    
+
+35. Muestra los nombres de las áreas de especialidad de un hospital.
+
+    
+
+36. Muestra los médicos con su nombre de especialidad.
+
+    
+
+37. Agrupa a los médicos por especialidad y cuenta cuántos hay por cada una.
+
+    
+
+38. Ordena los hospitales por cantidad de personal médico.
+
+    
+
+39. Muestra el total de personal médico agrupado por hospital (nombre).
+
+    
+
+40. Muestra los pacientes con su ciudad de residencia.
+
+    
+
+41. Consulta todas las visitas médicas realizadas por un médico específico.
+
+    
+
+42. Cuenta cuántas visitas ha tenido un paciente en total.
+
+    
+
+43. Muestra las visitas con los datos del paciente asociado.
+
+    
+
+44. Muestra las visitas junto con sus diagnósticos.
+
+    
+
+45. Agrupa las visitas por día y cuenta cuántas hubo cada día.
+
+    
+
+46. Muestra cuál es el diagnóstico más frecuente en la base de datos.
+
+    
+
+47. Lista los pacientes que han recibido más de tres diagnósticos distintos.
+
+    
+
+48. Muestra cuántos médicos hay por especialidad.
+
+    
+
+49. Lista los médicos que ganan más de $5,000.
+
+    
+
+50. Muestra los medicamentos que no tienen disponibilidad.
+
+    
+
+51. Muestra el salario promedio por especialidad médica.
+
+    
+
+52. Cuenta cuántos medicamentos hay por tipo.
+
+    
+
+53. Muestra el nombre del medicamento y su fabricante.
+
+    
+
+54. Muestra los tratamientos con los medicamentos que usan.
+
+    
+
+55. Muestra el costo total por tipo de tratamiento.
+
+    
+
+56. Muestra los hospitales con más de 20 empleados.
+
+    
+
+57. Muestra los diagnósticos más comunes y cuántas veces se repiten.
+
+    
+
+58. Muestra las visitas agrupadas por paciente y cuántas tiene cada uno.
+
+    
+
+59. Relaciona diagnósticos con tratamientos y medicamentos.
+
+    
+
+60. Muestra cuántas veces se ha usado cada medicamento en tratamientos.
+
+    
+
+61. Agrupa pacientes por ciudad y cuenta cuántos hay por cada una.
+
+    
+
+62. Muestra los tratamientos con más de tres medicamentos asociados.
+
+    
+
+63. Muestra el historial clínico completo de un paciente incluyendo diagnóstico y tratamiento.
+
+    
+
+64. Agrupa tratamientos por tipo y cuenta cuántos hay de cada tipo.
+
+    
+
+65. Muestra los resultados agrupados por tratamiento.
+
+    
+
+66. Muestra cuántos pacientes tiene cada hospital.
+
+    
+
+67. Relaciona cada tratamiento con su tipo y costo.
+
+    
+
+68. Muestra los diagnósticos más comunes por especialidad médica.
+
+    
+
+69. Muestra el número total de visitas por médico.
+
+    
+
+70. Muestra el promedio de visitas por paciente.
+
+    
+
+71. Muestra las enfermedades más comunes en el hospital 1.
+
+    
+
+72. Muestra los medicamentos más usados en tratamientos exitosos.
+
+    
+
+73. Muestra el nombre de cada tratamiento y los diagnósticos en los que se ha aplicado.
+
+    
+
+74. Agrupa pacientes por seguro médico y cuenta cuántos hay.
+
+    
+
+75. Muestra los tratamientos realizados en cada área médica.
+
+    
+
+76. Calcula el total de unidades de inventario por tipo de medicamento.
+
+    
+
+77. Agrupa diagnósticos por mes de registro y cuenta cuántos hubo cada mes.
+
+    
+
+78. Muestra la disponibilidad de medicamentos por ubicación.
+
+    
+
+79. Lista las visitas ordenadas por fecha más reciente.
+
+    
+
+80. Muestra los diagnósticos que tienen más de un tratamiento asociado.
+
+    
+
+81. Agrupa medicamentos por fabricante y suma su disponibilidad total.
+
+    
+
+82. Muestra cuántos tratamientos activos hay por hospital.
+
+    
+
+83. Relaciona cada tratamiento con los pacientes que lo han recibido.
+
+    
+
+84. Muestra las visitas que se realizaron entre dos fechas específicas.
+
+    
+
+85. Muestra los diagnósticos y sus resultados clínicos asociados.
+
+    
+
+86. Muestra el salario promedio, mínimo y máximo por especialidad médica.
+
+    
+
+87. Muestra los medicamentos más usados por pacientes con diagnóstico "diabetes".
+
+    
+
+88. Muestra el crecimiento mensual de visitas durante el último año.
+
+    
+
+89. Muestra qué pacientes han recibido más de cinco tratamientos distintos.
+
+    
+
+90. Agrupa el personal por rol y muestra cuántos hay por cada uno.
+
+    
+
+91. Muestra qué áreas médicas tienen más tratamientos asociados.
+
+    
+
+92. Muestra cuántos tratamientos hay por tipo de enfermedad.
+
+    
+
+93. Lista los medicamentos que han sido usados en más de un hospital.
+
+    
+
+94. Muestra el costo total de tratamientos agrupado por hospital.
+
+    
+
+95. Muestra cuáles tratamientos han tenido los mejores resultados.
+
+    
+
+96. Agrupa pacientes por grupos de edad (si existiera ese campo).
+
+    
+
+97. Muestra el porcentaje de visitas que tienen diagnóstico registrado.
+
+    
+
+98. Muestra las visitas que no tienen diagnóstico asociado.
+
+    
+
+99. Muestra los medicamentos que no han sido usados en ningún tratamiento.
+
+    
+
+100. Muestra un resumen total de hospitales, médicos, pacientes y visitas.
+
+     
