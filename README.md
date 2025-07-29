@@ -2255,7 +2255,7 @@ show collections;
 
 # Guia de Inserciones
 
-## 1\. Hospital
+## 1. Hospital
 
 Colección principal para almacenar la información de los hospitales.
 
@@ -3102,5 +3102,267 @@ db.Visita_Diagnostico.insertOne(
 );
 ```
 
+
+## **Consultas Básicas**
+
+
+**1. Mostrar todos los hospitales**
+
+```js
+db.Hospital.find({}, { nombre: 1, _id: 0 });
 ```
+**Explicación**:
+
+* find({}): selecciona todos los documentos.
+* { nombre: 1, _id: 0 }: muestra solo el nombre del hospital, ocultando el campo _id.
+
+Sirve para generar un listado limpio de nombres de hospitales disponibles, útil para menús desplegables o filtros en una interfaz.
+
+---
+
+**2. Buscar medicamentos que contienen 'paracetamol'**
+
+```js
+db.Medicamento.find({ nombre: /paracetamol/i });
 ```
+
+**Explicación**:
+
+* El operador /paracetamol/i busca coincidencias sin importar mayúsculas/minúsculas.
+* Es una expresión regular que permite encontrar variantes como “Paracetamol 500mg”.
+
+Facilita búsquedas de medicamentos incluso si el usuario escribe parcialmente o con errores de mayúsculas.
+
+---
+
+**3. Mostrar pacientes registrados en el hospital con ID 1**
+
+```js
+db.Paciente.find({ hospital_id: 1 });
+```
+
+**Explicación**:
+
+* Filtra pacientes por el campo `hospital_id` igual a 1.
+
+Esencial para estadísticas internas por sede o zona, o para redirigir tareas administrativas por hospital.
+
+---
+
+**4. Contar cuántos pacientes hay por hospital**
+
+```js
+db.Paciente.aggregate([
+  { $group: { _id: "$hospital_id", total_pacientes: { $sum: 1 } } }
+])
+```
+
+**Explicación**:
+
+* $group: agrupa por hospital.
+* $sum: 1: cuenta un paciente por cada documento agrupado.
+
+Mide la carga de pacientes por hospital, útil para dimensionar recursos como camas o personal.
+
+---
+
+**5. Listar especialidades médicas**
+
+```js
+db.Especialidad.find({}, { nombre: 1, _id: 0 });
+```
+
+**Explicación**:
+
+* Devuelve solo los nombres de especialidades médicas.
+* find({}) sin filtro retorna todos.
+
+Útil para llenar listas desplegables en interfaces o categorizar médicos y pacientes.
+
+---
+
+## **Consultas Avanzadas**
+
+---
+
+**6. Diagnósticos con tratamientos asociados**
+
+```js
+db.Diagnostico.aggregate([
+  { $lookup: {
+      from: "Diagnostico_Tratamiento",
+      localField: "_id",
+      foreignField: "diagnostico_id",
+      as: "relacion"
+  }},
+  { $unwind: "$relacion" },
+  { $lookup: {
+      from: "Tratamiento",
+      localField: "relacion.tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+  }},
+  { $unwind: "$tratamiento" },
+  { $project: {
+      _id: 0,
+      diagnostico: "$descripcion",
+      tratamiento: "$tratamiento.nombre"
+  }}
+])
+```
+
+**Explicación**:
+
+* $lookup: une diagnósticos con tratamientos vía tabla intermedia Diagnostico_Tratamiento.
+* $unwind: desestructura arreglos para que cada combinación sea un documento separado.
+* $project: muestra solo los nombres deseados.
+
+Muestra qué tratamiento se aplica para cada diagnóstico, útil para analítica médica, reportes o verificación de prácticas clínicas.
+
+---
+
+**7. Número de médicos por especialidad**
+
+```js
+db.MedicosYPersonal.aggregate([
+  { $match: { numero_colegiatura: { $regex: /^002/ } } },
+  { $lookup: {
+      from: "Especialidad",
+      localField: "especialidad_id",
+      foreignField: "_id",
+      as: "especialidad"
+  }},
+  { $unwind: "$especialidad" },
+  { $group: {
+      _id: "$especialidad.nombre",
+      cantidad_medicos: { $sum: 1 }
+  }},
+  { $project: {
+      especialidad: "$_id",
+      cantidad_medicos: 1,
+      _id: 0
+  }}
+])
+```
+
+**Explicación**:
+
+* match: selecciona solo médicos (identificados por el prefijo 002 en numero_colegiatura).
+* lookup: obtiene el nombre de la especialidad.
+* group: cuenta cuántos médicos hay por especialidad.
+
+Ayuda a visualizar la distribución del personal médico en función de su campo, útil para balancear recursos.
+
+---
+
+**8. Historial médico completo de un paciente**
+
+```js
+db.Historial_Medico.aggregate([
+  { $match: { paciente_id: 18 } },
+  { $lookup: {
+      from: "Diagnostico",
+      localField: "diagnostico_id",
+      foreignField: "_id",
+      as: "diagnostico"
+  }},
+  { $unwind: "$diagnostico" },
+  { $lookup: {
+      from: "Diagnostico_Tratamiento",
+      localField: "diagnostico_id",
+      foreignField: "diagnostico_id",
+      as: "relacion"
+  }},
+  { $unwind: "$relacion" },
+  { $lookup: {
+      from: "Tratamiento",
+      localField: "relacion.tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+  }},
+  { $unwind: "$tratamiento" },
+  { $project: {
+      fecha: "$fecha_registro",
+      diagnostico: "$diagnostico.descripcion",
+      tratamiento: "$tratamiento.nombre",
+      _id: 0
+  }}
+])
+```
+
+**Explicación**:
+
+* Une datos entre Historial_Medico, Diagnostico, Diagnostico_Tratamiento y Tratamiento.
+* Presenta el diagnóstico y el tratamiento recibido, junto con la fecha.
+
+Para generar un historial clínico detallado de un paciente. Puede usarse para atención médica personalizada o estudios de caso.
+
+---
+
+**9. Diagnóstico más frecuente**
+
+```js
+db.Visita_Diagnostico.aggregate([
+  { $group: {
+      _id: "$diagnostico_id",
+      total: { $sum: 1 }
+  }},
+  { $sort: { total: -1 } },
+  { $limit: 1 },
+  { $lookup: {
+      from: "Diagnostico",
+      localField: "_id",
+      foreignField: "_id",
+      as: "diagnostico"
+  }},
+  { $unwind: "$diagnostico" },
+  { $project: {
+      diagnostico: "$diagnostico.descripcion",
+      total: 1,
+      _id: 0
+  }}
+])
+```
+
+**Explicación**:
+
+* Agrupa por diagnostico_id para contar cuántas veces se usó.
+* Luego une con la descripción textual del diagnóstico.
+
+Útil para estudios epidemiológicos o identificación de brotes comunes en la institución.
+
+---
+
+**10. Medicamentos más usados en tratamientos con resultado**
+
+```js
+db.Resultado.aggregate([
+  { $lookup: {
+      from: "Tratamiento_Medicamento",
+      localField: "tratamiento_id",
+      foreignField: "tratamiento_id",
+      as: "meds"
+  }},
+  { $unwind: "$meds" },
+  { $lookup: {
+      from: "Medicamento",
+      localField: "meds.medicamento_id",
+      foreignField: "_id",
+      as: "medicamento"
+  }},
+  { $unwind: "$medicamento" },
+  { $group: {
+      _id: "$medicamento.nombre",
+      veces_usado: { $sum: 1 }
+  }},
+  { $sort: { veces_usado: -1 } }
+])
+```
+
+**Explicación**:
+
+* Parte de la colección Resultado, lo que implica que solo considera tratamientos que llegaron a una conclusión clínica.
+* Une con los medicamentos usados en esos tratamientos y cuenta su frecuencia.
+
+Detecta medicamentos clave en tratamientos exitosos, ideal para optimizar inventario y guías clínicas.
+
