@@ -3,27 +3,27 @@ db.Hospital.insertMany([
   {
     _id: 1,
     nombre: "Hospital Universitario de Santander - HUS",
-    director_id: 101
+    director_id: "001001"
   },
   {
     _id: 2,
     nombre: "Fundación Cardiovascular de Colombia - FCV",
-    director_id: 102
+    director_id: "001002"
   },
   {
     _id: 3,
     nombre: "Hospital Internacional de Colombia - HIC",
-    director_id: 103
+    director_id: "001003"
   },
   {
     _id: 4,
     nombre: "Hospital Los Comuneros",
-    director_id: 104
+    director_id: "001004"
   },
   {
     _id: 5,
     nombre: "Hospital Local del Norte",
-    director_id: 105
+    director_id: "001005"
   }
 ]);
 
