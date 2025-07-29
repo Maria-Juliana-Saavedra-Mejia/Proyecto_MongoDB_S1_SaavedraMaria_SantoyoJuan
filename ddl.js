@@ -131,7 +131,7 @@ db.createCollection("Visita_Medica", {
           bsonType: "string",
           pattern: "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
         },
-        medico_id: { bsonType: "int" },
+        medico_id: { bsonType: "string" },
         paciente_id: { bsonType: "int" }
       }
     }
