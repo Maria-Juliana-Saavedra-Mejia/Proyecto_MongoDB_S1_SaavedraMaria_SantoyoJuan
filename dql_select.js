@@ -1,10 +1,10 @@
 //1. Muestra el nombre de todos los hospitales, ocultando el `_id`.
 
-   db.Hospital.find({},{nombre://1,_id:0});
+   db.Hospital.find({},{nombre:1,_id:0});
 
 //2. Muestra todos los medicamentos con sus nombres.
 
-   db.Medicamento.find({},{nombre://1, _id:0, descripcion://1});
+   db.Medicamento.find({},{nombre:1, _id:0, descripcion:1});
 
 //3. Lista todas las especialidades médicas disponibles.
 
@@ -12,39 +12,39 @@
 
 //4. Muestra las descripciones de todos los diagnósticos.
 
-   db.Diagnostico.find({},{descripcion://1, _id:0});
+   db.Diagnostico.find({},{descripcion:1, _id:0});
 
 //5. Lista todos los tipos de medicamentos registrados.
 
-   db.Tipo_Medicamento.find({}, {nombre: //1, _id: 0});
+   db.Tipo_Medicamento.find({}, {nombre: 1, _id: 0});
 
 //6. Muestra los nombres de los tipos de tratamiento existentes.
 
-   db.Tratamiento.find({},{nombre://1});
+   db.Tratamiento.find({},{nombre:1});
 
 //7. Lista todos los fabricantes de medicamentos.
 
-   db.Fabricante.find({}, {nombre: //1, _id: 0});
+   db.Fabricante.find({}, {nombre: 1, _id: 0});
 
 //8. Muestra el nombre de cada persona registrada en `MedicosYPersonal`.
 
-   db.MedicosYPersonal.find({},{nombre://1 , _id:0 });
+   db.MedicosYPersonal.find({},{nombre:1 , _id:0 });
 
 //9. Lista los pacientes registrados con su nombre.
 
-   db.Paciente.find({},{nombre://1,_id:0});
+   db.Paciente.find({},{nombre:1,_id:0});
 
 //10. Muestra todas las descripciones de los resultados de tratamientos.
 
-    db.Resultado.find({},{descripcion://1, _id:0});
+    db.Resultado.find({},{descripcion:1, _id:0});
 
 //11. Muestra los tratamientos con su nombre y descripción.
 
-    db.Tratamiento.find({},{nombre://1,descripcion://1,_id:0});
+    db.Tratamiento.find({},{nombre:1,descripcion:1,_id:0});
 
 //12. Consulta el inventario con los IDs de medicamentos y su disponibilidad.
 
-    db.Inventario.find({}, {disponibilidad: //1, medicamento_id: //1, _id: 0});
+    db.Inventario.find({}, {disponibilidad: 1, medicamento_id: 1, _id: 0});
 
 //13. Muestra las visitas médicas con fecha, hora y médico asignado.
 
@@ -59,8 +59,8 @@
       { $unwind: "$medico" },
       {$project: {
           _id: 0,
-          fecha: //1,
-          hora: //1,
+          fecha: 1,
+          hora: 1,
           nombre_medico: "$medico.nombre"
         } }])
 
@@ -158,11 +158,11 @@
 
 //18. Muestra los nombres de los médicos que trabajan en el hospital con ID //1.
 
-    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id: //1 },{ _id: 0, nombre: //1})
+    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id:1 },{ _id: 0, nombre: 1})
 
 //19. Lista los pacientes asignados al hospital con ID //1.
 
-    db.Paciente.find({ hospital_id: //1 })
+    db.Paciente.find({ hospital_id: 1 })
 
 //20. Busca medicamentos cuyo nombre contenga "paracetamol".
 
@@ -172,17 +172,17 @@
 
     db.MedicosYPersonal.find({ numero_colegiatura: 2 })
 
-//22. Consulta el inventario de medicamentos con menos de //10 unidades disponibles.
+//22. Consulta el inventario de medicamentos con menos de 10 unidades disponibles.
 
-    db.Inventario.find({ disponibilidad: { $lt: //10 } })
+    db.Inventario.find({ disponibilidad: { $lt: 10 } })
 
 //23. Ordena los registros de inventario por fecha de ingreso más reciente.
 
-    db.Inventario.find().sort({ fecha_ingreso: -//1 })
+    db.Inventario.find().sort({ fecha_ingreso: -1 })
 
 //24. Busca tratamientos de un tipo específico.
 
-    db.Tratamiento.
+    db.Paciente.find({})
 
 //25. Encuentra medicamentos de un tipo específico.
 
@@ -201,7 +201,7 @@
     db.Paciente.aggregate([
       {$group: {
           _id: "$hospital_id",
-          totalPacientes: { $sum: //1 }
+          totalPacientes: { $sum: 1 }
         } }])
 
 //29. Muestra todos los historiales médicos de un paciente.
