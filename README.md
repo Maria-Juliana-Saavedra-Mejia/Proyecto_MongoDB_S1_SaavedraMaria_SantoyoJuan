@@ -1693,7 +1693,7 @@ db.createCollection("Hospital", {
       properties: {
         _id: { bsonType: "int" }, 
         nombre: { bsonType: "string" },
-        director_id: { bsonType: "int" }
+        director_id: { bsonType: "string" }
       }
     }
   }
@@ -1766,7 +1766,7 @@ db.createCollection("MedicosYPersonal", {
       bsonType: "object",
       required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id" ],
       properties: {
-        numero_colegiatura: { bsonType: "int" }, 
+        numero_colegiatura: { bsonType: "string" }, 
         nombre: { bsonType: "string" },
         salario: { bsonType: "double" },
         telefono: { bsonType: "string" },
@@ -1907,7 +1907,7 @@ db.createCollection("Visita_Medica", {
           bsonType: "string",
           pattern: "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
         },
-        medico_id: { bsonType: "int" },
+        medico_id: { bsonType: "string" },
         paciente_id: { bsonType: "int" }
       }
     }
