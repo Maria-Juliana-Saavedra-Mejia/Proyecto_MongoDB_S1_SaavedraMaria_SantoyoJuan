@@ -1,3 +1,314 @@
+// 1. Hospital
+db.Hospital.insertMany([
+  {
+    _id: 1,
+    nombre: "Hospital Universitario de Santander - HUS",
+    director_id: 101
+  },
+  {
+    _id: 2,
+    nombre: "Fundación Cardiovascular de Colombia - FCV",
+    director_id: 102
+  },
+  {
+    _id: 3,
+    nombre: "Hospital Internacional de Colombia - HIC",
+    director_id: 103
+  },
+  {
+    _id: 4,
+    nombre: "Hospital Los Comuneros",
+    director_id: 104
+  },
+  {
+    _id: 5,
+    nombre: "Hospital Local del Norte",
+    director_id: 105
+  }
+]);
+
+// 2. Area_Especializada
+db.Area_Especializada.insertMany([
+  // Áreas del Hospital Universitario de Santander - HUS
+  {
+    _id: 201,
+    nombre: "Cirugía General",
+    descripcion: "Especialidad quirúrgica que aborda procedimientos del abdomen, sistema digestivo, endocrino y otros sistemas corporales mediante técnicas convencionales y laparoscópicas."
+  },
+  {
+    _id: 202,
+    nombre: "Medicina Interna",
+    descripcion: "Especialidad médica dedicada al diagnóstico, tratamiento y prevención de enfermedades de adultos, con enfoque integral en patologías sistémicas complejas."
+  },
+  {
+    _id: 203,
+    nombre: "Neurología",
+    descripcion: "Especialidad médica que estudia y trata las enfermedades del sistema nervioso central, periférico y muscular, incluyendo trastornos cerebrovasculares y neurodegenerativos."
+  },
+  {
+    _id: 204,
+    nombre: "Ortopedia y Traumatología",
+    descripcion: "Especialidad médico-quirúrgica dedicada al diagnóstico y tratamiento de lesiones del sistema musculoesquelético, incluyendo fracturas, luxaciones y patologías articulares."
+  },
+  {
+    _id: 205,
+    nombre: "Endocrinología",
+    descripcion: "Especialidad médica que diagnostica y trata trastornos del sistema endocrino, incluyendo diabetes, enfermedades tiroideas y alteraciones hormonales."
+  },
+  {
+    _id: 206,
+    nombre: "Radiología",
+    descripcion: "Especialidad médica que utiliza técnicas de imagen como rayos X, TAC, resonancia magnética y ecografía para el diagnóstico de enfermedades."
+  },
+  {
+    _id: 207,
+    nombre: "Cardiología",
+    descripcion: "Especialidad médica enfocada en el diagnóstico y tratamiento de enfermedades cardiovasculares, incluyendo cardiopatías isquémicas, arritmias e insuficiencia cardíaca."
+  },
+  {
+    _id: 208,
+    nombre: "Ginecología y Obstetricia",
+    descripcion: "Especialidad médico-quirúrgica que abarca la salud reproductiva femenina, embarazo, parto y enfermedades del sistema reproductor femenino."
+  },
+  {
+    _id: 209,
+    nombre: "Pediatría",
+    descripcion: "Especialidad médica enfocada en la atención integral de la salud de niños, desde el nacimiento hasta la adolescencia, incluyendo crecimiento y desarrollo."
+  },
+  {
+    _id: 210,
+    nombre: "Anestesiología",
+    descripcion: "Especialidad médica que se encarga del manejo perioperatorio del paciente, incluyendo anestesia general, regional y cuidados intensivos."
+  },
+
+  // Áreas de la Fundación Cardiovascular de Colombia - FCV
+  {
+    _id: 220,
+    nombre: "Cardiología Intervencionista",
+    descripcion: "Subespecialidad de cardiología que utiliza técnicas mínimamente invasivas para el tratamiento de enfermedades cardiovasculares mediante cateterismo cardíaco."
+  },
+  {
+    _id: 221,
+    nombre: "Cirugía Cardiovascular",
+    descripcion: "Especialidad quirúrgica de alta complejidad dedicada a intervenciones del corazón y grandes vasos, incluyendo bypass coronario, reemplazo valvular y cirugía de aorta."
+  },
+  {
+    _id: 222,
+    nombre: "Electrofisiología Cardíaca",
+    descripcion: "Subespecialidad que se encarga del estudio y tratamiento de arritmias cardíacas mediante técnicas de mapeo y ablación por radiofrecuencia."
+  },
+  {
+    _id: 223,
+    nombre: "Hemodinamia",
+    descripcion: "Área especializada en el estudio de la función circulatoria mediante técnicas invasivas y no invasivas para el diagnóstico de patologías cardiovasculares."
+  },
+  {
+    _id: 224,
+    nombre: "Cirugía Vascular y Angiología",
+    descripcion: "Especialidad que trata las enfermedades del sistema vascular periférico, incluyendo arterias, venas y sistema linfático."
+  },
+  {
+    _id: 225,
+    nombre: "Oncología",
+    descripcion: "Especialidad médica dedicada al diagnóstico, tratamiento y seguimiento integral de pacientes con cáncer mediante quimioterapia, radioterapia y terapias dirigidas."
+  },
+  {
+    _id: 226,
+    nombre: "Neurocirugía",
+    descripcion: "Especialidad quirúrgica que trata patologías del sistema nervioso central, incluyendo tumores cerebrales, aneurismas y traumatismo craneoencefálico."
+  },
+  {
+    _id: 227,
+    nombre: "Nefrología",
+    descripcion: "Especialidad médica que se encarga del diagnóstico y tratamiento de enfermedades renales, incluyendo insuficiencia renal y diálisis."
+  },
+  {
+    _id: 228,
+    nombre: "Neumología",
+    descripcion: "Especialidad médica enfocada en el diagnóstico y tratamiento de enfermedades del sistema respiratorio, incluyendo asma, EPOC y enfermedades intersticiales."
+  },
+  {
+    _id: 229,
+    nombre: "Gastroenterología",
+    descripcion: "Especialidad médica que estudia y trata las enfermedades del aparato digestivo, incluyendo esófago, estómago, intestinos, hígado y páncreas."
+  },
+
+  // Áreas del Hospital Internacional de Colombia - HIC
+  {
+    _id: 240,
+    nombre: "Urología",
+    descripcion: "Especialidad médico-quirúrgica dedicada al diagnóstico y tratamiento de enfermedades del sistema genitourinario masculino y urinario femenino."
+  },
+  {
+    _id: 241,
+    nombre: "Oftalmología",
+    descripcion: "Especialidad médico-quirúrgica que se encarga del diagnóstico y tratamiento de enfermedades de los ojos y del sistema visual."
+  },
+  {
+    _id: 242,
+    nombre: "Otorrinolaringología",
+    descripcion: "Especialidad médico-quirúrgica que trata enfermedades del oído, nariz, garganta y estructuras relacionadas de cabeza y cuello."
+  },
+  {
+    _id: 243,
+    nombre: "Dermatología",
+    descripcion: "Especialidad médica que se encarga del diagnóstico y tratamiento de enfermedades de la piel, cabello, uñas y mucosas."
+  },
+  {
+    _id: 244,
+    nombre: "Psiquiatría",
+    descripcion: "Especialidad médica que se encarga del diagnóstico, tratamiento y prevención de trastornos mentales y del comportamiento."
+  },
+  {
+    _id: 245,
+    nombre: "Medicina Nuclear",
+    descripcion: "Especialidad que utiliza radioisótopos para el diagnóstico y tratamiento de diversas enfermedades, especialmente oncológicas y cardíacas."
+  },
+  {
+    _id: 246,
+    nombre: "Patología",
+    descripcion: "Especialidad médica que estudia las causas, desarrollo y consecuencias de las enfermedades mediante el análisis de tejidos y fluidos corporales."
+  },
+
+  // Áreas del Hospital Los Comuneros
+  {
+    _id: 250,
+    nombre: "Radiología e Imágenes Diagnósticas",
+    descripcion: "Especialidad médica que utiliza técnicas de imagen como rayos X, TAC, resonancia magnética y ecografía para el diagnóstico de enfermedades."
+  },
+  {
+    _id: 251,
+    nombre: "Medicina Interna - Los Comuneros",
+    descripcion: "Especialidad médica integral para el manejo de adultos con patologías complejas y multisistémicas en el ámbito hospitalario y ambulatorio."
+  },
+  {
+    _id: 252,
+    nombre: "Cirugía Plástica y Reconstructiva",
+    descripcion: "Especialidad quirúrgica que se encarga de la reconstrucción de defectos congénitos o adquiridos y procedimientos estéticos."
+  },
+  {
+    _id: 253,
+    nombre: "Medicina Física y Rehabilitación",
+    descripcion: "Especialidad médica que se encarga de la prevención, diagnóstico y tratamiento de la discapacidad mediante técnicas de rehabilitación."
+  },
+  {
+    _id: 254,
+    nombre: "Hematología",
+    descripcion: "Especialidad médica que estudia y trata las enfermedades de la sangre y órganos hematopoyéticos como médula ósea, ganglios linfáticos y bazo."
+  },
+
+  // Áreas del Hospital Local del Norte
+  {
+    _id: 260,
+    nombre: "Medicina General",
+    descripcion: "Atención médica primaria integral que aborda problemas de salud comunes y deriva casos complejos a especialistas cuando es necesario."
+  },
+  {
+    _id: 261,
+    nombre: "Urgencias",
+    descripcion: "Servicio médico de atención inmediata para situaciones de emergencia y urgencia médica que requieren intervención rápida y oportuna."
+  },
+  {
+    _id: 262,
+    nombre: "Medicina Familiar",
+    descripcion: "Especialidad médica que proporciona cuidados continuos e integrales al individuo y la familia, combinando ciencias biológicas, clínicas y sociales."
+  },
+  {
+    _id: 263,
+    nombre: "Consulta Externa",
+    descripcion: "Servicio de atención médica ambulatoria para seguimiento y control de patologías crónicas y consultas especializadas básicas."
+  },
+
+  // Áreas adicionales comunes en hospitales de Bucaramanga
+  {
+    _id: 270,
+    nombre: "Unidad de Cuidados Intensivos (UCI)",
+    descripcion: "Área especializada en el cuidado de pacientes críticos que requieren monitoreo continuo y soporte vital avanzado."
+  },
+  {
+    _id: 271,
+    nombre: "Neonatología",
+    descripcion: "Subespecialidad de pediatría que se encarga del cuidado médico de recién nacidos, especialmente prematuros o con problemas de salud."
+  },
+  {
+    _id: 272,
+    nombre: "Psicología Clínica",
+    descripcion: "Área que brinda atención psicológica para el diagnóstico y tratamiento de trastornos emocionales y del comportamiento."
+  },
+  {
+    _id: 273,
+    nombre: "Nutrición y Dietética",
+    descripcion: "Especialidad que se encarga de la evaluación nutricional y diseño de planes alimentarios terapéuticos para pacientes hospitalizados y ambulatorios."
+  },
+  {
+    _id: 274,
+    nombre: "Trabajo Social",
+    descripcion: "Área que brinda apoyo psicosocial a pacientes y familias, facilitando el acceso a servicios de salud y recursos comunitarios."
+  },
+  {
+    _id: 275,
+    nombre: "Laboratorio Clínico",
+    descripcion: "Servicio de apoyo diagnóstico que realiza análisis de muestras biológicas para el diagnóstico, seguimiento y control de enfermedades."
+  }
+]);
+
+// 3. Especialidad
+db.Especialidad.insertMany([
+  // Especialidades Quirúrgicas
+  { _id: 1, nombre: "Cirugía General" },
+  { _id: 2, nombre: "Cirugía Cardiovascular" },
+  { _id: 3, nombre: "Cirugía Vascular y Angiología" },
+  { _id: 4, nombre: "Neurocirugía" },
+  { _id: 5, nombre: "Ortopedia y Traumatología" },
+  { _id: 6, nombre: "Cirugía Plástica y Reconstructiva" },
+  { _id: 7, nombre: "Urología" },
+  { _id: 8, nombre: "Oftalmología" },
+  { _id: 9, nombre: "Otorrinolaringología" },
+  { _id: 10, nombre: "Ginecología y Obstetricia" },
+  { _id: 11, nombre: "Anestesiología" },
+
+  // Especialidades Médicas
+  { _id: 20, nombre: "Medicina Interna" },
+  { _id: 21, nombre: "Cardiología" },
+  { _id: 22, nombre: "Cardiología Intervencionista" },
+  { _id: 23, nombre: "Electrofisiología Cardíaca" },
+  { _id: 24, nombre: "Neurología" },
+  { _id: 25, nombre: "Endocrinología" },
+  { _id: 26, nombre: "Gastroenterología" },
+  { _id: 27, nombre: "Neumología" },
+  { _id: 28, nombre: "Nefrología" },
+  { _id: 29, nombre: "Hematología" },
+  { _id: 30, nombre: "Oncología" },
+  { _id: 31, nombre: "Dermatología" },
+  { _id: 32, nombre: "Psiquiatría" },
+  { _id: 33, nombre: "Medicina Nuclear" },
+  { _id: 34, nombre: "Patología" },
+
+  // Especialidades Pediátricas
+  { _id: 40, nombre: "Pediatría" },
+  { _id: 41, nombre: "Neonatología" },
+
+  // Especialidades de Apoyo Diagnóstico
+  { _id: 50, nombre: "Radiología e Imágenes Diagnósticas" },
+  { _id: 51, nombre: "Laboratorio Clínico" },
+  { _id: 52, nombre: "Hemodinamia" },
+
+  // Especialidades de Rehabilitación y Apoyo
+  { _id: 60, nombre: "Medicina Física y Rehabilitación" },
+  { _id: 61, nombre: "Psicología Clínica" },
+  { _id: 62, nombre: "Nutrición y Dietética" },
+  { _id: 63, nombre: "Trabajo Social" },
+
+  // Medicina General y Atención Primaria
+  { _id: 70, nombre: "Medicina General" },
+  { _id: 71, nombre: "Medicina Familiar" },
+  { _id: 72, nombre: "Medicina de Urgencias" },
+
+  // Unidades Especializadas
+  { _id: 80, nombre: "Cuidados Intensivos" },
+  { _id: 81, nombre: "Consulta Externa" }
+]);
+
 // ========================================
 // SCRIPT PARA CREAR 100 PACIENTES POR HOSPITAL
 // ========================================
@@ -236,3 +547,4 @@ db.Paciente.aggregate([
 });
 
 print("\n=== SCRIPT COMPLETADO EXITOSAMENTE ===");
+
