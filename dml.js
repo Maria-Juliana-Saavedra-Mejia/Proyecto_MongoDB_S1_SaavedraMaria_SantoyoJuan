@@ -6509,4 +6509,3100 @@ db.Medicamento.insertMany([
 
 // 15. Tratamiento
 
+db.Tratamiento.insertMany([
+  {
+    _id: 1,
+    nombre: "Colecistectomía Laparoscópica",
+    descripcion: "Extirpación quirúrgica de la vesícula biliar mediante técnica laparoscópica.",
+    tipo_tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 2,
+    nombre: "Rehabilitación de Rodilla (Ligamento Cruzado Anterior)",
+    descripcion: "Programa de fisioterapia intensivo post-quirúrgico para la recuperación funcional de la rodilla.",
+    tipo_tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 3,
+    nombre: "Manejo Farmacológico de Diabetes Tipo 2",
+    descripcion: "Prescripción y ajuste de medicamentos orales o insulina para el control glucémico.",
+    tipo_tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 4,
+    nombre: "Quimioterapia de Inducción para Leucemia",
+    descripcion: "Primera fase de quimioterapia intensiva para inducir la remisión en pacientes con leucemia.",
+    tipo_tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 5,
+    nombre: "Radioterapia Adyuvante para Cáncer de Mama",
+    descripcion: "Tratamiento con radiación después de la cirugía para destruir células cancerosas restantes.",
+    tipo_tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 6,
+    nombre: "Terapia Ocupacional para Accidente Cerebrovascular",
+    descripcion: "Ayuda a pacientes a recuperar habilidades para las actividades diarias y mejorar la independencia.",
+    tipo_tratamiento_id: 6 // Terapia Ocupacional
+  },
+  {
+    _id: 7,
+    nombre: "Programa de Ejercicio Supervisado para Insuficiencia Cardíaca",
+    descripcion: "Plan de actividad física adaptado para mejorar la capacidad cardíaca en pacientes con insuficiencia.",
+    tipo_tratamiento_id: 7 // Rehabilitación Cardíaca
+  },
+  {
+    _id: 8,
+    nombre: "Diálisis Hemodiálisis Urgente",
+    descripcion: "Sesión de hemodiálisis de emergencia para pacientes con falla renal aguda o intoxicación grave.",
+    tipo_tratamiento_id: 8 // Diálisis (podría ser también Hemodiálisis)
+  },
+  {
+    _id: 9,
+    nombre: "Transfusión de Plaquetas",
+    descripcion: "Administración de plaquetas para pacientes con recuentos bajos o disfunción plaquetaria.",
+    tipo_tratamiento_id: 9 // Transfusión Sanguínea
+  },
+  {
+    _id: 10,
+    nombre: "Vacunación Anti-Tétanos y Difteria (Td)",
+    descripcion: "Inmunización de refuerzo contra el tétanos y la difteria.",
+    tipo_tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 11,
+    nombre: "Drenaje Postural y Percusión Torácica",
+    descripcion: "Técnicas de fisioterapia para movilizar secreciones pulmonares en enfermedades respiratorias.",
+    tipo_tratamiento_id: 11 // Fisioterapia Respiratoria
+  },
+  {
+    _id: 12,
+    nombre: "Terapia de Reeducación del Habla",
+    descripcion: "Ejercicios y técnicas para mejorar la articulación y fluidez en trastornos del habla.",
+    tipo_tratamiento_id: 13 // Terapia del Lenguaje
+  },
+  {
+    _id: 13,
+    nombre: "Sesión de Hemodiálisis Ambulatoria",
+    descripcion: "Tratamiento de hemodiálisis regular realizado en un centro ambulatorio.",
+    tipo_tratamiento_id: 14 // Hemodiálisis
+  },
+  {
+    _id: 14,
+    nombre: "Infusión de Inmunoglobulinas Intravenosas (IGIV)",
+    descripcion: "Administración de anticuerpos para tratar inmunodeficiencias o enfermedades autoinmunes.",
+    tipo_tratamiento_id: 15 // Terapia de Infusión
+  },
+  {
+    _id: 15,
+    nombre: "Reparación de Hernia Inguinal",
+    descripcion: "Cirugía para corregir una hernia en la región inguinal, a menudo con malla.",
+    tipo_tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 16,
+    nombre: "Manejo Farmacológico de Asma Crónica",
+    descripcion: "Uso de broncodilatadores y corticoides inhalados para el control a largo plazo del asma.",
+    tipo_tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 17,
+    nombre: "Cuidado Avanzado de Úlceras por Presión",
+    descripcion: "Protocolos y productos específicos para la limpieza y curación de úlceras por decúbito.",
+    tipo_tratamiento_id: 16 // Curación de Heridas
+  },
+  {
+    _id: 18,
+    nombre: "Nutrición Enteral por Sonda Nasogástrica",
+    descripcion: "Suministro de nutrientes líquidos a través de una sonda insertada por la nariz hasta el estómago.",
+    tipo_tratamiento_id: 19 // Nutrición Clínica
+  },
+  {
+    _id: 19,
+    nombre: "Terapia Cognitivo-Conductual (TCC) para Ansiedad",
+    descripcion: "Sesiones de psicoterapia para identificar y cambiar patrones de pensamiento y comportamiento asociados a la ansiedad.",
+    tipo_tratamiento_id: 17 // Terapia Psicológica
+  },
+  {
+    _id: 20,
+    nombre: "Resonancia Magnética Nuclear (RMN) Cerebral",
+    descripcion: "Prueba de imagen avanzada para obtener vistas detalladas del cerebro.",
+    tipo_tratamiento_id: 18 // Pruebas Diagnósticas
+  },
+  {
+    _id: 21,
+    nombre: "Manejo de la Hipertensión Arterial Pulmonar",
+    descripcion: "Tratamiento especializado para reducir la presión en las arterias de los pulmones, a menudo con terapias vasodilatadoras.",
+    tipo_tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 22,
+    nombre: "Reemplazo Articular de Cadera (Artroplastia)",
+    descripcion: "Cirugía para reemplazar una articulación de cadera dañada con una prótesis artificial.",
+    tipo_tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 23,
+    nombre: "Terapia de Luz Ultravioleta (Fototerapia)",
+    descripcion: "Uso de luz UV controlada para tratar afecciones cutáneas como psoriasis o vitíligo.",
+    tipo_tratamiento_id: 20 // Fototerapia (asumiendo este tipo de tratamiento en Tipo_Tratamiento)
+  },
+  {
+    _id: 24,
+    nombre: "Drenaje Torácico por Neumotórax",
+    descripcion: "Inserción de un tubo en el espacio pleural para drenar aire y permitir que el pulmón se reexpanda.",
+    tipo_tratamiento_id: 1 // Cirugía (o procedimiento invasivo)
+  },
+  {
+    _id: 25,
+    nombre: "Programa de Manejo de Adicciones",
+    descripcion: "Enfoque integral que incluye terapia individual y grupal, y posiblemente farmacoterapia, para la dependencia de sustancias.",
+    tipo_tratamiento_id: 17 // Terapia Psicológica
+  }
+]);
 
+// 16. Visita_Medica
+
+db.Visita_Medica.insertMany([
+  {
+    "_id": 1,
+    "fecha": ISODate("2024-03-01T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020001",
+    "paciente_id": 1
+  },
+  {
+    "_id": 2,
+    "fecha": ISODate("2024-03-01T10:15:00Z"),
+    "hora": "10:15",
+    "medico_id": "0020002",
+    "paciente_id": 2
+  },
+  {
+    "_id": 3,
+    "fecha": ISODate("2024-03-01T11:30:00Z"),
+    "hora": "11:30",
+    "medico_id": "0020003",
+    "paciente_id": 3
+  },
+  {
+    "_id": 4,
+    "fecha": ISODate("2024-03-01T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020004",
+    "paciente_id": 4
+  },
+  {
+    "_id": 5,
+    "fecha": ISODate("2024-03-01T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020005",
+    "paciente_id": 5
+  },
+  {
+    "_id": 6,
+    "fecha": ISODate("2024-03-02T09:45:00Z"),
+    "hora": "09:45",
+    "medico_id": "0020006",
+    "paciente_id": 6
+  },
+  {
+    "_id": 7,
+    "fecha": ISODate("2024-03-02T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020007",
+    "paciente_id": 7
+  },
+  {
+    "_id": 8,
+    "fecha": ISODate("2024-03-02T11:00:00Z"),
+    "hora": "11:00",
+    "medico_id": "0020008",
+    "paciente_id": 8
+  },
+  {
+    "_id": 9,
+    "fecha": ISODate("2024-03-02T14:20:00Z"),
+    "hora": "14:20",
+    "medico_id": "0020009",
+    "paciente_id": 9
+  },
+  {
+    "_id": 10,
+    "fecha": ISODate("2024-03-02T16:00:00Z"),
+    "hora": "16:00",
+    "medico_id": "0020010",
+    "paciente_id": 10
+  },
+  {
+    "_id": 11,
+    "fecha": ISODate("2024-03-03T09:30:00Z"),
+    "hora": "09:30",
+    "medico_id": "0020011",
+    "paciente_id": 11
+  },
+  {
+    "_id": 12,
+    "fecha": ISODate("2024-03-03T10:45:00Z"),
+    "hora": "10:45",
+    "medico_id": "0020012",
+    "paciente_id": 12
+  },
+  {
+    "_id": 13,
+    "fecha": ISODate("2024-03-03T12:00:00Z"),
+    "hora": "12:00",
+    "medico_id": "0020013",
+    "paciente_id": 13
+  },
+  {
+    "_id": 14,
+    "fecha": ISODate("2024-03-03T14:10:00Z"),
+    "hora": "14:10",
+    "medico_id": "0020014",
+    "paciente_id": 14
+  },
+  {
+    "_id": 15,
+    "fecha": ISODate("2024-03-03T15:50:00Z"),
+    "hora": "15:50",
+    "medico_id": "0020015",
+    "paciente_id": 15
+  },
+  {
+    "_id": 16,
+    "fecha": ISODate("2024-03-04T08:30:00Z"),
+    "hora": "08:30",
+    "medico_id": "0020016",
+    "paciente_id": 16
+  },
+  {
+    "_id": 17,
+    "fecha": ISODate("2024-03-04T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020017",
+    "paciente_id": 17
+  },
+  {
+    "_id": 18,
+    "fecha": ISODate("2024-03-04T11:40:00Z"),
+    "hora": "11:40",
+    "medico_id": "0020018",
+    "paciente_id": 18
+  },
+  {
+    "_id": 19,
+    "fecha": ISODate("2024-03-04T14:30:00Z"),
+    "hora": "14:30",
+    "medico_id": "0020019",
+    "paciente_id": 19
+  },
+  {
+    "_id": 20,
+    "fecha": ISODate("2024-03-04T16:15:00Z"),
+    "hora": "16:15",
+    "medico_id": "0020020",
+    "paciente_id": 20
+  },
+  {
+    "_id": 21,
+    "fecha": ISODate("2024-03-05T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020021",
+    "paciente_id": 21
+  },
+  {
+    "_id": 22,
+    "fecha": ISODate("2024-03-05T10:20:00Z"),
+    "hora": "10:20",
+    "medico_id": "0020022",
+    "paciente_id": 22
+  },
+  {
+    "_id": 23,
+    "fecha": ISODate("2024-03-05T11:50:00Z"),
+    "hora": "11:50",
+    "medico_id": "0020023",
+    "paciente_id": 23
+  },
+  {
+    "_id": 24,
+    "fecha": ISODate("2024-03-05T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020024",
+    "paciente_id": 24
+  },
+  {
+    "_id": 25,
+    "fecha": ISODate("2024-03-05T15:40:00Z"),
+    "hora": "15:40",
+    "medico_id": "0020025",
+    "paciente_id": 25
+  },
+  {
+    "_id": 26,
+    "fecha": ISODate("2024-03-06T09:15:00Z"),
+    "hora": "09:15",
+    "medico_id": "0020001",
+    "paciente_id": 26
+  },
+  {
+    "_id": 27,
+    "fecha": ISODate("2024-03-06T10:30:00Z"),
+    "hora": "10:30",
+    "medico_id": "0020002",
+    "paciente_id": 27
+  },
+  {
+    "_id": 28,
+    "fecha": ISODate("2024-03-06T11:45:00Z"),
+    "hora": "11:45",
+    "medico_id": "0020003",
+    "paciente_id": 28
+  },
+  {
+    "_id": 29,
+    "fecha": ISODate("2024-03-06T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020004",
+    "paciente_id": 29
+  },
+  {
+    "_id": 30,
+    "fecha": ISODate("2024-03-06T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020005",
+    "paciente_id": 30
+  },
+  {
+    "_id": 31,
+    "fecha": ISODate("2024-03-07T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020006",
+    "paciente_id": 31
+  },
+  {
+    "_id": 32,
+    "fecha": ISODate("2024-03-07T10:15:00Z"),
+    "hora": "10:15",
+    "medico_id": "0020007",
+    "paciente_id": 32
+  },
+  {
+    "_id": 33,
+    "fecha": ISODate("2024-03-07T11:30:00Z"),
+    "hora": "11:30",
+    "medico_id": "0020008",
+    "paciente_id": 33
+  },
+  {
+    "_id": 34,
+    "fecha": ISODate("2024-03-07T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020009",
+    "paciente_id": 34
+  },
+  {
+    "_id": 35,
+    "fecha": ISODate("2024-03-07T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020010",
+    "paciente_id": 35
+  },
+  {
+    "_id": 36,
+    "fecha": ISODate("2024-03-08T09:45:00Z"),
+    "hora": "09:45",
+    "medico_id": "0020011",
+    "paciente_id": 36
+  },
+  {
+    "_id": 37,
+    "fecha": ISODate("2024-03-08T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020012",
+    "paciente_id": 37
+  },
+  {
+    "_id": 38,
+    "fecha": ISODate("2024-03-08T11:00:00Z"),
+    "hora": "11:00",
+    "medico_id": "0020013",
+    "paciente_id": 38
+  },
+  {
+    "_id": 39,
+    "fecha": ISODate("2024-03-08T14:20:00Z"),
+    "hora": "14:20",
+    "medico_id": "0020014",
+    "paciente_id": 39
+  },
+  {
+    "_id": 40,
+    "fecha": ISODate("2024-03-08T16:00:00Z"),
+    "hora": "16:00",
+    "medico_id": "0020015",
+    "paciente_id": 40
+  },
+  {
+    "_id": 41,
+    "fecha": ISODate("2024-03-09T09:30:00Z"),
+    "hora": "09:30",
+    "medico_id": "0020016",
+    "paciente_id": 41
+  },
+  {
+    "_id": 42,
+    "fecha": ISODate("2024-03-09T10:45:00Z"),
+    "hora": "10:45",
+    "medico_id": "0020017",
+    "paciente_id": 42
+  },
+  {
+    "_id": 43,
+    "fecha": ISODate("2024-03-09T12:00:00Z"),
+    "hora": "12:00",
+    "medico_id": "0020018",
+    "paciente_id": 43
+  },
+  {
+    "_id": 44,
+    "fecha": ISODate("2024-03-09T14:10:00Z"),
+    "hora": "14:10",
+    "medico_id": "0020019",
+    "paciente_id": 44
+  },
+  {
+    "_id": 45,
+    "fecha": ISODate("2024-03-09T15:50:00Z"),
+    "hora": "15:50",
+    "medico_id": "0020020",
+    "paciente_id": 45
+  },
+  {
+    "_id": 46,
+    "fecha": ISODate("2024-03-10T08:30:00Z"),
+    "hora": "08:30",
+    "medico_id": "0020021",
+    "paciente_id": 46
+  },
+  {
+    "_id": 47,
+    "fecha": ISODate("2024-03-10T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020022",
+    "paciente_id": 47
+  },
+  {
+    "_id": 48,
+    "fecha": ISODate("2024-03-10T11:40:00Z"),
+    "hora": "11:40",
+    "medico_id": "0020023",
+    "paciente_id": 48
+  },
+  {
+    "_id": 49,
+    "fecha": ISODate("2024-03-10T14:30:00Z"),
+    "hora": "14:30",
+    "medico_id": "0020024",
+    "paciente_id": 49
+  },
+  {
+    "_id": 50,
+    "fecha": ISODate("2024-03-10T16:15:00Z"),
+    "hora": "16:15",
+    "medico_id": "0020025",
+    "paciente_id": 50
+  },
+  {
+    "_id": 51,
+    "fecha": ISODate("2024-03-11T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020001",
+    "paciente_id": 51
+  },
+  {
+    "_id": 52,
+    "fecha": ISODate("2024-03-11T10:15:00Z"),
+    "hora": "10:15",
+    "medico_id": "0020002",
+    "paciente_id": 52
+  },
+  {
+    "_id": 53,
+    "fecha": ISODate("2024-03-11T11:30:00Z"),
+    "hora": "11:30",
+    "medico_id": "0020003",
+    "paciente_id": 53
+  },
+  {
+    "_id": 54,
+    "fecha": ISODate("2024-03-11T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020004",
+    "paciente_id": 54
+  },
+  {
+    "_id": 55,
+    "fecha": ISODate("2024-03-11T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020005",
+    "paciente_id": 55
+  },
+  {
+    "_id": 56,
+    "fecha": ISODate("2024-03-12T09:45:00Z"),
+    "hora": "09:45",
+    "medico_id": "0020006",
+    "paciente_id": 56
+  },
+  {
+    "_id": 57,
+    "fecha": ISODate("2024-03-12T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020007",
+    "paciente_id": 57
+  },
+  {
+    "_id": 58,
+    "fecha": ISODate("2024-03-12T11:00:00Z"),
+    "hora": "11:00",
+    "medico_id": "0020008",
+    "paciente_id": 58
+  },
+  {
+    "_id": 59,
+    "fecha": ISODate("2024-03-12T14:20:00Z"),
+    "hora": "14:20",
+    "medico_id": "0020009",
+    "paciente_id": 59
+  },
+  {
+    "_id": 60,
+    "fecha": ISODate("2024-03-12T16:00:00Z"),
+    "hora": "16:00",
+    "medico_id": "0020010",
+    "paciente_id": 60
+  },
+  {
+    "_id": 61,
+    "fecha": ISODate("2024-03-13T09:30:00Z"),
+    "hora": "09:30",
+    "medico_id": "0020011",
+    "paciente_id": 61
+  },
+  {
+    "_id": 62,
+    "fecha": ISODate("2024-03-13T10:45:00Z"),
+    "hora": "10:45",
+    "medico_id": "0020012",
+    "paciente_id": 62
+  },
+  {
+    "_id": 63,
+    "fecha": ISODate("2024-03-13T12:00:00Z"),
+    "hora": "12:00",
+    "medico_id": "0020013",
+    "paciente_id": 63
+  },
+  {
+    "_id": 64,
+    "fecha": ISODate("2024-03-13T14:10:00Z"),
+    "hora": "14:10",
+    "medico_id": "0020014",
+    "paciente_id": 64
+  },
+  {
+    "_id": 65,
+    "fecha": ISODate("2024-03-13T15:50:00Z"),
+    "hora": "15:50",
+    "medico_id": "0020015",
+    "paciente_id": 65
+  },
+  {
+    "_id": 66,
+    "fecha": ISODate("2024-03-14T08:30:00Z"),
+    "hora": "08:30",
+    "medico_id": "0020016",
+    "paciente_id": 66
+  },
+  {
+    "_id": 67,
+    "fecha": ISODate("2024-03-14T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020017",
+    "paciente_id": 67
+  },
+  {
+    "_id": 68,
+    "fecha": ISODate("2024-03-14T11:40:00Z"),
+    "hora": "11:40",
+    "medico_id": "0020018",
+    "paciente_id": 68
+  },
+  {
+    "_id": 69,
+    "fecha": ISODate("2024-03-14T14:30:00Z"),
+    "hora": "14:30",
+    "medico_id": "0020019",
+    "paciente_id": 69
+  },
+  {
+    "_id": 70,
+    "fecha": ISODate("2024-03-14T16:15:00Z"),
+    "hora": "16:15",
+    "medico_id": "0020020",
+    "paciente_id": 70
+  },
+  {
+    "_id": 71,
+    "fecha": ISODate("2024-03-15T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020021",
+    "paciente_id": 71
+  },
+  {
+    "_id": 72,
+    "fecha": ISODate("2024-03-15T10:20:00Z"),
+    "hora": "10:20",
+    "medico_id": "0020022",
+    "paciente_id": 72
+  },
+  {
+    "_id": 73,
+    "fecha": ISODate("2024-03-15T11:50:00Z"),
+    "hora": "11:50",
+    "medico_id": "0020023",
+    "paciente_id": 73
+  },
+  {
+    "_id": 74,
+    "fecha": ISODate("2024-03-15T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020024",
+    "paciente_id": 74
+  },
+  {
+    "_id": 75,
+    "fecha": ISODate("2024-03-15T15:40:00Z"),
+    "hora": "15:40",
+    "medico_id": "0020025",
+    "paciente_id": 75
+  },
+  {
+    "_id": 76,
+    "fecha": ISODate("2024-03-16T09:15:00Z"),
+    "hora": "09:15",
+    "medico_id": "0020001",
+    "paciente_id": 76
+  },
+  {
+    "_id": 77,
+    "fecha": ISODate("2024-03-16T10:30:00Z"),
+    "hora": "10:30",
+    "medico_id": "0020002",
+    "paciente_id": 77
+  },
+  {
+    "_id": 78,
+    "fecha": ISODate("2024-03-16T11:45:00Z"),
+    "hora": "11:45",
+    "medico_id": "0020003",
+    "paciente_id": 78
+  },
+  {
+    "_id": 79,
+    "fecha": ISODate("2024-03-16T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020004",
+    "paciente_id": 79
+  },
+  {
+    "_id": 80,
+    "fecha": ISODate("2024-03-16T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020005",
+    "paciente_id": 80
+  },
+  {
+    "_id": 81,
+    "fecha": ISODate("2024-03-17T09:00:00Z"),
+    "hora": "09:00",
+    "medico_id": "0020006",
+    "paciente_id": 81
+  },
+  {
+    "_id": 82,
+    "fecha": ISODate("2024-03-17T10:15:00Z"),
+    "hora": "10:15",
+    "medico_id": "0020007",
+    "paciente_id": 82
+  },
+  {
+    "_id": 83,
+    "fecha": ISODate("2024-03-17T11:30:00Z"),
+    "hora": "11:30",
+    "medico_id": "0020008",
+    "paciente_id": 83
+  },
+  {
+    "_id": 84,
+    "fecha": ISODate("2024-03-17T14:00:00Z"),
+    "hora": "14:00",
+    "medico_id": "0020009",
+    "paciente_id": 84
+  },
+  {
+    "_id": 85,
+    "fecha": ISODate("2024-03-17T15:30:00Z"),
+    "hora": "15:30",
+    "medico_id": "0020010",
+    "paciente_id": 85
+  },
+  {
+    "_id": 86,
+    "fecha": ISODate("2024-03-18T09:45:00Z"),
+    "hora": "09:45",
+    "medico_id": "0020011",
+    "paciente_id": 86
+  },
+  {
+    "_id": 87,
+    "fecha": ISODate("2024-03-18T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020012",
+    "paciente_id": 87
+  },
+  {
+    "_id": 88,
+    "fecha": ISODate("2024-03-18T11:00:00Z"),
+    "hora": "11:00",
+    "medico_id": "0020013",
+    "paciente_id": 88
+  },
+  {
+    "_id": 89,
+    "fecha": ISODate("2024-03-18T14:20:00Z"),
+    "hora": "14:20",
+    "medico_id": "0020014",
+    "paciente_id": 89
+  },
+  {
+    "_id": 90,
+    "fecha": ISODate("2024-03-18T16:00:00Z"),
+    "hora": "16:00",
+    "medico_id": "0020015",
+    "paciente_id": 90
+  },
+  {
+    "_id": 91,
+    "fecha": ISODate("2024-03-19T09:30:00Z"),
+    "hora": "09:30",
+    "medico_id": "0020016",
+    "paciente_id": 91
+  },
+  {
+    "_id": 92,
+    "fecha": ISODate("2024-03-19T10:45:00Z"),
+    "hora": "10:45",
+    "medico_id": "0020017",
+    "paciente_id": 92
+  },
+  {
+    "_id": 93,
+    "fecha": ISODate("2024-03-19T12:00:00Z"),
+    "hora": "12:00",
+    "medico_id": "0020018",
+    "paciente_id": 93
+  },
+  {
+    "_id": 94,
+    "fecha": ISODate("2024-03-19T14:10:00Z"),
+    "hora": "14:10",
+    "medico_id": "0020019",
+    "paciente_id": 94
+  },
+  {
+    "_id": 95,
+    "fecha": ISODate("2024-03-19T15:50:00Z"),
+    "hora": "15:50",
+    "medico_id": "0020020",
+    "paciente_id": 95
+  },
+  {
+    "_id": 96,
+    "fecha": ISODate("2024-03-20T08:30:00Z"),
+    "hora": "08:30",
+    "medico_id": "0020021",
+    "paciente_id": 96
+  },
+  {
+    "_id": 97,
+    "fecha": ISODate("2024-03-20T10:00:00Z"),
+    "hora": "10:00",
+    "medico_id": "0020022",
+    "paciente_id": 97
+  },
+  {
+    "_id": 98,
+    "fecha": ISODate("2024-03-20T11:40:00Z"),
+    "hora": "11:40",
+    "medico_id": "0020023",
+    "paciente_id": 98
+  },
+  {
+    "_id": 99,
+    "fecha": ISODate("2024-03-20T14:30:00Z"),
+    "hora": "14:30",
+    "medico_id": "0020024",
+    "paciente_id": 99
+  },
+  {
+    "_id": 100,
+    "fecha": ISODate("2024-03-20T16:15:00Z"),
+    "hora": "16:15",
+    "medico_id": "0020025",
+    "paciente_id": 100
+  }
+])
+
+// 17. Historial_Medico
+
+db.Historial_Medico.insertMany([
+  {
+    "_id": 1,
+    "diagnostico_id": 26,
+    "paciente_id": 257,
+    "fecha_registro": ISODate("2024-05-15T10:30:00Z")
+  },
+  {
+    "_id": 2,
+    "diagnostico_id": 13,
+    "paciente_id": 18,
+    "fecha_registro": ISODate("2023-11-20T14:00:00Z")
+  },
+  {
+    "_id": 3,
+    "diagnostico_id": 5,
+    "paciente_id": 381,
+    "fecha_registro": ISODate("2025-01-01T08:00:00Z")
+  },
+  {
+    "_id": 4,
+    "diagnostico_id": 1,
+    "paciente_id": 479,
+    "fecha_registro": ISODate("2024-07-22T11:45:00Z")
+  },
+  {
+    "_id": 5,
+    "diagnostico_id": 18,
+    "paciente_id": 196,
+    "fecha_registro": ISODate("2023-09-01T09:15:00Z")
+  },
+  {
+    "_id": 6,
+    "diagnostico_id": 29,
+    "paciente_id": 150,
+    "fecha_registro": ISODate("2024-03-10T16:20:00Z")
+  },
+  {
+    "_id": 7,
+    "diagnostico_id": 2,
+    "paciente_id": 308,
+    "fecha_registro": ISODate("2024-12-05T13:00:00Z")
+  },
+  {
+    "_id": 8,
+    "diagnostico_id": 20,
+    "paciente_id": 458,
+    "fecha_registro": ISODate("2023-07-30T10:00:00Z")
+  },
+  {
+    "_id": 9,
+    "diagnostico_id": 10,
+    "paciente_id": 204,
+    "fecha_registro": ISODate("2024-08-18T09:00:00Z")
+  },
+  {
+    "_id": 10,
+    "diagnostico_id": 17,
+    "paciente_id": 361,
+    "fecha_registro": ISODate("2023-10-25T15:30:00Z")
+  },
+  {
+    "_id": 11,
+    "diagnostico_id": 23,
+    "paciente_id": 41,
+    "fecha_registro": ISODate("2024-06-01T11:00:00Z")
+  },
+  {
+    "_id": 12,
+    "diagnostico_id": 7,
+    "paciente_id": 286,
+    "fecha_registro": ISODate("2025-02-14T08:45:00Z")
+  },
+  {
+    "_id": 13,
+    "diagnostico_id": 15,
+    "paciente_id": 103,
+    "fecha_registro": ISODate("2024-09-20T17:00:00Z")
+  },
+  {
+    "_id": 14,
+    "diagnostico_id": 3,
+    "paciente_id": 472,
+    "fecha_registro": ISODate("2023-12-12T10:30:00Z")
+  },
+  {
+    "_id": 15,
+    "diagnostico_id": 28,
+    "paciente_id": 219,
+    "fecha_registro": ISODate("2024-04-25T14:10:00Z")
+  },
+  {
+    "_id": 16,
+    "diagnostico_id": 11,
+    "paciente_id": 126,
+    "fecha_registro": ISODate("2024-11-08T09:30:00Z")
+  },
+  {
+    "_id": 17,
+    "diagnostico_id": 19,
+    "paciente_id": 339,
+    "fecha_registro": ISODate("2023-08-05T16:00:00Z")
+  },
+  {
+    "_id": 18,
+    "diagnostico_id": 6,
+    "paciente_id": 175,
+    "fecha_registro": ISODate("2024-01-19T13:40:00Z")
+  },
+  {
+    "_id": 19,
+    "diagnostico_id": 24,
+    "paciente_id": 401,
+    "fecha_registro": ISODate("2024-07-07T10:00:00Z")
+  },
+  {
+    "_id": 20,
+    "diagnostico_id": 9,
+    "paciente_id": 105,
+    "fecha_registro": ISODate("2023-09-15T11:30:00Z")
+  },
+  {
+    "_id": 21,
+    "diagnostico_id": 30,
+    "paciente_id": 328,
+    "fecha_registro": ISODate("2024-03-29T15:00:00Z")
+  },
+  {
+    "_id": 22,
+    "diagnostico_id": 4,
+    "paciente_id": 169,
+    "fecha_registro": ISODate("2024-10-02T12:00:00Z")
+  },
+  {
+    "_id": 23,
+    "diagnostico_id": 16,
+    "paciente_id": 298,
+    "fecha_registro": ISODate("2023-11-01T08:15:00Z")
+  },
+  {
+    "_id": 24,
+    "diagnostico_id": 22,
+    "paciente_id": 11,
+    "fecha_registro": ISODate("2024-05-10T17:00:00Z")
+  },
+  {
+    "_id": 25,
+    "diagnostico_id": 8,
+    "paciente_id": 427,
+    "fecha_registro": ISODate("2025-01-28T09:00:00Z")
+  },
+  {
+    "_id": 26,
+    "diagnostico_id": 25,
+    "paciente_id": 68,
+    "fecha_registro": ISODate("2024-08-03T14:30:00Z")
+  },
+  {
+    "_id": 27,
+    "diagnostico_id": 12,
+    "paciente_id": 353,
+    "fecha_registro": ISODate("2023-10-10T10:45:00Z")
+  },
+  {
+    "_id": 28,
+    "diagnostico_id": 27,
+    "paciente_id": 199,
+    "fecha_registro": ISODate("2024-06-19T11:00:00Z")
+  },
+  {
+    "_id": 29,
+    "diagnostico_id": 14,
+    "paciente_id": 409,
+    "fecha_registro": ISODate("2024-12-24T13:15:00Z")
+  },
+  {
+    "_id": 30,
+    "diagnostico_id": 21,
+    "paciente_id": 88,
+    "fecha_registro": ISODate("2023-07-01T09:00:00Z")
+  },
+  {
+    "_id": 31,
+    "diagnostico_id": 26,
+    "paciente_id": 25,
+    "fecha_registro": ISODate("2024-05-15T10:30:00Z")
+  },
+  {
+    "_id": 32,
+    "diagnostico_id": 13,
+    "paciente_id": 344,
+    "fecha_registro": ISODate("2023-11-20T14:00:00Z")
+  },
+  {
+    "_id": 33,
+    "diagnostico_id": 5,
+    "paciente_id": 490,
+    "fecha_registro": ISODate("2025-01-01T08:00:00Z")
+  },
+  {
+    "_id": 34,
+    "diagnostico_id": 1,
+    "paciente_id": 93,
+    "fecha_registro": ISODate("2024-07-22T11:45:00Z")
+  },
+  {
+    "_id": 35,
+    "diagnostico_id": 18,
+    "paciente_id": 272,
+    "fecha_registro": ISODate("2023-09-01T09:15:00Z")
+  },
+  {
+    "_id": 36,
+    "diagnostico_id": 29,
+    "paciente_id": 481,
+    "fecha_registro": ISODate("2024-03-10T16:20:00Z")
+  },
+  {
+    "_id": 37,
+    "diagnostico_id": 2,
+    "paciente_id": 147,
+    "fecha_registro": ISODate("2024-12-05T13:00:00Z")
+  },
+  {
+    "_id": 38,
+    "diagnostico_id": 20,
+    "paciente_id": 396,
+    "fecha_registro": ISODate("2023-07-30T10:00:00Z")
+  },
+  {
+    "_id": 39,
+    "diagnostico_id": 10,
+    "paciente_id": 223,
+    "fecha_registro": ISODate("2024-08-18T09:00:00Z")
+  },
+  {
+    "_id": 40,
+    "diagnostico_id": 17,
+    "paciente_id": 465,
+    "fecha_registro": ISODate("2023-10-25T15:30:00Z")
+  },
+  {
+    "_id": 41,
+    "diagnostico_id": 23,
+    "paciente_id": 112,
+    "fecha_registro": ISODate("2024-06-01T11:00:00Z")
+  },
+  {
+    "_id": 42,
+    "diagnostico_id": 7,
+    "paciente_id": 29,
+    "fecha_registro": ISODate("2025-02-14T08:45:00Z")
+  },
+  {
+    "_id": 43,
+    "diagnostico_id": 15,
+    "paciente_id": 451,
+    "fecha_registro": ISODate("2024-09-20T17:00:00Z")
+  },
+  {
+    "_id": 44,
+    "diagnostico_id": 3,
+    "paciente_id": 205,
+    "fecha_registro": ISODate("2023-12-12T10:30:00Z")
+  },
+  {
+    "_id": 45,
+    "diagnostico_id": 28,
+    "paciente_id": 377,
+    "fecha_registro": ISODate("2024-04-25T14:10:00Z")
+  },
+  {
+    "_id": 46,
+    "diagnostico_id": 11,
+    "paciente_id": 50,
+    "fecha_registro": ISODate("2024-11-08T09:30:00Z")
+  },
+  {
+    "_id": 47,
+    "diagnostico_id": 19,
+    "paciente_id": 266,
+    "fecha_registro": ISODate("2023-08-05T16:00:00Z")
+  },
+  {
+    "_id": 48,
+    "diagnostico_id": 6,
+    "paciente_id": 420,
+    "fecha_registro": ISODate("2024-01-19T13:40:00Z")
+  },
+  {
+    "_id": 49,
+    "diagnostico_id": 24,
+    "paciente_id": 74,
+    "fecha_registro": ISODate("2024-07-07T10:00:00Z")
+  },
+  {
+    "_id": 50,
+    "diagnostico_id": 9,
+    "paciente_id": 313,
+    "fecha_registro": ISODate("2023-09-15T11:30:00Z")
+  },
+  {
+    "_id": 51,
+    "diagnostico_id": 30,
+    "paciente_id": 178,
+    "fecha_registro": ISODate("2024-03-29T15:00:00Z")
+  },
+  {
+    "_id": 52,
+    "diagnostico_id": 4,
+    "paciente_id": 436,
+    "fecha_registro": ISODate("2024-10-02T12:00:00Z")
+  },
+  {
+    "_id": 53,
+    "diagnostico_id": 16,
+    "paciente_id": 99,
+    "fecha_registro": ISODate("2023-11-01T08:15:00Z")
+  },
+  {
+    "_id": 54,
+    "diagnostico_id": 22,
+    "paciente_id": 369,
+    "fecha_registro": ISODate("2024-05-10T17:00:00Z")
+  },
+  {
+    "_id": 55,
+    "diagnostico_id": 8,
+    "paciente_id": 235,
+    "fecha_registro": ISODate("2025-01-28T09:00:00Z")
+  },
+  {
+    "_id": 56,
+    "diagnostico_id": 25,
+    "paciente_id": 444,
+    "fecha_registro": ISODate("2024-08-03T14:30:00Z")
+  },
+  {
+    "_id": 57,
+    "diagnostico_id": 12,
+    "paciente_id": 10,
+    "fecha_registro": ISODate("2023-10-10T10:45:00Z")
+  },
+  {
+    "_id": 58,
+    "diagnostico_id": 27,
+    "paciente_id": 289,
+    "fecha_registro": ISODate("2024-06-19T11:00:00Z")
+  },
+  {
+    "_id": 59,
+    "diagnostico_id": 14,
+    "paciente_id": 498,
+    "fecha_registro": ISODate("2024-12-24T13:15:00Z")
+  },
+  {
+    "_id": 60,
+    "diagnostico_id": 21,
+    "paciente_id": 154,
+    "fecha_registro": ISODate("2023-07-01T09:00:00Z")
+  },
+  {
+    "_id": 61,
+    "diagnostico_id": 26,
+    "paciente_id": 395,
+    "fecha_registro": ISODate("2024-05-15T10:30:00Z")
+  },
+  {
+    "_id": 62,
+    "diagnostico_id": 13,
+    "paciente_id": 61,
+    "fecha_registro": ISODate("2023-11-20T14:00:00Z")
+  },
+  {
+    "_id": 63,
+    "diagnostico_id": 5,
+    "paciente_id": 312,
+    "fecha_registro": ISODate("2025-01-01T08:00:00Z")
+  },
+  {
+    "_id": 64,
+    "diagnostico_id": 1,
+    "paciente_id": 17,
+    "fecha_registro": ISODate("2024-07-22T11:45:00Z")
+  },
+  {
+    "_id": 65,
+    "diagnostico_id": 18,
+    "paciente_id": 483,
+    "fecha_registro": ISODate("2023-09-01T09:15:00Z")
+  },
+  {
+    "_id": 66,
+    "diagnostico_id": 29,
+    "paciente_id": 211,
+    "fecha_registro": ISODate("2024-03-10T16:20:00Z")
+  },
+  {
+    "_id": 67,
+    "diagnostico_id": 2,
+    "paciente_id": 435,
+    "fecha_registro": ISODate("2024-12-05T13:00:00Z")
+  },
+  {
+    "_id": 68,
+    "diagnostico_id": 20,
+    "paciente_id": 90,
+    "fecha_registro": ISODate("2023-07-30T10:00:00Z")
+  },
+  {
+    "_id": 69,
+    "diagnostico_id": 10,
+    "paciente_id": 307,
+    "fecha_registro": ISODate("2024-08-18T09:00:00Z")
+  },
+  {
+    "_id": 70,
+    "diagnostico_id": 17,
+    "paciente_id": 164,
+    "fecha_registro": ISODate("2023-10-25T15:30:00Z")
+  },
+  {
+    "_id": 71,
+    "diagnostico_id": 23,
+    "paciente_id": 469,
+    "fecha_registro": ISODate("2024-06-01T11:00:00Z")
+  },
+  {
+    "_id": 72,
+    "diagnostico_id": 7,
+    "paciente_id": 133,
+    "fecha_registro": ISODate("2025-02-14T08:45:00Z")
+  },
+  {
+    "_id": 73,
+    "diagnostico_id": 15,
+    "paciente_id": 349,
+    "fecha_registro": ISODate("2024-09-20T17:00:00Z")
+  },
+  {
+    "_id": 74,
+    "diagnostico_id": 3,
+    "paciente_id": 497,
+    "fecha_registro": ISODate("2023-12-12T10:30:00Z")
+  },
+  {
+    "_id": 75,
+    "diagnostico_id": 28,
+    "paciente_id": 224,
+    "fecha_registro": ISODate("2024-04-25T14:10:00Z")
+  },
+  {
+    "_id": 76,
+    "diagnostico_id": 11,
+    "paciente_id": 393,
+    "fecha_registro": ISODate("2024-11-08T09:30:00Z")
+  },
+  {
+    "_id": 77,
+    "diagnostico_id": 19,
+    "paciente_id": 55,
+    "fecha_registro": ISODate("2023-08-05T16:00:00Z")
+  },
+  {
+    "_id": 78,
+    "diagnostico_id": 6,
+    "paciente_id": 301,
+    "fecha_registro": ISODate("2024-01-19T13:40:00Z")
+  },
+  {
+    "_id": 79,
+    "diagnostico_id": 24,
+    "paciente_id": 158,
+    "fecha_registro": ISODate("2024-07-07T10:00:00Z")
+  },
+  {
+    "_id": 80,
+    "diagnostico_id": 9,
+    "paciente_id": 476,
+    "fecha_registro": ISODate("2023-09-15T11:30:00Z")
+  },
+  {
+    "_id": 81,
+    "diagnostico_id": 30,
+    "paciente_id": 249,
+    "fecha_registro": ISODate("2024-03-29T15:00:00Z")
+  },
+  {
+    "_id": 82,
+    "diagnostico_id": 4,
+    "paciente_id": 415,
+    "fecha_registro": ISODate("2024-10-02T12:00:00Z")
+  },
+  {
+    "_id": 83,
+    "diagnostico_id": 16,
+    "paciente_id": 77,
+    "fecha_registro": ISODate("2023-11-01T08:15:00Z")
+  },
+  {
+    "_id": 84,
+    "diagnostico_id": 22,
+    "paciente_id": 356,
+    "fecha_registro": ISODate("2024-05-10T17:00:00Z")
+  },
+  {
+    "_id": 85,
+    "diagnostico_id": 8,
+    "paciente_id": 21,
+    "fecha_registro": ISODate("2025-01-28T09:00:00Z")
+  },
+  {
+    "_id": 86,
+    "diagnostico_id": 25,
+    "paciente_id": 332,
+    "fecha_registro": ISODate("2024-08-03T14:30:00Z")
+  },
+  {
+    "_id": 87,
+    "diagnostico_id": 12,
+    "paciente_id": 182,
+    "fecha_registro": ISODate("2023-10-10T10:45:00Z")
+  },
+  {
+    "_id": 88,
+    "diagnostico_id": 27,
+    "paciente_id": 486,
+    "fecha_registro": ISODate("2024-06-19T11:00:00Z")
+  },
+  {
+    "_id": 89,
+    "diagnostico_id": 14,
+    "paciente_id": 140,
+    "fecha_registro": ISODate("2024-12-24T13:15:00Z")
+  },
+  {
+    "_id": 90,
+    "diagnostico_id": 21,
+    "paciente_id": 454,
+    "fecha_registro": ISODate("2023-07-01T09:00:00Z")
+  },
+  {
+    "_id": 91,
+    "diagnostico_id": 26,
+    "paciente_id": 23,
+    "fecha_registro": ISODate("2024-05-15T10:30:00Z")
+  },
+  {
+    "_id": 92,
+    "diagnostico_id": 13,
+    "paciente_id": 33,
+    "fecha_registro": ISODate("2023-11-20T14:00:00Z")
+  },
+  {
+    "_id": 93,
+    "diagnostico_id": 5,
+    "paciente_id": 47,
+    "fecha_registro": ISODate("2025-01-01T08:00:00Z")
+  },
+  {
+    "_id": 94,
+    "diagnostico_id": 1,
+    "paciente_id": 70,
+    "fecha_registro": ISODate("2024-07-22T11:45:00Z")
+  },
+  {
+    "_id": 95,
+    "diagnostico_id": 18,
+    "paciente_id": 122,
+    "fecha_registro": ISODate("2023-09-01T09:15:00Z")
+  },
+  {
+    "_id": 96,
+    "diagnostico_id": 29,
+    "paciente_id": 425,
+    "fecha_registro": ISODate("2024-03-10T16:20:00Z")
+  },
+  {
+    "_id": 97,
+    "diagnostico_id": 2,
+    "paciente_id": 200,
+    "fecha_registro": ISODate("2024-12-05T13:00:00Z")
+  },
+  {
+    "_id": 98,
+    "diagnostico_id": 20,
+    "paciente_id": 473,
+    "fecha_registro": ISODate("2023-07-30T10:00:00Z")
+  },
+  {
+    "_id": 99,
+    "diagnostico_id": 10,
+    "paciente_id": 139,
+    "fecha_registro": ISODate("2024-08-18T09:00:00Z")
+  },
+  {
+    "_id": 100,
+    "diagnostico_id": 17,
+    "paciente_id": 371,
+    "fecha_registro": ISODate("2023-10-25T15:30:00Z")
+  }
+]);
+
+// 18. Inventario
+
+// DML para la colección Inventario
+db.Inventario.insertMany([
+  {
+    _id: 1,
+    disponibilidad: 245,
+    medicamento_id: 12,
+    ubicacion_id: 11,
+    fecha_ingreso: ISODate("2024-03-20T08:00:00Z")
+  },
+  {
+    _id: 2,
+    disponibilidad: 489,
+    medicamento_id: 25,
+    ubicacion_id: 20,
+    fecha_ingreso: ISODate("2024-02-15T14:30:00Z")
+  },
+  {
+    _id: 3,
+    disponibilidad: 102,
+    medicamento_id: 3,
+    ubicacion_id: 2,
+    fecha_ingreso: ISODate("2024-01-10T10:00:00Z")
+  },
+  {
+    _id: 4,
+    disponibilidad: 350,
+    medicamento_id: 18,
+    ubicacion_id: 18,
+    fecha_ingreso: ISODate("2023-12-05T09:00:00Z")
+  },
+  {
+    _id: 5,
+    disponibilidad: 75,
+    medicamento_id: 7,
+    ubicacion_id: 14,
+    fecha_ingreso: ISODate("2024-04-01T11:00:00Z")
+  },
+  {
+    _id: 6,
+    disponibilidad: 190,
+    medicamento_id: 2,
+    ubicacion_id: 9,
+    fecha_ingreso: ISODate("2024-05-22T16:00:00Z")
+  },
+  {
+    _id: 7,
+    disponibilidad: 420,
+    medicamento_id: 29,
+    ubicacion_id: 13,
+    fecha_ingreso: ISODate("2024-06-01T07:00:00Z")
+  },
+  {
+    _id: 8,
+    disponibilidad: 60,
+    medicamento_id: 5,
+    ubicacion_id: 8,
+    fecha_ingreso: ISODate("2024-01-25T13:00:00Z")
+  },
+  {
+    _id: 9,
+    disponibilidad: 280,
+    medicamento_id: 15,
+    ubicacion_id: 11,
+    fecha_ingreso: ISODate("2024-03-10T10:30:00Z")
+  },
+  {
+    _id: 10,
+    disponibilidad: 115,
+    medicamento_id: 22,
+    ubicacion_id: 19,
+    fecha_ingreso: ISODate("2023-11-28T09:45:00Z")
+  },
+  {
+    _id: 11,
+    disponibilidad: 300,
+    medicamento_id: 1,
+    ubicacion_id: 1,
+    fecha_ingreso: ISODate("2024-07-01T15:00:00Z")
+  },
+  {
+    _id: 12,
+    disponibilidad: 450,
+    medicamento_id: 28,
+    ubicacion_id: 21,
+    fecha_ingreso: ISODate("2024-06-18T10:00:00Z")
+  },
+  {
+    _id: 13,
+    disponibilidad: 88,
+    medicamento_id: 6,
+    ubicacion_id: 3,
+    fecha_ingreso: ISODate("2024-04-05T12:00:00Z")
+  },
+  {
+    _id: 14,
+    disponibilidad: 170,
+    medicamento_id: 21,
+    ubicacion_id: 15,
+    fecha_ingreso: ISODate("2024-02-29T08:30:00Z")
+  },
+  {
+    _id: 15,
+    disponibilidad: 330,
+    medicamento_id: 10,
+    ubicacion_id: 12,
+    fecha_ingreso: ISODate("2024-01-15T11:00:00Z")
+  },
+  {
+    _id: 16,
+    disponibilidad: 90,
+    medicamento_id: 14,
+    ubicacion_id: 14,
+    fecha_ingreso: ISODate("2024-05-01T09:00:00Z")
+  },
+  {
+    _id: 17,
+    disponibilidad: 210,
+    medicamento_id: 27,
+    ubicacion_id: 22,
+    fecha_ingreso: ISODate("2024-03-05T14:00:00Z")
+  },
+  {
+    _id: 18,
+    disponibilidad: 495,
+    medicamento_id: 4,
+    ubicacion_id: 1,
+    fecha_ingreso: ISODate("2023-10-10T16:00:00Z")
+  },
+  {
+    _id: 19,
+    disponibilidad: 130,
+    medicamento_id: 19,
+    ubicacion_id: 18,
+    fecha_ingreso: ISODate("2024-07-20T10:00:00Z")
+  },
+  {
+    _id: 20,
+    disponibilidad: 260,
+    medicamento_id: 9,
+    ubicacion_id: 8,
+    fecha_ingreso: ISODate("2024-06-05T11:00:00Z")
+  },
+  {
+    _id: 21,
+    disponibilidad: 400,
+    medicamento_id: 23,
+    ubicacion_id: 23,
+    fecha_ingreso: ISODate("2024-05-10T09:30:00Z")
+  },
+  {
+    _id: 22,
+    disponibilidad: 55,
+    medicamento_id: 16,
+    ubicacion_id: 16,
+    fecha_ingreso: ISODate("2024-04-25T13:45:00Z")
+  },
+  {
+    _id: 23,
+    disponibilidad: 180,
+    medicamento_id: 30,
+    ubicacion_id: 25,
+    fecha_ingreso: ISODate("2024-03-15T08:00:00Z")
+  },
+  {
+    _id: 24,
+    disponibilidad: 290,
+    medicamento_id: 11,
+    ubicacion_id: 10,
+    fecha_ingreso: ISODate("2024-02-01T12:00:00Z")
+  },
+  {
+    _id: 25,
+    disponibilidad: 70,
+    medicamento_id: 20,
+    ubicacion_id: 17,
+    fecha_ingreso: ISODate("2024-01-01T10:00:00Z")
+  },
+  {
+    _id: 26,
+    disponibilidad: 120,
+    medicamento_id: 13,
+    ubicacion_id: 15,
+    fecha_ingreso: ISODate("2024-07-10T14:00:00Z")
+  },
+  {
+    _id: 27,
+    disponibilidad: 470,
+    medicamento_id: 24,
+    ubicacion_id: 24,
+    fecha_ingreso: ISODate("2024-06-25T09:00:00Z")
+  },
+  {
+    _id: 28,
+    disponibilidad: 95,
+    medicamento_id: 8,
+    ubicacion_id: 4,
+    fecha_ingreso: ISODate("2024-05-05T11:00:00Z")
+  },
+  {
+    _id: 29,
+    disponibilidad: 310,
+    medicamento_id: 17,
+    ubicacion_id: 13,
+    fecha_ingreso: ISODate("2024-04-12T07:30:00Z")
+  },
+  {
+    _id: 30,
+    disponibilidad: 40,
+    medicamento_id: 26,
+    ubicacion_id: 12,
+    fecha_ingreso: ISODate("2024-03-01T10:00:00Z")
+  },
+  {
+    _id: 31,
+    disponibilidad: 200,
+    medicamento_id: 1,
+    ubicacion_id: 1,
+    fecha_ingreso: ISODate("2024-02-20T08:00:00Z")
+  },
+  {
+    _id: 32,
+    disponibilidad: 150,
+    medicamento_id: 30,
+    ubicacion_id: 25,
+    fecha_ingreso: ISODate("2024-01-05T14:30:00Z")
+  },
+  {
+    _id: 33,
+    disponibilidad: 380,
+    medicamento_id: 10,
+    ubicacion_id: 11,
+    fecha_ingreso: ISODate("2023-12-15T10:00:00Z")
+  },
+  {
+    _id: 34,
+    disponibilidad: 65,
+    medicamento_id: 20,
+    ubicacion_id: 17,
+    fecha_ingreso: ISODate("2024-04-10T09:00:00Z")
+  },
+  {
+    _id: 35,
+    disponibilidad: 220,
+    medicamento_id: 29,
+    ubicacion_id: 13,
+    fecha_ingreso: ISODate("2024-05-18T16:00:00Z")
+  },
+  {
+    _id: 36,
+    disponibilidad: 410,
+    medicamento_id: 5,
+    ubicacion_id: 8,
+    fecha_ingreso: ISODate("2024-06-20T07:00:00Z")
+  },
+  {
+    _id: 37,
+    disponibilidad: 80,
+    medicamento_id: 15,
+    ubicacion_id: 11,
+    fecha_ingreso: ISODate("2024-01-30T13:00:00Z")
+  },
+  {
+    _id: 38,
+    disponibilidad: 270,
+    medicamento_id: 22,
+    ubicacion_id: 19,
+    fecha_ingreso: ISODate("2024-03-25T10:30:00Z")
+  },
+  {
+    _id: 39,
+    disponibilidad: 105,
+    medicamento_id: 3,
+    ubicacion_id: 2,
+    fecha_ingreso: ISODate("2023-11-01T09:45:00Z")
+  },
+  {
+    _id: 40,
+    disponibilidad: 320,
+    medicamento_id: 18,
+    ubicacion_id: 18,
+    fecha_ingreso: ISODate("2024-07-05T15:00:00Z")
+  },
+  {
+    _id: 41,
+    disponibilidad: 460,
+    medicamento_id: 7,
+    ubicacion_id: 14,
+    fecha_ingreso: ISODate("2024-06-10T10:00:00Z")
+  },
+  {
+    _id: 42,
+    disponibilidad: 92,
+    medicamento_id: 2,
+    ubicacion_id: 9,
+    fecha_ingreso: ISODate("2024-04-15T12:00:00Z")
+  },
+  {
+    _id: 43,
+    disponibilidad: 175,
+    medicamento_id: 25,
+    ubicacion_id: 20,
+    fecha_ingreso: ISODate("2024-02-25T08:30:00Z")
+  },
+  {
+    _id: 44,
+    disponibilidad: 340,
+    medicamento_id: 12,
+    ubicacion_id: 11,
+    fecha_ingreso: ISODate("2024-01-20T11:00:00Z")
+  },
+  {
+    _id: 45,
+    disponibilidad: 50,
+    medicamento_id: 4,
+    ubicacion_id: 1,
+    fecha_ingreso: ISODate("2024-05-28T09:00:00Z")
+  },
+  {
+    _id: 46,
+    disponibilidad: 230,
+    medicamento_id: 19,
+    ubicacion_id: 18,
+    fecha_ingreso: ISODate("2024-03-08T14:00:00Z")
+  },
+  {
+    _id: 47,
+    disponibilidad: 480,
+    medicamento_id: 9,
+    ubicacion_id: 8,
+    fecha_ingreso: ISODate("2023-10-20T16:00:00Z")
+  },
+  {
+    _id: 48,
+    disponibilidad: 140,
+    medicamento_id: 23,
+    ubicacion_id: 23,
+    fecha_ingreso: ISODate("2024-07-15T10:00:00Z")
+  },
+  {
+    _id: 49,
+    disponibilidad: 250,
+    medicamento_id: 6,
+    ubicacion_id: 3,
+    fecha_ingreso: ISODate("2024-06-08T11:00:00Z")
+  },
+  {
+    _id: 50,
+    disponibilidad: 390,
+    medicamento_id: 21,
+    ubicacion_id: 15,
+    fecha_ingreso: ISODate("2024-05-12T09:30:00Z")
+  }
+]);
+
+// 19. Resultado
+
+// DML para la colección Resultados
+db.Resultado.insertMany([
+  {
+    _id: 1,
+    descripcion: "Resultados de exámenes de laboratorio normales para chequeo general.",
+    tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 2,
+    descripcion: "Mejora significativa en la movilidad del paciente después de terapia física.",
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 3,
+    descripcion: "Niveles de glucosa en sangre controlados con el nuevo tratamiento farmacológico.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 4,
+    descripcion: "Reducción del tamaño del tumor post-quimioterapia, indicando respuesta positiva.",
+    tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 5,
+    descripcion: "Paciente estable y sin complicaciones después de la cirugía de apendicectomía.",
+    tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 6,
+    descripcion: "Recuperación de la función pulmonar tras fisioterapia respiratoria.",
+    tratamiento_id: 11 // Fisioterapia Respiratoria
+  },
+  {
+    _id: 7,
+    descripcion: "Ausencia de signos de progresión de la enfermedad luego de radioterapia.",
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 8,
+    descripcion: "Paciente muestra mayor independencia en actividades diarias post-terapia ocupacional.",
+    tratamiento_id: 6 // Terapia Ocupacional
+  },
+  {
+    _id: 9,
+    descripcion: "Mejora en la capacidad cardiovascular tras programa de rehabilitación cardíaca.",
+    tratamiento_id: 7 // Rehabilitación Cardíaca
+  },
+  {
+    _id: 10,
+    descripcion: "Niveles de toxinas en sangre dentro del rango normal después de diálisis.",
+    tratamiento_id: 8 // Diálisis
+  },
+  {
+    _id: 11,
+    descripcion: "Hemoglobina estable tras transfusión sanguínea, sin reacciones adversas.",
+    tratamiento_id: 9 // Transfusión Sanguínea
+  },
+  {
+    _id: 12,
+    descripcion: "Vacunación exitosa, paciente sin efectos secundarios reportados.",
+    tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 13,
+    descripcion: "Mejora en la capacidad de habla y comunicación después de terapia del lenguaje.",
+    tratamiento_id: 13 // Terapia del Lenguaje
+  },
+  {
+    _id: 14,
+    descripcion: "Paciente presenta función renal adecuada post-hemodiálisis.",
+    tratamiento_id: 14 // Hemodiálisis
+  },
+  {
+    _id: 15,
+    descripcion: "Resultados de laboratorio indican control de la infección con el antibiótico prescrito.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 16,
+    descripcion: "Articulación de la rodilla con mayor rango de movimiento después de la cirugía.",
+    tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 17,
+    descripcion: "Reducción significativa del dolor crónico con el nuevo enfoque de terapia física.",
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 18,
+    descripcion: "Remisión completa de los síntomas de ansiedad con el tratamiento farmacológico.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 19,
+    descripcion: "Biopsia de seguimiento negativa después de quimioterapia, sin células cancerosas.",
+    tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 20,
+    descripcion: "Postoperatorio sin complicaciones, paciente recuperándose favorablemente.",
+    tratamiento_id: 1 // Cirugía
+  },
+  {
+    _id: 21,
+    descripcion: "Mejora en la coordinación motora fina a través de la terapia ocupacional.",
+    tratamiento_id: 12 // Terapia Ocupacional
+  },
+  {
+    _id: 22,
+    descripcion: "Estabilización de la presión arterial con el manejo farmacológico actual.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 23,
+    descripcion: "Pruebas de función hepática dentro de rangos normales después de tratamiento.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 24,
+    descripcion: "Paciente sin signos de recaída después de completar el ciclo de radioterapia.",
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 25,
+    descripcion: "Desarrollo de habilidades sociales y cognitivas en terapia ocupacional pediátrica.",
+    tratamiento_id: 6 // Terapia Ocupacional
+  },
+  {
+    _id: 26,
+    descripcion: "Electrocardiograma (ECG) muestra ritmo cardíaco normal después de rehabilitación.",
+    tratamiento_id: 7 // Rehabilitación Cardíaca
+  },
+  {
+    _id: 27,
+    descripcion: "Niveles de potasio controlados post-diálisis.",
+    tratamiento_id: 8 // Diálisis
+  },
+  {
+    _id: 28,
+    descripcion: "Recuento de plaquetas adecuado después de transfusión, sin sangrado activo.",
+    tratamiento_id: 9 // Transfusión Sanguínea
+  },
+  {
+    _id: 29,
+    descripcion: "Respuesta inmune adecuada generada por la vacunación.",
+    tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 30,
+    descripcion: "Mejora en la capacidad de deglución después de terapia del lenguaje.",
+    tratamiento_id: 13 // Terapia del Lenguaje
+  },
+  {
+    _id: 31,
+    descripcion: "Paciente tolera bien la sesión de hemodiálisis, sin hipotensión.",
+    tratamiento_id: 14 // Hemodiálisis
+  },
+  {
+    _id: 32,
+    descripcion: "Cultivo negativo de orina post-tratamiento de infección urinaria.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 33,
+    descripcion: "Ciclo de quimioterapia completado, paciente en fase de recuperación.",
+    tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 34,
+    descripcion: "Fisioterapia para esguince de tobillo muestra buena progresión.",
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 35,
+    descripcion: "Úlcera gástrica en proceso de cicatrización con tratamiento farmacológico.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 36,
+    descripcion: "Resultados de resonancia magnética (RM) confirman reducción de lesión.",
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 37,
+    descripcion: "Niño con autismo muestra avances en interacción social con terapia ocupacional.",
+    tratamiento_id: 6 // Terapia Ocupacional
+  },
+  {
+    _id: 38,
+    descripcion: "Prueba de esfuerzo cardíaco mejorada post-rehabilitación.",
+    tratamiento_id: 7 // Rehabilitación Cardíaca
+  },
+  {
+    _id: 39,
+    descripcion: "Función renal estable a largo plazo con programa de diálisis.",
+    tratamiento_id: 8 // Diálisis
+  },
+  {
+    _id: 40,
+    descripcion: "Transfusión de plasma completada sin efectos adversos.",
+    tratamiento_id: 9 // Transfusión Sanguínea
+  },
+  {
+    _id: 41,
+    descripcion: "Programa de vacunación infantil al día.",
+    tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 42,
+    descripcion: "Pacientes con EPOC experimentan menos disnea con fisioterapia respiratoria.",
+    tratamiento_id: 11 // Fisioterapia Respiratoria
+  },
+  {
+    _id: 43,
+    descripcion: "Mejoras en la motricidad gruesa gracias a la terapia ocupacional.",
+    tratamiento_id: 12 // Terapia Ocupacional
+  },
+  {
+    _id: 44,
+    descripcion: "Paciente recupera fluidez verbal después de accidente cerebrovascular.",
+    tratamiento_id: 13 // Terapia del Lenguaje
+  },
+  {
+    _id: 45,
+    descripcion: "Monitoreo post-hemodiálisis indica buen equilibrio de electrolitos.",
+    tratamiento_id: 14 // Hemodiálisis
+  },
+  {
+    _id: 46,
+    descripcion: "Control de enfermedades crónicas con la medicación actual.",
+    tratamiento_id: 3 // Tratamiento Farmacológico
+  },
+  {
+    _id: 47,
+    descripcion: "Revisión médica anual con resultados dentro de los parámetros normales.",
+    tratamiento_id: 10 // Vacunación
+  },
+  {
+    _id: 48,
+    descripcion: "Paciente en fase de seguimiento después de radioterapia.",
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 49,
+    descripcion: "Evaluación post-tratamiento muestra excelente recuperación funcional.",
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 50,
+    descripcion: "Resultados de patología post-quirúrgica confirman éxito de la cirugía.",
+    tratamiento_id: 1 // Cirugía
+  }
+]);
+
+// 20. Tratamiento_Area
+
+// DML para la colección Tratamiento_Area
+db.Tratamiento_Area.insertMany([
+  {
+    _id: 1,
+    tratamiento_id: 1, // Cirugía
+    area_id: 1 // Quirófano
+  },
+  {
+    _id: 2,
+    tratamiento_id: 2, // Terapia Física
+    area_id: 2 // Fisioterapia
+  },
+  {
+    _id: 3,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    area_id: 3 // Farmacia
+  },
+  {
+    _id: 4,
+    tratamiento_id: 4, // Quimioterapia
+    area_id: 4 // Oncología
+  },
+  {
+    _id: 5,
+    tratamiento_id: 5, // Radioterapia
+    area_id: 5 // Radiología
+  },
+  {
+    _id: 6,
+    tratamiento_id: 6, // Terapia Ocupacional
+    area_id: 6 // Rehabilitación
+  },
+  {
+    _id: 7,
+    tratamiento_id: 7, // Rehabilitación Cardíaca
+    area_id: 7 // Cardiología
+  },
+  {
+    _id: 8,
+    tratamiento_id: 8, // Diálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 9,
+    tratamiento_id: 9, // Transfusión Sanguínea
+    area_id: 9 // Hematología
+  },
+  {
+    _id: 10,
+    tratamiento_id: 10, // Vacunación
+    area_id: 10 // Medicina Preventiva
+  },
+  {
+    _id: 11,
+    tratamiento_id: 11, // Fisioterapia Respiratoria
+    area_id: 11 // Neumología
+  },
+  {
+    _id: 12,
+    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
+    area_id: 12 // Neurología
+  },
+  {
+    _id: 13,
+    tratamiento_id: 13, // Terapia del Lenguaje
+    area_id: 13 // Fonoaudiología
+  },
+  {
+    _id: 14,
+    tratamiento_id: 14, // Hemodiálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 15,
+    tratamiento_id: 1, // Cirugía
+    area_id: 16 // Anestesiología
+  },
+  {
+    _id: 16,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    area_id: 15 // Consultorios Externos
+  },
+  {
+    _id: 17,
+    tratamiento_id: 2, // Terapia Física
+    area_id: 2 // Fisioterapia
+  },
+  {
+    _id: 18,
+    tratamiento_id: 4, // Quimioterapia
+    area_id: 4 // Oncología
+  },
+  {
+    _id: 19,
+    tratamiento_id: 1, // Cirugía
+    area_id: 1 // Quirófano
+  },
+  {
+    _id: 20,
+    tratamiento_id: 6, // Terapia Ocupacional
+    area_id: 6 // Rehabilitación
+  },
+  {
+    _id: 21,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    area_id: 3 // Farmacia
+  },
+  {
+    _id: 22,
+    tratamiento_id: 5, // Radioterapia
+    area_id: 5 // Radiología
+  },
+  {
+    _id: 23,
+    tratamiento_id: 7, // Rehabilitación Cardíaca
+    area_id: 7 // Cardiología
+  },
+  {
+    _id: 24,
+    tratamiento_id: 8, // Diálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 25,
+    tratamiento_id: 9, // Transfusión Sanguínea
+    area_id: 9 // Hematología
+  },
+  {
+    _id: 26,
+    tratamiento_id: 10, // Vacunación
+    area_id: 10 // Medicina Preventiva
+  },
+  {
+    _id: 27,
+    tratamiento_id: 11, // Fisioterapia Respiratoria
+    area_id: 11 // Neumología
+  },
+  {
+    _id: 28,
+    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
+    area_id: 12 // Neurología
+  },
+  {
+    _id: 29,
+    tratamiento_id: 13, // Terapia del Lenguaje
+    area_id: 13 // Fonoaudiología
+  },
+  {
+    _id: 30,
+    tratamiento_id: 14, // Hemodiálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 31,
+    tratamiento_id: 1, // Cirugía
+    area_id: 1 // Quirófano
+  },
+  {
+    _id: 32,
+    tratamiento_id: 2, // Terapia Física
+    area_id: 2 // Fisioterapia
+  },
+  {
+    _id: 33,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    area_id: 3 // Farmacia
+  },
+  {
+    _id: 34,
+    tratamiento_id: 4, // Quimioterapia
+    area_id: 4 // Oncología
+  },
+  {
+    _id: 35,
+    tratamiento_id: 5, // Radioterapia
+    area_id: 5 // Radiología
+  },
+  {
+    _id: 36,
+    tratamiento_id: 6, // Terapia Ocupacional
+    area_id: 6 // Rehabilitación
+  },
+  {
+    _id: 37,
+    tratamiento_id: 7, // Rehabilitación Cardíaca
+    area_id: 7 // Cardiología
+  },
+  {
+    _id: 38,
+    tratamiento_id: 8, // Diálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 39,
+    tratamiento_id: 9, // Transfusión Sanguínea
+    area_id: 9 // Hematología
+  },
+  {
+    _id: 40,
+    tratamiento_id: 10, // Vacunación
+    area_id: 10 // Medicina Preventiva
+  },
+  {
+    _id: 41,
+    tratamiento_id: 11, // Fisioterapia Respiratoria
+    area_id: 11 // Neumología
+  },
+  {
+    _id: 42,
+    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
+    area_id: 12 // Neurología
+  },
+  {
+    _id: 43,
+    tratamiento_id: 13, // Terapia del Lenguaje
+    area_id: 13 // Fonoaudiología
+  },
+  {
+    _id: 44,
+    tratamiento_id: 14, // Hemodiálisis
+    area_id: 8 // Nefrología
+  },
+  {
+    _id: 45,
+    tratamiento_id: 1, // Cirugía
+    area_id: 1 // Quirófano
+  },
+  {
+    _id: 46,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    area_id: 3 // Farmacia
+  },
+  {
+    _id: 47,
+    tratamiento_id: 2, // Terapia Física
+    area_id: 2 // Fisioterapia
+  },
+  {
+    _id: 48,
+    tratamiento_id: 4, // Quimioterapia
+    area_id: 4 // Oncología
+  },
+  {
+    _id: 49,
+    tratamiento_id: 5, // Radioterapia
+    area_id: 5 // Radiología
+  },
+  {
+    _id: 50,
+    tratamiento_id: 6, // Terapia Ocupacional
+    area_id: 6 // Rehabilitación
+  }
+]);
+
+// 21. Tratamiento_Medicamento
+
+// DML para la colección Tratamiento_Medicamento
+db.Tratamiento_Medicamento.insertMany([
+  {
+    _id: 1,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 1 // Amlodipino
+  },
+  {
+    _id: 2,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 3 // Valsartán
+  },
+  {
+    _id: 3,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 4 // Simvastatina
+  },
+  {
+    _id: 4,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 5 // Metformina
+  },
+  {
+    _id: 5,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 6 // Ibuprofeno
+  },
+  {
+    _id: 6,
+    tratamiento_id: 10, // Vacunación
+    medicamento_id: 29 // Vacuna Antigripal (ejemplo, suponiendo un medicamento de este tipo)
+  },
+  {
+    _id: 7,
+    tratamiento_id: 4, // Quimioterapia
+    medicamento_id: 24 // Doxorrubicina (ejemplo)
+  },
+  {
+    _id: 8,
+    tratamiento_id: 4, // Quimioterapia
+    medicamento_id: 25 // Dexametasona (para efectos secundarios de quimio)
+  },
+  {
+    _id: 9,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 10 // Omeprazol
+  },
+  {
+    _id: 10,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 13 // Amoxicilina
+  },
+  {
+    _id: 11,
+    tratamiento_id: 1, // Cirugía (para pre-medicación o post-operatorio)
+    medicamento_id: 6 // Ibuprofeno
+  },
+  {
+    _id: 12,
+    tratamiento_id: 1, // Cirugía
+    medicamento_id: 17 // Morfina (ejemplo de analgésico post-quirúrgico)
+  },
+  {
+    _id: 13,
+    tratamiento_id: 2, // Terapia Física (para dolor asociado)
+    medicamento_id: 6 // Ibuprofeno
+  },
+  {
+    _id: 14,
+    tratamiento_id: 7, // Rehabilitación Cardíaca (medicamentos de soporte)
+    medicamento_id: 1 // Amlodipino
+  },
+  {
+    _id: 15,
+    tratamiento_id: 8, // Diálisis (medicamentos asociados)
+    medicamento_id: 20 // Eritropoyetina (ejemplo)
+  },
+  {
+    _id: 16,
+    tratamiento_id: 9, // Transfusión Sanguínea (medicamentos de soporte)
+    medicamento_id: 25 // Dexametasona (para reacciones alérgicas)
+  },
+  {
+    _id: 17,
+    tratamiento_id: 11, // Fisioterapia Respiratoria (medicamentos para asma/EPOC)
+    medicamento_id: 23 // Salbutamol
+  },
+  {
+    _id: 18,
+    tratamiento_id: 12, // Terapia Ocupacional (si aplica medicación para el control de síntomas)
+    medicamento_id: 27 // Fluoxetina (para depresión asociada a condiciones crónicas)
+  },
+  {
+    _id: 19,
+    tratamiento_id: 13, // Terapia del Lenguaje (si aplica medicación para condiciones subyacentes)
+    medicamento_id: 12 // Gabapentina
+  },
+  {
+    _id: 20,
+    tratamiento_id: 14, // Hemodiálisis (medicamentos asociados)
+    medicamento_id: 20 // Eritropoyetina
+  },
+  {
+    _id: 21,
+    tratamiento_id: 3,
+    medicamento_id: 26 // Cefalexina
+  },
+  {
+    _id: 22,
+    tratamiento_id: 3,
+    medicamento_id: 14 // Paracetamol
+  },
+  {
+    _id: 23,
+    tratamiento_id: 3,
+    medicamento_id: 15 // Loratadina
+  },
+  {
+    _id: 24,
+    tratamiento_id: 3,
+    medicamento_id: 16 // Prednisona
+  },
+  {
+    _id: 25,
+    tratamiento_id: 3,
+    medicamento_id: 18 // Ranitidina
+  },
+  {
+    _id: 26,
+    tratamiento_id: 3,
+    medicamento_id: 19 // Metoclopramida
+  },
+  {
+    _id: 27,
+    tratamiento_id: 3,
+    medicamento_id: 21 // Atorvastatina
+  },
+  {
+    _id: 28,
+    tratamiento_id: 3,
+    medicamento_id: 27 // Fluoxetina
+  },
+  {
+    _id: 29,
+    tratamiento_id: 3,
+    medicamento_id: 28 // Doxazosin
+  },
+  {
+    _id: 30,
+    tratamiento_id: 3,
+    medicamento_id: 2 // Levotiroxina
+  },
+  {
+    _id: 31,
+    tratamiento_id: 4, // Quimioterapia
+    medicamento_id: 24 // Doxorrubicina
+  },
+  {
+    _id: 32,
+    tratamiento_id: 5, // Radioterapia
+    medicamento_id: 25 // Dexametasona (para manejo de edema)
+  },
+  {
+    _id: 33,
+    tratamiento_id: 1, // Cirugía
+    medicamento_id: 17 // Morfina
+  },
+  {
+    _id: 34,
+    tratamiento_id: 2, // Terapia Física
+    medicamento_id: 6 // Ibuprofeno
+  },
+  {
+    _id: 35,
+    tratamiento_id: 7, // Rehabilitación Cardíaca
+    medicamento_id: 3 // Valsartán
+  },
+  {
+    _id: 36,
+    tratamiento_id: 8, // Diálisis
+    medicamento_id: 20 // Eritropoyetina
+  },
+  {
+    _id: 37,
+    tratamiento_id: 9, // Transfusión Sanguínea
+    medicamento_id: 25 // Dexametasona
+  },
+  {
+    _id: 38,
+    tratamiento_id: 11, // Fisioterapia Respiratoria
+    medicamento_id: 23 // Salbutamol
+  },
+  {
+    _id: 39,
+    tratamiento_id: 13, // Terapia del Lenguaje
+    medicamento_id: 12 // Gabapentina
+  },
+  {
+    _id: 40,
+    tratamiento_id: 14, // Hemodiálisis
+    medicamento_id: 20 // Eritropoyetina
+  },
+  {
+    _id: 41,
+    tratamiento_id: 3,
+    medicamento_id: 10 // Omeprazol
+  },
+  {
+    _id: 42,
+    tratamiento_id: 3,
+    medicamento_id: 13 // Amoxicilina
+  },
+  {
+    _id: 43,
+    tratamiento_id: 3,
+    medicamento_id: 16 // Prednisona
+  },
+  {
+    _id: 44,
+    tratamiento_id: 3,
+    medicamento_id: 18 // Ranitidina
+  },
+  {
+    _id: 45,
+    tratamiento_id: 3,
+    medicamento_id: 19 // Metoclopramida
+  },
+  {
+    _id: 46,
+    tratamiento_id: 10, // Vacunación
+    medicamento_id: 29 // Vacuna Antigripal
+  },
+  {
+    _id: 47,
+    tratamiento_id: 1, // Cirugía
+    medicamento_id: 6 // Ibuprofeno
+  },
+  {
+    _id: 48,
+    tratamiento_id: 4, // Quimioterapia
+    medicamento_id: 24 // Doxorrubicina
+  },
+  {
+    _id: 49,
+    tratamiento_id: 5, // Radioterapia
+    medicamento_id: 25 // Dexametasona
+  },
+  {
+    _id: 50,
+    tratamiento_id: 3, // Tratamiento Farmacológico
+    medicamento_id: 21 // Atorvastatina
+  }
+]);
+// 22. Diagnostico_Tratamiento
+
+// DML para la colección Diagnostico_Tratamiento
+db.Diagnostico_Tratamiento.insertMany([
+  {
+    _id: 1,
+    diagnostico_id: 1, // Gripe común
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. analgésicos, antipiréticos)
+  },
+  {
+    _id: 2,
+    diagnostico_id: 2, // Resfriado común
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. descongestionantes)
+  },
+  {
+    _id: 3,
+    diagnostico_id: 3, // Amigdalitis aguda
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antibióticos si es bacteriana)
+  },
+  {
+    _id: 4,
+    diagnostico_id: 4, // Bronquitis crónica
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. broncodilatadores)
+  },
+  {
+    _id: 5,
+    diagnostico_id: 5, // Asma leve
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. inhaladores)
+  },
+  {
+    _id: 6,
+    diagnostico_id: 6, // Neumonía atípica
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antibióticos específicos)
+  },
+  {
+    _id: 7,
+    diagnostico_id: 7, // Infección urinaria
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antibióticos)
+  },
+  {
+    _id: 8,
+    diagnostico_id: 13, // Apendicitis
+    tratamiento_id: 1 // Cirugía (apendicectomía)
+  },
+  {
+    _id: 9,
+    diagnostico_id: 16, // Diabetes tipo 1
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. insulina)
+  },
+  {
+    _id: 10,
+    diagnostico_id: 17, // Diabetes tipo 2
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. metformina)
+  },
+  {
+    _id: 11,
+    diagnostico_id: 18, // Hipertensión esencial
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antihipertensivos)
+  },
+  {
+    _id: 12,
+    diagnostico_id: 19, // Hipotiroidismo
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. levotiroxina)
+  },
+  {
+    _id: 13,
+    diagnostico_id: 20, // Hipertiroidismo
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antitiroideos)
+  },
+  {
+    _id: 14,
+    diagnostico_id: 21, // Artritis reumatoide
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. AINEs, DMARDs)
+  },
+  {
+    _id: 15,
+    diagnostico_id: 22, // Osteoartritis de rodilla
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 16,
+    diagnostico_id: 23, // Fractura de fémur
+    tratamiento_id: 1 // Cirugía (reducción, fijación)
+  },
+  {
+    _id: 17,
+    diagnostico_id: 25, // Migraña
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. triptanos, analgésicos)
+  },
+  {
+    _id: 18,
+    diagnostico_id: 26, // Epilepsia
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. anticonvulsivantes)
+  },
+  {
+    _id: 19,
+    diagnostico_id: 29, // Infarto agudo de miocardio
+    tratamiento_id: 1 // Cirugía (angioplastia, bypass)
+  },
+  {
+    _id: 20,
+    diagnostico_id: 30, // Insuficiencia cardíaca congestiva
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. diuréticos, IECA)
+  },
+  {
+    _id: 21,
+    diagnostico_id: 31, // Enfermedad renal crónica
+    tratamiento_id: 8 // Diálisis
+  },
+  {
+    _id: 22,
+    diagnostico_id: 32, // Anemia ferropénica
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. suplementos de hierro)
+  },
+  {
+    _id: 23,
+    diagnostico_id: 33, // Leucemia
+    tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 24,
+    diagnostico_id: 34, // Linfoma
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 25,
+    diagnostico_id: 35, // Cáncer de mama
+    tratamiento_id: 1 // Cirugía (mastectomía)
+  },
+  {
+    _id: 26,
+    diagnostico_id: 35, // Cáncer de mama
+    tratamiento_id: 4 // Quimioterapia
+  },
+  {
+    _id: 27,
+    diagnostico_id: 35, // Cáncer de mama
+    tratamiento_id: 5 // Radioterapia
+  },
+  {
+    _id: 28,
+    diagnostico_id: 36, // Depresión mayor
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antidepresivos)
+  },
+  {
+    _id: 29,
+    diagnostico_id: 37, // Trastorno de ansiedad generalizada
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. ansiolíticos)
+  },
+  {
+    _id: 30,
+    diagnostico_id: 38, // Esquizofrenia
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. antipsicóticos)
+  },
+  {
+    _id: 31,
+    diagnostico_id: 39, // Demencia tipo Alzheimer
+    tratamiento_id: 3 // Tratamiento Farmacológico (ej. inhibidores de colinesterasa)
+  },
+  {
+    _id: 32,
+    diagnostico_id: 40, // Accidente cerebrovascular (ACV)
+    tratamiento_id: 2 // Terapia Física
+  },
+  {
+    _id: 33,
+    diagnostico_id: 40, // Accidente cerebrovascular (ACV)
+    tratamiento_id: 6 // Terapia Ocupacional
+  },
+  {
+    _id: 34,
+    diagnostico_id: 40, // Accidente cerebrovascular (ACV)
+    tratamiento_id: 13 // Terapia del Lenguaje
+  },
+  {
+    _id: 35,
+    diagnostico_id: 41, // Neumonía
+    tratamiento_id: 3 // Tratamiento Farmacológico (antibióticos)
+  },
+  {
+    _id: 36,
+    diagnostico_id: 42, // Bronquiolitis
+    tratamiento_id: 11 // Fisioterapia Respiratoria
+  },
+  {
+    _id: 37,
+    diagnostico_id: 43, // Apnea del sueño
+    tratamiento_id: 3 // Tratamiento Farmacológico (dispositivos CPAP, cirugía en casos graves)
+  },
+  {
+    _id: 38,
+    diagnostico_id: 44, // Gastritis
+    tratamiento_id: 3 // Tratamiento Farmacológico (antiácidos, IBP)
+  },
+  {
+    _id: 39,
+    diagnostico_id: 45, // Úlcera péptica
+    tratamiento_id: 3 // Tratamiento Farmacológico (IBP, antibióticos para H. pylori)
+  },
+  {
+    _id: 40,
+    diagnostico_id: 46, // Colelitiasis
+    tratamiento_id: 1 // Cirugía (colecistectomía)
+  },
+  {
+    _id: 41,
+    diagnostico_id: 47, // Hepatitis viral
+    tratamiento_id: 3 // Tratamiento Farmacológico (antivirales)
+  },
+  {
+    _id: 42,
+    diagnostico_id: 48, // Cirrosis hepática
+    tratamiento_id: 3 // Tratamiento Farmacológico (diuréticos, betabloqueantes)
+  },
+  {
+    _id: 43,
+    diagnostico_id: 49, // Glaucoma
+    tratamiento_id: 3 // Tratamiento Farmacológico (gotas oftálmicas)
+  },
+  {
+    _id: 44,
+    diagnostico_id: 50, // Catarata
+    tratamiento_id: 1 // Cirugía (facoemulsificación)
+  },
+  {
+    _id: 45,
+    diagnostico_id: 51, // Otitis media
+    tratamiento_id: 3 // Tratamiento Farmacológico (antibióticos, analgésicos)
+  },
+  {
+    _id: 46,
+    diagnostico_id: 52, // Sinusitis
+    tratamiento_id: 3 // Tratamiento Farmacológico (descongestionantes, antibióticos)
+  },
+  {
+    _id: 47,
+    diagnostico_id: 53, // Varicela
+    tratamiento_id: 3 // Tratamiento Farmacológico (antivirales, antipiréticos)
+  },
+  {
+    _id: 48,
+    diagnostico_id: 54, // Sarampión
+    tratamiento_id: 10 // Vacunación (prevención)
+  },
+  {
+    _id: 49,
+    diagnostico_id: 55, // Paperas
+    tratamiento_id: 10 // Vacunación (prevención)
+  },
+  {
+    _id: 50,
+    diagnostico_id: 56, // Rubéola
+    tratamiento_id: 10 // Vacunación (prevención)
+  }
+]);
+
+// 23. Visita_Diagnostico
+
+// DML para la colección Visita_Diagnostico
+db.Visita_Diagnostico.insertMany([
+  {
+    _id: 1,
+    visita_id: 1, // Visita del Paciente 1
+    diagnostico_id: 1 // Gripe común
+  },
+  {
+    _id: 2,
+    visita_id: 2, // Visita del Paciente 2
+    diagnostico_id: 2 // Resfriado común
+  },
+  {
+    _id: 3,
+    visita_id: 3, // Visita del Paciente 3
+    diagnostico_id: 3 // Amigdalitis aguda
+  },
+  {
+    _id: 4,
+    visita_id: 4, // Visita del Paciente 4
+    diagnostico_id: 4 // Bronquitis crónica
+  },
+  {
+    _id: 5,
+    visita_id: 5, // Visita del Paciente 5
+    diagnostico_id: 5 // Asma leve
+  },
+  {
+    _id: 6,
+    visita_id: 6, // Visita del Paciente 6
+    diagnostico_id: 6 // Neumonía atípica
+  },
+  {
+    _id: 7,
+    visita_id: 7, // Visita del Paciente 7
+    diagnostico_id: 7 // Infección urinaria
+  },
+  {
+    _id: 8,
+    visita_id: 8, // Visita del Paciente 8
+    diagnostico_id: 13 // Apendicitis
+  },
+  {
+    _id: 9,
+    visita_id: 9, // Visita del Paciente 9
+    diagnostico_id: 16 // Diabetes tipo 1
+  },
+  {
+    _id: 10,
+    visita_id: 10, // Visita del Paciente 10
+    diagnostico_id: 17 // Diabetes tipo 2
+  },
+  {
+    _id: 11,
+    visita_id: 11,
+    diagnostico_id: 18 // Hipertensión esencial
+  },
+  {
+    _id: 12,
+    visita_id: 12,
+    diagnostico_id: 19 // Hipotiroidismo
+  },
+  {
+    _id: 13,
+    visita_id: 13,
+    diagnostico_id: 20 // Hipertiroidismo
+  },
+  {
+    _id: 14,
+    visita_id: 14,
+    diagnostico_id: 21 // Artritis reumatoide
+  },
+  {
+    _id: 15,
+    visita_id: 15,
+    diagnostico_id: 22 // Osteoartritis de rodilla
+  },
+  {
+    _id: 16,
+    visita_id: 16,
+    diagnostico_id: 23 // Fractura de fémur
+  },
+  {
+    _id: 17,
+    visita_id: 17,
+    diagnostico_id: 25 // Migraña
+  },
+  {
+    _id: 18,
+    visita_id: 18,
+    diagnostico_id: 26 // Epilepsia
+  },
+  {
+    _id: 19,
+    visita_id: 19,
+    diagnostico_id: 29 // Infarto agudo de miocardio
+  },
+  {
+    _id: 20,
+    visita_id: 20,
+    diagnostico_id: 30 // Insuficiencia cardíaca congestiva
+  },
+  {
+    _id: 21,
+    visita_id: 21,
+    diagnostico_id: 31 // Enfermedad renal crónica
+  },
+  {
+    _id: 22,
+    visita_id: 22,
+    diagnostico_id: 32 // Anemia ferropénica
+  },
+  {
+    _id: 23,
+    visita_id: 23,
+    diagnostico_id: 33 // Leucemia
+  },
+  {
+    _id: 24,
+    visita_id: 24,
+    diagnostico_id: 34 // Linfoma
+  },
+  {
+    _id: 25,
+    visita_id: 25,
+    diagnostico_id: 35 // Cáncer de mama
+  },
+  {
+    _id: 26,
+    visita_id: 26,
+    diagnostico_id: 36 // Depresión mayor
+  },
+  {
+    _id: 27,
+    visita_id: 27,
+    diagnostico_id: 37 // Trastorno de ansiedad generalizada
+  },
+  {
+    _id: 28,
+    visita_id: 28,
+    diagnostico_id: 38 // Esquizofrenia
+  },
+  {
+    _id: 29,
+    visita_id: 29,
+    diagnostico_id: 39 // Demencia tipo Alzheimer
+  },
+  {
+    _id: 30,
+    visita_id: 30,
+    diagnostico_id: 40 // Accidente cerebrovascular (ACV)
+  },
+  {
+    _id: 31,
+    visita_id: 31,
+    diagnostico_id: 41 // Neumonía
+  },
+  {
+    _id: 32,
+    visita_id: 32,
+    diagnostico_id: 42 // Bronquiolitis
+  },
+  {
+    _id: 33,
+    visita_id: 33,
+    diagnostico_id: 43 // Apnea del sueño
+  },
+  {
+    _id: 34,
+    visita_id: 34,
+    diagnostico_id: 44 // Gastritis
+  },
+  {
+    _id: 35,
+    visita_id: 35,
+    diagnostico_id: 45 // Úlcera péptica
+  },
+  {
+    _id: 36,
+    visita_id: 36,
+    diagnostico_id: 46 // Colelitiasis
+  },
+  {
+    _id: 37,
+    visita_id: 37,
+    diagnostico_id: 47 // Hepatitis viral
+  },
+  {
+    _id: 38,
+    visita_id: 38,
+    diagnostico_id: 48 // Cirrosis hepática
+  },
+  {
+    _id: 39,
+    visita_id: 39,
+    diagnostico_id: 49 // Glaucoma
+  },
+  {
+    _id: 40,
+    visita_id: 40,
+    diagnostico_id: 50 // Catarata
+  },
+  {
+    _id: 41,
+    visita_id: 41,
+    diagnostico_id: 51 // Otitis media
+  },
+  {
+    _id: 42,
+    visita_id: 42,
+    diagnostico_id: 52 // Sinusitis
+  },
+  {
+    _id: 43,
+    visita_id: 43,
+    diagnostico_id: 53 // Varicela
+  },
+  {
+    _id: 44,
+    visita_id: 44,
+    diagnostico_id: 54 // Sarampión
+  },
+  {
+    _id: 45,
+    visita_id: 45,
+    diagnostico_id: 55 // Paperas
+  },
+  {
+    _id: 46,
+    visita_id: 46,
+    diagnostico_id: 56 // Rubéola
+  },
+  {
+    _id: 47,
+    visita_id: 47,
+    diagnostico_id: 57 // VIH/SIDA
+  },
+  {
+    _id: 48,
+    visita_id: 48,
+    diagnostico_id: 58 // Tuberculosis
+  },
+  {
+    _id: 49,
+    visita_id: 49,
+    diagnostico_id: 59 // Malaria
+  },
+  {
+    _id: 50,
+    visita_id: 50,
+    diagnostico_id: 60 // Dengue
+  }
+]);
