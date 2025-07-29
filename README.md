@@ -2253,6 +2253,8 @@ db.createCollection("Visita_Diagnostico", {
 show collections;
 ```
 
+# Guia de Inserciones
+
 ## 1\. Hospital
 
 Colección principal para almacenar la información de los hospitales.
