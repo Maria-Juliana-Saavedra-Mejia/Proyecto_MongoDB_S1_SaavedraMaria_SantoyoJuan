@@ -694,38 +694,540 @@ db.Hospital_Area.insertMany([
 
 // 12. MedicosYPersonal
 
-use Sistema_Hospitalario;
+
 
 db.MedicosYPersonal.insertMany([
-  // Médicos del Hospital Universitario de Santander - HUS (_id: 1)
-  { numero_colegiatura: 10001, nombre: "Dr. Juan Pérez", salario: 6500000.00, telefono: "3101234567", hospital_id: 1, especialidad_id: 1 }, // Cirugía General
-  { numero_colegiatura: 10002, nombre: "Dra. Ana Gómez", salario: 6000000.00, telefono: "3112345678", hospital_id: 1, especialidad_id: 20 }, // Medicina Interna
-  { numero_colegiatura: 10003, nombre: "Dr. Carlos Ruiz", salario: 7000000.00, telefono: "3123456789", hospital_id: 1, especialidad_id: 24 }, // Neurología
-  { numero_colegiatura: 10004, nombre: "Dra. Sofía Mora", salario: 6800000.00, telefono: "3134567890", hospital_id: 1, especialidad_id: 5 }, // Ortopedia y Traumatología
-  { numero_colegiatura: 10005, nombre: "Dr. Luis Torres", salario: 5500000.00, telefono: "3145678901", hospital_id: 1, especialidad_id: 25 }, // Endocrinología
 
-  // Médicos de la Fundación Cardiovascular de Colombia - FCV (_id: 2)
-  { numero_colegiatura: 10006, nombre: "Dra. Laura Díaz", salario: 8500000.00, telefono: "3156789012", hospital_id: 2, especialidad_id: 22 }, // Cardiología Intervencionista
-  { numero_colegiatura: 10007, nombre: "Dr. Pedro Vargas", salario: 9000000.00, telefono: "3167890123", hospital_id: 2, especialidad_id: 2 }, // Cirugía Cardiovascular
-  { numero_colegiatura: 10008, nombre: "Dra. Marta Castro", salario: 8000000.00, telefono: "3178901234", hospital_id: 2, especialidad_id: 23 }, // Electrofisiología Cardíaca
-  { numero_colegiatura: 10009, nombre: "Dr. Ricardo Pérez", salario: 7800000.00, telefono: "3189012345", hospital_id: 2, especialidad_id: 52 }, // Hemodinamia
-  { numero_colegiatura: 10010, nombre: "Dra. Elena Soto", salario: 7500000.00, telefono: "3190123456", hospital_id: 2, especialidad_id: 3 }, // Cirugía Vascular y Angiología
+  // Hospital ID: 1 (HUS) - Bloque 1/5
 
-  // Médicos del Hospital Internacional de Colombia - HIC (_id: 3)
-  { numero_colegiatura: 10011, nombre: "Dr. Andrés López", salario: 6200000.00, telefono: "3201234567", hospital_id: 3, especialidad_id: 7 }, // Urología
-  { numero_colegiatura: 10012, nombre: "Dra. Isabel Reyes", salario: 6000000.00, telefono: "3212345678", hospital_id: 3, especialidad_id: 8 }, // Oftalmología
-  { numero_colegiatura: 10013, nombre: "Dr. Diego Jiménez", salario: 6300000.00, telefono: "3223456789", hospital_id: 3, especialidad_id: 9 }, // Otorrinolaringología
-  { numero_colegiatura: 10014, nombre: "Dra. Carolina Vargas", salario: 7000000.00, telefono: "3234567890", hospital_id: 3, especialidad_id: 30 }, // Oncología
-  { numero_colegiatura: 10015, nombre: "Dr. Fernando Quintero", salario: 7200000.00, telefono: "3245678901", hospital_id: 3, especialidad_id: 4 }, // Neurocirugía
 
-  // Personal del Hospital Los Comuneros (_id: 4)
-  { numero_colegiatura: 10016, nombre: "Enf. Gloria Pardo", salario: 3000000.00, telefono: "3256789012", hospital_id: 4, especialidad_id: 70 }, // Medicina General (o puede ser de enfermería, ajusta especialidad si es necesario)
-  { numero_colegiatura: 10017, nombre: "Dr. Sergio Blanco", salario: 5800000.00, telefono: "3267890123", hospital_id: 4, especialidad_id: 50 }, // Radiología
-  { numero_colegiatura: 10018, nombre: "Dra. Natalia Vega", salario: 6000000.00, telefono: "3278901234", hospital_id: 4, especialidad_id: 20 }, // Medicina Interna
-  { numero_colegiatura: 10019, nombre: "Fisio. David Rivas", salario: 3500000.00, telefono: "3289012345", hospital_id: 4, especialidad_id: 60 }, // Medicina Física y Rehabilitación
 
-  // Personal del Hospital Local del Norte (_id: 5)
-  { numero_colegiatura: 10020, nombre: "Dr. Roberto Solano", salario: 5000000.00, telefono: "3290123456", hospital_id: 5, especialidad_id: 71 } // Medicina Familiar
+  // Director General (1)
+
+  { numero_colegiatura: "001001", nombre: "Director A HUS", salario: new Double("20000000.00"), telefono: "3001000001", hospital_id: 1, especialidad_id: 70 }, // Medicina General
+
+
+
+  // Médicos Especialistas (33)
+
+  { numero_colegiatura: "0020001", nombre: "Dr. Ana Medina", salario: new Double("8500000.00"), telefono: "3011000001", hospital_id: 1, especialidad_id: 1 }, // Cirugía General
+
+  { numero_colegiatura: "0020002", nombre: "Dra. Luis Fuentes", salario: new Double("7800000.00"), telefono: "3011000002", hospital_id: 1, especialidad_id: 20 }, // Medicina Interna
+
+  { numero_colegiatura: "0020003", nombre: "Dr. Carla Soto", salario: new Double("9200000.00"), telefono: "3011000003", hospital_id: 1, especialidad_id: 24 }, // Neurología
+
+  { numero_colegiatura: "0020004", nombre: "Dra. Pedro Vera", salario: new Double("8800000.00"), telefono: "3011000004", hospital_id: 1, especialidad_id: 5 }, // Ortopedia y Traumatología
+
+  { numero_colegiatura: "0020005", nombre: "Dr. Sofia Castro", salario: new Double("7500000.00"), telefono: "3011000005", hospital_id: 1, especialidad_id: 25 }, // Endocrinología
+
+  { numero_colegiatura: "0020006", nombre: "Dra. Javier Ruiz", salario: new Double("8900000.00"), telefono: "3011000006", hospital_id: 1, especialidad_id: 7 }, // Urología
+
+  { numero_colegiatura: "0020007", nombre: "Dr. Elena Blanco", salario: new Double("7900000.00"), telefono: "3011000007", hospital_id: 1, especialidad_id: 8 }, // Oftalmología
+
+  { numero_colegiatura: "0020008", nombre: "Dra. Miguel Torres", salario: new Double("8600000.00"), telefono: "3011000008", hospital_id: 1, especialidad_id: 9 }, // Otorrinolaringología
+
+  { numero_colegiatura: "0020009", nombre: "Dr. Laura Pérez", salario: new Double("9000000.00"), telefono: "3011000009", hospital_id: 1, especialidad_id: 30 }, // Oncología
+
+  { numero_colegiatura: "0020010", nombre: "Dra. David Ortiz", salario: new Double("8200000.00"), telefono: "3011000010", hospital_id: 1, especialidad_id: 4 }, // Neurocirugía
+
+  { numero_colegiatura: "0020011", nombre: "Dr. Andrea Rojas", salario: new Double("7700000.00"), telefono: "3011000011", hospital_id: 1, especialidad_id: 10 }, // Pediatría
+
+  { numero_colegiatura: "0020012", nombre: "Dra. Carlos Gil", salario: new Double("9100000.00"), telefono: "3011000012", hospital_id: 1, especialidad_id: 11 }, // Ginecología y Obstetricia
+
+  { numero_colegiatura: "0020013", nombre: "Dr. Sara Díaz", salario: new Double("8000000.00"), telefono: "3011000013", hospital_id: 1, especialidad_id: 40 }, // Dermatología
+
+  { numero_colegiatura: "0020014", nombre: "Dra. Jorge Pardo", salario: new Double("8400000.00"), telefono: "3011000014", hospital_id: 1, especialidad_id: 41 }, // Alergología
+
+  { numero_colegiatura: "0020015", nombre: "Dr. Valeria Vargas", salario: new Double("7600000.00"), telefono: "3011000015", hospital_id: 1, especialidad_id: 21 }, // Gastroenterología
+
+  { numero_colegiatura: "0020016", nombre: "Dra. Ricardo Vega", salario: new Double("8700000.00"), telefono: "3011000016", hospital_id: 1, especialidad_id: 50 }, // Radiología
+
+  { numero_colegiatura: "0020017", nombre: "Dr. Isabel Flores", salario: new Double("8100000.00"), telefono: "3011000017", hospital_id: 1, especialidad_id: 51 }, // Anestesiología
+
+  { numero_colegiatura: "0020018", nombre: "Dra. Daniel Ramos", salario: new Double("8300000.00"), telefono: "3011000018", hospital_id: 1, especialidad_id: 52 }, // Hemodinamia
+
+  { numero_colegiatura: "0020019", nombre: "Dr. Patricia Herrera", salario: new Double("7950000.00"), telefono: "3011000019", hospital_id: 1, especialidad_id: 72 }, // Medicina del Deporte
+
+  { numero_colegiatura: "0020020", nombre: "Dra. Gabriel Núñez", salario: new Double("9050000.00"), telefono: "3011000020", hospital_id: 1, especialidad_id: 80 }, // Cuidados Paliativos
+
+  { numero_colegiatura: "0020021", nombre: "Dr. Mariana Acosta", salario: new Double("8250000.00"), telefono: "3011000021", hospital_id: 1, especialidad_id: 81 }, // Geriatría
+
+  { numero_colegiatura: "0020022", nombre: "Dra. Esteban Romero", salario: new Double("7900000.00"), telefono: "3011000022", hospital_id: 1, especialidad_id: 1 }, // Cirugía General
+
+  { numero_colegiatura: "0020023", nombre: "Dr. Sofia Morales", salario: new Double("8800000.00"), telefono: "3011000023", hospital_id: 1, especialidad_id: 20 }, // Medicina Interna
+
+  { numero_colegiatura: "0020024", nombre: "Dra. Juan Camargo", salario: new Double("9000000.00"), telefono: "3011000024", hospital_id: 1, especialidad_id: 24 }, // Neurología
+
+  { numero_colegiatura: "0020025", nombre: "Dr. Luisa Peña", salario: new Double("7750000.00"), telefono: "3011000025", hospital_id: 1, especialidad_id: 5 }, // Ortopedia y Traumatología
+
+  { numero_colegiatura: "0020026", nombre: "Dra. Felipe Suárez", salario: new Double("8150000.00"), telefono: "3011000026", hospital_id: 1, especialidad_id: 25 }, // Endocrinología
+
+  { numero_colegiatura: "0020027", nombre: "Dr. Natalia Guzmán", salario: new Double("8550000.00"), telefono: "3011000027", hospital_id: 1, especialidad_id: 7 }, // Urología
+
+  { numero_colegiatura: "0020028", nombre: "Dra. Roberto Castro", salario: new Double("7850000.00"), telefono: "3011000028", hospital_id: 1, especialidad_id: 8 }, // Oftalmología
+
+  { numero_colegiatura: "0020029", nombre: "Dr. Valeria Gómez", salario: new Double("8950000.00"), telefono: "3011000029", hospital_id: 1, especialidad_id: 9 }, // Otorrinolaringología
+
+  { numero_colegiatura: "0020030", nombre: "Dra. Andrés Pinto", salario: new Double("9150000.00"), telefono: "3011000030", hospital_id: 1, especialidad_id: 30 }, // Oncología
+
+  { numero_colegiatura: "0020031", nombre: "Dr. Carolina Mesa", salario: new Double("8350000.00"), telefono: "3011000031", hospital_id: 1, especialidad_id: 4 }, // Neurocirugía
+
+  { numero_colegiatura: "0020032", nombre: "Dra. Fernando Durán", salario: new Double("7650000.00"), telefono: "3011000032", hospital_id: 1, especialidad_id: 10 }, // Pediatría
+
+  { numero_colegiatura: "0020033", nombre: "Dr. Julián Quintero", salario: new Double("8050000.00"), telefono: "3011000033", hospital_id: 1, especialidad_id: 11 }, // Ginecología y Obstetricia
+
+
+
+
+
+  // Enfermeros/as (8)
+
+  { numero_colegiatura: "003001", nombre: "Enf. María Silva", salario: new Double("3200000.00"), telefono: "3021000001", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003002", nombre: "Enf. Juan Cortés", salario: new Double("2800000.00"), telefono: "3021000002", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003003", nombre: "Enf. Ana Beltrán", salario: new Double("3500000.00"), telefono: "3021000003", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003004", nombre: "Enf. Pedro Rojas", salario: new Double("3000000.00"), telefono: "3021000004", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003005", nombre: "Enf. Sofía Lima", salario: new Double("3300000.00"), telefono: "3021000005", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003006", nombre: "Enf. Luis Morales", salario: new Double("2900000.00"), telefono: "3021000006", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003007", nombre: "Enf. Valeria Ortiz", salario: new Double("3100000.00"), telefono: "3021000007", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "003008", nombre: "Enf. David Rivas", salario: new Double("3400000.00"), telefono: "3021000008", hospital_id: 1, especialidad_id: 70 },
+
+
+
+  // Personal Administrativo (5)
+
+  { numero_colegiatura: "004001", nombre: "Adm. Claudia Paz", salario: new Double("2200000.00"), telefono: "3031000001", hospital_id: 1, especialidad_id: 63 }, // Trabajo Social
+
+  { numero_colegiatura: "004002", nombre: "Adm. Héctor Vega", salario: new Double("1900000.00"), telefono: "3031000002", hospital_id: 1, especialidad_id: 63 },
+
+  { numero_colegiatura: "004003", nombre: "Adm. Gina Castro", salario: new Double("2500000.00"), telefono: "3031000003", hospital_id: 1, especialidad_id: 63 },
+
+  { numero_colegiatura: "004004", nombre: "Adm. Raúl Torres", salario: new Double("2000000.00"), telefono: "3031000004", hospital_id: 1, especialidad_id: 63 },
+
+  { numero_colegiatura: "004005", nombre: "Adm. Brenda Arias", salario: new Double("2300000.00"), telefono: "3031000005", hospital_id: 1, especialidad_id: 63 },
+
+
+
+  // Personal de Mantenimiento (3)
+
+  { numero_colegiatura: "00501", nombre: "Mant. Jorge Polo", salario: new Double("1500000.00"), telefono: "3041000001", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "00502", nombre: "Mant. Martha Cruz", salario: new Double("1300000.00"), telefono: "3041000002", hospital_id: 1, especialidad_id: 70 },
+
+  { numero_colegiatura: "00503", nombre: "Mant. Diego Peña", salario: new Double("1600000.00"), telefono: "3041000003", hospital_id: 1, especialidad_id: 70 }
+
+]);
+
+
+
+print("Se han insertado 50 documentos para el Hospital ID 1 en MedicosYPersonal.");
+
+
+
+
+
+
+db.MedicosYPersonal.insertMany([
+
+  // Hospital ID: 2 (FCV) - Bloque 2/5
+
+
+
+  // Director General (1)
+
+  { numero_colegiatura: "001002", nombre: "Director B FCV", salario: new Double("22000000.00"), telefono: "3001000002", hospital_id: 2, especialidad_id: 70 }, // Medicina General
+
+
+
+  // Médicos Especialistas (33)
+
+  { numero_colegiatura: "0020034", nombre: "Dr. Roberto Casas", salario: new Double("10500000.00"), telefono: "3011000034", hospital_id: 2, especialidad_id: 22 }, // Cardiología Intervencionista
+
+  { numero_colegiatura: "0020035", nombre: "Dra. Eliana López", salario: new Double("11000000.00"), telefono: "3011000035", hospital_id: 2, especialidad_id: 2 }, // Cirugía Cardiovascular
+
+  { numero_colegiatura: "0020036", nombre: "Dr. Martín Sotomayor", salario: new Double("9800000.00"), telefono: "3011000036", hospital_id: 2, especialidad_id: 23 }, // Electrofisiología Cardíaca
+
+  { numero_colegiatura: "0020037", nombre: "Dra. Camila Ferrer", salario: new Double("9500000.00"), telefono: "3011000037", hospital_id: 2, especialidad_id: 52 }, // Hemodinamia
+
+  { numero_colegiatura: "0020038", nombre: "Dr. Alejandro Vidal", salario: new Double("10200000.00"), telefono: "3011000038", hospital_id: 2, especialidad_id: 3 }, // Cirugía Vascular y Angiología
+
+  { numero_colegiatura: "0020039", nombre: "Dra. Valeria Salas", salario: new Double("9700000.00"), telefono: "3011000039", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020040", nombre: "Dr. Sebastián Prada", salario: new Double("10800000.00"), telefono: "3011000040", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020041", nombre: "Dra. Jimena León", salario: new Double("9900000.00"), telefono: "3011000041", hospital_id: 2, especialidad_id: 23 },
+
+  { numero_colegiatura: "0020042", nombre: "Dr. Cristian Morales", salario: new Double("9600000.00"), telefono: "3011000042", hospital_id: 2, especialidad_id: 52 },
+
+  { numero_colegiatura: "0020043", nombre: "Dra. Sofía Rincón", salario: new Double("10300000.00"), telefono: "3011000043", hospital_id: 2, especialidad_id: 3 },
+
+  { numero_colegiatura: "0020044", nombre: "Dr. Fabián Vargas", salario: new Double("10400000.00"), telefono: "3011000044", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020045", nombre: "Dra. Luz Marina Solano", salario: new Double("10900000.00"), telefono: "3011000045", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020046", nombre: "Dr. Camilo Giraldo", salario: new Double("9750000.00"), telefono: "3011000046", hospital_id: 2, especialidad_id: 23 },
+
+  { numero_colegiatura: "0020047", nombre: "Dra. Victoria Gómez", salario: new Double("9450000.00"), telefono: "3011000047", hospital_id: 2, especialidad_id: 52 },
+
+  { numero_colegiatura: "0020048", nombre: "Dr. Esteban Cárdenas", salario: new Double("10150000.00"), telefono: "3011000048", hospital_id: 2, especialidad_id: 3 },
+
+  { numero_colegiatura: "0020049", nombre: "Dra. Gabriela Parra", salario: new Double("10600000.00"), telefono: "3011000049", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020050", nombre: "Dr. Diego Quintero", salario: new Double("11200000.00"), telefono: "3011000050", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020051", nombre: "Dra. Laura Morales", salario: new Double("10000000.00"), telefono: "3011000051", hospital_id: 2, especialidad_id: 23 },
+
+  { numero_colegiatura: "0020052", nombre: "Dr. Felipe Soto", salario: new Double("9550000.00"), telefono: "3011000052", hospital_id: 2, especialidad_id: 52 },
+
+  { numero_colegiatura: "0020053", nombre: "Dra. Carolina Vargas", salario: new Double("10250000.00"), telefono: "3011000053", hospital_id: 2, especialidad_id: 3 },
+
+  { numero_colegiatura: "0020054", nombre: "Dr. Andrés Beltrán", salario: new Double("10700000.00"), telefono: "3011000054", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020055", nombre: "Dra. Natalia Ruiz", salario: new Double("11100000.00"), telefono: "3011000055", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020056", nombre: "Dr. Julián Martínez", salario: new Double("9950000.00"), telefono: "3011000056", hospital_id: 2, especialidad_id: 23 },
+
+  { numero_colegiatura: "0020057", nombre: "Dra. Silvia Giraldo", salario: new Double("9650000.00"), telefono: "3011000057", hospital_id: 2, especialidad_id: 52 },
+
+  { numero_colegiatura: "0020058", nombre: "Dr. Juan Pablo Herrera", salario: new Double("10350000.00"), telefono: "3011000058", hospital_id: 2, especialidad_id: 3 },
+
+  { numero_colegiatura: "0020059", nombre: "Dra. Andrea Reyes", salario: new Double("10850000.00"), telefono: "3011000059", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020060", nombre: "Dr. Pablo Estrada", salario: new Double("11300000.00"), telefono: "3011000060", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020061", nombre: "Dra. Marcela Londoño", salario: new Double("10050000.00"), telefono: "3011000061", hospital_id: 2, especialidad_id: 23 },
+
+  { numero_colegiatura: "0020062", nombre: "Dr. Daniel Jiménez", salario: new Double("9700000.00"), telefono: "3011000062", hospital_id: 2, especialidad_id: 52 },
+
+  { numero_colegiatura: "0020063", nombre: "Dra. Paula Andrea Pinto", salario: new Double("10450000.00"), telefono: "3011000063", hospital_id: 2, especialidad_id: 3 },
+
+  { numero_colegiatura: "0020064", nombre: "Dr. Mario Bustamante", salario: new Double("10950000.00"), telefono: "3011000064", hospital_id: 2, especialidad_id: 22 },
+
+  { numero_colegiatura: "0020065", nombre: "Dra. Luisa Fernanda Diaz", salario: new Double("11400000.00"), telefono: "3011000065", hospital_id: 2, especialidad_id: 2 },
+
+  { numero_colegiatura: "0020066", nombre: "Dr. Juan Esteban Gomez", salario: new Double("10100000.00"), telefono: "3011000066", hospital_id: 2, especialidad_id: 23 },
+
+
+
+  // Enfermeros/as (8)
+
+  { numero_colegiatura: "003009", nombre: "Enf. Camilo Soto", salario: new Double("3150000.00"), telefono: "3021000009", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003010", nombre: "Enf. Daniela Quintero", salario: new Double("3450000.00"), telefono: "3021000010", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003011", nombre: "Enf. Oscar Mesa", salario: new Double("3050000.00"), telefono: "3021000011", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003012", nombre: "Enf. Laura Bernal", salario: new Double("3600000.00"), telefono: "3021000012", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003013", nombre: "Enf. Andrés Castro", salario: new Double("2950000.00"), telefono: "3021000013", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003014", nombre: "Enf. Luisa Vargas", salario: new Double("3250000.00"), telefono: "3021000014", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003015", nombre: "Enf. Ricardo Pérez", salario: new Double("3550000.00"), telefono: "3021000015", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "003016", nombre: "Enf. Paula Torres", salario: new Double("3000000.00"), telefono: "3021000016", hospital_id: 2, especialidad_id: 70 },
+
+
+
+  // Personal Administrativo (5)
+
+  { numero_colegiatura: "004006", nombre: "Adm. Mauricio Ríos", salario: new Double("2100000.00"), telefono: "3031000006", hospital_id: 2, especialidad_id: 63 },
+
+  { numero_colegiatura: "004007", nombre: "Adm. Viviana Suárez", salario: new Double("2400000.00"), telefono: "3031000007", hospital_id: 2, especialidad_id: 63 },
+
+  { numero_colegiatura: "004008", nombre: "Adm. Fernando Ortiz", salario: new Double("1800000.00"), telefono: "3031000008", hospital_id: 2, especialidad_id: 63 },
+
+  { numero_colegiatura: "004009", nombre: "Adm. Carolina Luna", salario: new Double("2050000.00"), telefono: "3031000009", hospital_id: 2, especialidad_id: 63 },
+
+  { numero_colegiatura: "004010", nombre: "Adm. Alex Montoya", salario: new Double("2350000.00"), telefono: "3031000010", hospital_id: 2, especialidad_id: 63 },
+
+
+
+  // Personal de Mantenimiento (3)
+
+  { numero_colegiatura: "00504", nombre: "Mant. Sandra Soto", salario: new Double("1450000.00"), telefono: "3041000004", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "00505", nombre: "Mant. Carlos López", salario: new Double("1650000.00"), telefono: "3041000005", hospital_id: 2, especialidad_id: 70 },
+
+  { numero_colegiatura: "00506", nombre: "Mant. Luisa Perdomo", salario: new Double("1250000.00"), telefono: "3041000006", hospital_id: 2, especialidad_id: 70 }
+
+]);
+
+
+
+print("Se han insertado 50 documentos para el Hospital ID 2 en MedicosYPersonal.");
+
+
+
+
+db.MedicosYPersonal.insertMany([
+
+  // Hospital ID: 3 (FOSCAL) - Bloque 3/5
+
+
+
+  // Director General (1)
+
+  { numero_colegiatura: "001003", nombre: "Director C FOSCAL", salario: new Double("18000000.00"), telefono: "3001000003", hospital_id: 3, especialidad_id: 70 }, // Medicina General
+
+
+
+  // Médicos Especialistas (33)
+
+  { numero_colegiatura: "0020067", nombre: "Dr. Julio Bernal", salario: new Double("9000000.00"), telefono: "3011000067", hospital_id: 3, especialidad_id: 6 }, // Pediatría
+
+  { numero_colegiatura: "0020068", nombre: "Dra. Pilar Méndez", salario: new Double("8500000.00"), telefono: "3011000068", hospital_id: 3, especialidad_id: 7 }, // Urología
+
+  { numero_colegiatura: "0020069", nombre: "Dr. Juan Carlos Daza", salario: new Double("9800000.00"), telefono: "3011000069", hospital_id: 3, especialidad_id: 8 }, // Oftalmología
+
+  { numero_colegiatura: "0020070", nombre: "Dra. Adriana Silva", salario: new Double("9200000.00"), telefono: "3011000070", hospital_id: 3, especialidad_id: 9 }, // Otorrinolaringología
+
+  { numero_colegiatura: "0020071", nombre: "Dr. Gonzalo Torres", salario: new Double("8700000.00"), telefono: "3011000071", hospital_id: 3, especialidad_id: 10 }, // Ginecología y Obstetricia
+
+  { numero_colegiatura: "0020072", nombre: "Dra. Viviana Herrera", salario: new Double("9100000.00"), telefono: "3011000072", hospital_id: 3, especialidad_id: 11 }, // Cirugía Plástica
+
+  { numero_colegiatura: "0020073", nombre: "Dr. Ricardo Pérez", salario: new Double("8600000.00"), telefono: "3011000073", hospital_id: 3, especialidad_id: 20 }, // Medicina Interna
+
+  { numero_colegiatura: "0020074", nombre: "Dra. Sofía Jiménez", salario: new Double("9900000.00"), telefono: "3011000074", hospital_id: 3, especialidad_id: 21 }, // Gastroenterología
+
+  { numero_colegiatura: "0020075", nombre: "Dr. Camilo Giraldo", salario: new Double("9300000.00"), telefono: "3011000075", hospital_id: 3, especialidad_id: 22 }, // Cardiología Intervencionista
+
+  { numero_colegiatura: "0020076", nombre: "Dra. Claudia Vargas", salario: new Double("8800000.00"), telefono: "3011000076", hospital_id: 3, especialidad_id: 23 }, // Electrofisiología Cardíaca
+
+  { numero_colegiatura: "0020077", nombre: "Dr. Nicolás Botero", salario: new Double("9250000.00"), telefono: "3011000077", hospital_id: 3, especialidad_id: 24 }, // Neurología
+
+  { numero_colegiatura: "0020078", nombre: "Dra. Elena Quintero", salario: new Double("8750000.00"), telefono: "3011000078", hospital_id: 3, especialidad_id: 25 }, // Endocrinología
+
+  { numero_colegiatura: "0020079", nombre: "Dr. Juan José López", salario: new Double("9400000.00"), telefono: "3011000079", hospital_id: 3, especialidad_id: 26 }, // Neumología
+
+  { numero_colegiatura: "0020080", nombre: "Dra. Laura Mesa", salario: new Double("8900000.00"), telefono: "3011000080", hospital_id: 3, especialidad_id: 27 }, // Nefrología
+
+  { numero_colegiatura: "0020081", nombre: "Dr. Andrés Camargo", salario: new Double("9600000.00"), telefono: "3011000081", hospital_id: 3, especialidad_id: 28 }, // Reumatología
+
+  { numero_colegiatura: "0020082", nombre: "Dra. Valentina Suárez", salario: new Double("9050000.00"), telefono: "3011000082", hospital_id: 3, especialidad_id: 29 }, // Hematología
+
+  { numero_colegiatura: "0020083", nombre: "Dr. Daniel Rincón", salario: new Double("9700000.00"), telefono: "3011000083", hospital_id: 3, especialidad_id: 30 }, // Oncología
+
+  { numero_colegiatura: "0020084", nombre: "Dra. Sara Díaz", salario: new Double("9150000.00"), telefono: "3011000084", hospital_id: 3, especialidad_id: 31 }, // Geriatría
+
+  { numero_colegiatura: "0020085", nombre: "Dr. Felipe Martínez", salario: new Double("9350000.00"), telefono: "3011000085", hospital_id: 3, especialidad_id: 32 }, // Infectología
+
+  { numero_colegiatura: "0020086", nombre: "Dra. María Paz", salario: new Double("8850000.00"), telefono: "3011000086", hospital_id: 3, especialidad_id: 33 }, // Medicina Intensiva
+
+  { numero_colegiatura: "0020087", nombre: "Dr. Esteban Guzmán", salario: new Double("9550000.00"), telefono: "3011000087", hospital_id: 3, especialidad_id: 34 }, // Medicina Nuclear
+
+  { numero_colegiatura: "0020088", nombre: "Dra. Carolina Vargas", salario: new Double("8950000.00"), telefono: "3011000088", hospital_id: 3, especialidad_id: 40 }, // Dermatología
+
+  { numero_colegiatura: "0020089", nombre: "Dr. Alejandro Restrepo", salario: new Double("9750000.00"), telefono: "3011000089", hospital_id: 3, especialidad_id: 41 }, // Alergología
+
+  { numero_colegiatura: "0020090", nombre: "Dra. Natalia Morales", salario: new Double("9200000.00"), telefono: "3011000090", hospital_id: 3, especialidad_id: 50 }, // Radiología
+
+  { numero_colegiatura: "0020091", nombre: "Dr. Miguel Ángel Sierra", salario: new Double("8700000.00"), telefono: "3011000091", hospital_id: 3, especialidad_id: 51 }, // Anestesiología
+
+  { numero_colegiatura: "0020092", nombre: "Dra. Diana Carolina Soto", salario: new Double("9000000.00"), telefono: "3011000092", hospital_id: 3, especialidad_id: 52 }, // Hemodinamia
+
+  { numero_colegiatura: "0020093", nombre: "Dr. Christian Gómez", salario: new Double("9450000.00"), telefono: "3011000093", hospital_id: 3, especialidad_id: 72 }, // Medicina del Deporte
+
+  { numero_colegiatura: "0020094", nombre: "Dra. Luisa Fernanda López", salario: new Double("8800000.00"), telefono: "3011000094", hospital_id: 3, especialidad_id: 80 }, // Cuidados Paliativos
+
+  { numero_colegiatura: "0020095", nombre: "Dr. Carlos Eduardo Ortiz", salario: new Double("9650000.00"), telefono: "3011000095", hospital_id: 3, especialidad_id: 81 }, // Geriatría
+
+  { numero_colegiatura: "0020096", nombre: "Dra. Ana Milena Rojas", salario: new Double("9100000.00"), telefono: "3011000096", hospital_id: 3, especialidad_id: 6 }, // Pediatría
+
+  { numero_colegiatura: "0020097", nombre: "Dr. Santiago Duque", salario: new Double("8600000.00"), telefono: "3011000097", hospital_id: 3, especialidad_id: 7 }, // Urología
+
+  { numero_colegiatura: "0020098", nombre: "Dra. Isabella García", salario: new Double("9900000.00"), telefono: "3011000098", hospital_id: 3, especialidad_id: 8 }, // Oftalmología
+
+  { numero_colegiatura: "0020099", nombre: "Dr. Miguel Ángel Quintero", salario: new Double("9300000.00"), telefono: "3011000099", hospital_id: 3, especialidad_id: 9 }, // Otorrinolaringología
+
+
+
+  // Enfermeros/as (8)
+
+  { numero_colegiatura: "003017", nombre: "Enf. Paola Daza", salario: new Double("3300000.00"), telefono: "3021000017", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003018", nombre: "Enf. Sergio Ochoa", salario: new Double("2900000.00"), telefono: "3021000018", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003019", nombre: "Enf. Gabriela Soto", salario: new Double("3500000.00"), telefono: "3021000019", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003020", nombre: "Enf. Esteban Niño", salario: new Double("3100000.00"), telefono: "3021000020", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003021", nombre: "Enf. Valeria Marín", salario: new Double("3400000.00"), telefono: "3021000021", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003022", nombre: "Enf. Felipe Vega", salario: new Double("3000000.00"), telefono: "3021000022", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003023", nombre: "Enf. Antonia Rivera", salario: new Double("3200000.00"), telefono: "3021000023", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "003024", nombre: "Enf. Juan David Ortiz", salario: new Double("3600000.00"), telefono: "3021000024", hospital_id: 3, especialidad_id: 70 },
+
+
+
+  // Personal Administrativo (5)
+
+  { numero_colegiatura: "004011", nombre: "Adm. Patricia Castro", salario: new Double("2300000.00"), telefono: "3031000011", hospital_id: 3, especialidad_id: 63 },
+
+  { numero_colegiatura: "004012", nombre: "Adm. Camilo Gómez", salario: new Double("2000000.00"), telefono: "3031000012", hospital_id: 3, especialidad_id: 63 },
+
+  { numero_colegiatura: "004013", nombre: "Adm. Daniela Pérez", salario: new Double("2400000.00"), telefono: "3031000013", hospital_id: 3, especialidad_id: 63 },
+
+  { numero_colegiatura: "004014", nombre: "Adm. Gabriel Díaz", salario: new Double("1950000.00"), telefono: "3031000014", hospital_id: 3, especialidad_id: 63 },
+
+  { numero_colegiatura: "004015", nombre: "Adm. Marcela Soto", salario: new Double("2250000.00"), telefono: "3031000015", hospital_id: 3, especialidad_id: 63 },
+
+
+
+  // Personal de Mantenimiento (3)
+
+  { numero_colegiatura: "00507", nombre: "Mant. Carlos Ruiz", salario: new Double("1550000.00"), telefono: "3041000007", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "00508", nombre: "Mant. Sara Herrera", salario: new Double("1350000.00"), telefono: "3041000008", hospital_id: 3, especialidad_id: 70 },
+
+  { numero_colegiatura: "00509", nombre: "Mant. Andrés Cárdenas", salario: new Double("1700000.00"), telefono: "3041000009", hospital_id: 3, especialidad_id: 70 }
+
+]);
+
+
+
+print("Se han insertado 50 documentos para el Hospital ID 3 en MedicosYPersonal.");
+
+
+
+use Sistema_Hospitalario
+
+db.MedicosYPersonal.insertMany([
+  // Hospital ID: 4 (HIC) - Bloque 4/5
+
+  // Director General (1)
+  { numero_colegiatura: "001004", nombre: "Director D HIC", salario: new Double("21000000.00"), telefono: "3001000004", hospital_id: 4, especialidad_id: 70 }, // Medicina General
+
+  // Médicos Especialistas (33)
+  { numero_colegiatura: "0020100", nombre: "Dr. Andrea Rojas", salario: new Double("10000000.00"), telefono: "3011000100", hospital_id: 4, especialidad_id: 1 }, // Cirugía General
+  { numero_colegiatura: "0020101", nombre: "Dra. Carlos Castro", salario: new Double("9500000.00"), telefono: "3011000101", hospital_id: 4, especialidad_id: 2 }, // Cirugía Cardiovascular
+  { numero_colegiatura: "0020102", nombre: "Dr. Isabella Pardo", salario: new Double("10200000.00"), telefono: "3011000102", hospital_id: 4, especialidad_id: 3 }, // Cirugía Vascular
+  { numero_colegiatura: "0020103", nombre: "Dra. Daniel Ramos", salario: new Double("9800000.00"), telefono: "3011000103", hospital_id: 4, especialidad_id: 4 }, // Neurocirugía
+  { numero_colegiatura: "0020104", nombre: "Dr. Sofia Morales", salario: new Double("9300000.00"), telefono: "3011000104", hospital_id: 4, especialidad_id: 5 }, // Ortopedia
+  { numero_colegiatura: "0020105", nombre: "Dra. Jorge Ortiz", salario: new Double("9900000.00"), telefono: "3011000105", hospital_id: 4, especialidad_id: 6 }, // Pediatría
+  { numero_colegiatura: "0020106", nombre: "Dr. Laura Pérez", salario: new Double("9400000.00"), telefono: "3011000106", hospital_id: 4, especialidad_id: 7 }, // Urología
+  { numero_colegiatura: "0020107", nombre: "Dra. Ricardo Vega", salario: new Double("10100000.00"), telefono: "3011000107", hospital_id: 4, especialidad_id: 8 }, // Oftalmología
+  { numero_colegiatura: "0020108", nombre: "Dr. Valeria Gómez", salario: new Double("9600000.00"), telefono: "3011000108", hospital_id: 4, especialidad_id: 9 }, // Otorrinolaringología
+  { numero_colegiatura: "0020109", nombre: "Dra. Andrés Pinto", salario: new Double("10300000.00"), telefono: "3011000109", hospital_id: 4, especialidad_id: 10 }, // Ginecología
+  { numero_colegiatura: "0020110", nombre: "Dr. Patricia Herrera", salario: new Double("9700000.00"), telefono: "3011000110", hospital_id: 4, especialidad_id: 11 }, // Cirugía Plástica
+  { numero_colegiatura: "0020111", nombre: "Dra. Gabriel Núñez", salario: new Double("9200000.00"), telefono: "3011000111", hospital_id: 4, especialidad_id: 20 }, // Medicina Interna
+  { numero_colegiatura: "0020112", nombre: "Dr. Mariana Acosta", salario: new Double("9850000.00"), telefono: "3011000112", hospital_id: 4, especialidad_id: 21 }, // Gastroenterología
+  { numero_colegiatura: "0020113", nombre: "Dra. Esteban Romero", salario: new Double("10050000.00"), telefono: "3011000113", hospital_id: 4, especialidad_id: 22 }, // Cardiología
+  { numero_colegiatura: "0020114", nombre: "Dr. Juan Camargo", salario: new Double("9450000.00"), telefono: "3011000114", hospital_id: 4, especialidad_id: 23 }, // Electrofisiología Cardíaca
+  { numero_colegiatura: "0020115", nombre: "Dra. Luisa Peña", salario: new Double("9950000.00"), telefono: "3011000115", hospital_id: 4, especialidad_id: 24 }, // Neurología
+  { numero_colegiatura: "0020116", nombre: "Dr. Felipe Suárez", salario: new Double("9550000.00"), telefono: "3011000116", hospital_id: 4, especialidad_id: 25 }, // Endocrinología
+  { numero_colegiatura: "0020117", nombre: "Dra. Natalia Guzmán", salario: new Double("10150000.00"), telefono: "3011000117", hospital_id: 4, especialidad_id: 26 }, // Neumología
+  { numero_colegiatura: "0020118", nombre: "Dr. Roberto Castro", salario: new Double("9650000.00"), telefono: "3011000118", hospital_id: 4, especialidad_id: 27 }, // Nefrología
+  { numero_colegiatura: "0020119", nombre: "Dra. Valeria Gómez", salario: new Double("10350000.00"), telefono: "3011000119", hospital_id: 4, especialidad_id: 28 }, // Reumatología
+  { numero_colegiatura: "0020120", nombre: "Dr. Andrés Pinto", salario: new Double("9750000.00"), telefono: "3011000120", hospital_id: 4, especialidad_id: 29 }, // Hematología
+  { numero_colegiatura: "0020121", nombre: "Dra. Marcela Londoño", salario: new Double("9250000.00"), telefono: "3011000121", hospital_id: 4, especialidad_id: 30 }, // Oncología
+  { numero_colegiatura: "0020122", nombre: "Dr. Daniel Jiménez", salario: new Double("9800000.00"), telefono: "3011000122", hospital_id: 4, especialidad_id: 31 }, // Geriatría
+  { numero_colegiatura: "0020123", nombre: "Dra. Paula Andrea Pinto", salario: new Double("10000000.00"), telefono: "3011000123", hospital_id: 4, especialidad_id: 32 }, // Infectología
+  { numero_colegiatura: "0020124", nombre: "Dr. Mario Bustamante", salario: new Double("9400000.00"), telefono: "3011000124", hospital_id: 4, especialidad_id: 33 }, // Medicina Intensiva
+  { numero_colegiatura: "0020125", nombre: "Dra. Luisa Fernanda Díaz", salario: new Double("9900000.00"), telefono: "3011000125", hospital_id: 4, especialidad_id: 34 }, // Medicina Nuclear
+  { numero_colegiatura: "0020126", nombre: "Dr. Juan Esteban Gómez", salario: new Double("9500000.00"), telefono: "3011000126", hospital_id: 4, especialidad_id: 40 }, // Dermatología
+  { numero_colegiatura: "0020127", nombre: "Dra. Ana Milena Rojas", salario: new Double("10100000.00"), telefono: "3011000127", hospital_id: 4, especialidad_id: 41 }, // Alergología
+  { numero_colegiatura: "0020128", nombre: "Dr. Santiago Duque", salario: new Double("9600000.00"), telefono: "3011000128", hospital_id: 4, especialidad_id: 50 }, // Radiología
+  { numero_colegiatura: "0020129", nombre: "Dra. Isabella García", salario: new Double("10300000.00"), telefono: "3011000129", hospital_id: 4, especialidad_id: 51 }, // Anestesiología
+  { numero_colegiatura: "0020130", nombre: "Dr. Miguel Ángel Quintero", salario: new Double("9700000.00"), telefono: "3011000130", hospital_id: 4, especialidad_id: 52 }, // Hemodinamia
+  { numero_colegiatura: "0020131", nombre: "Dra. Andrea Reyes", salario: new Double("9200000.00"), telefono: "3011000131", hospital_id: 4, especialidad_id: 72 }, // Medicina del Deporte
+  { numero_colegiatura: "0020132", nombre: "Dr. Pablo Estrada", salario: new Double("9850000.00"), telefono: "3011000132", hospital_id: 4, especialidad_id: 80 }, // Cuidados Paliativos
+
+  // Enfermeros/as (8)
+  { numero_colegiatura: "003025", nombre: "Enf. Felipe Vega", salario: new Double("3150000.00"), telefono: "3021000025", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003026", nombre: "Enf. Antonia Rivera", salario: new Double("3450000.00"), telefono: "3021000026", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003027", nombre: "Enf. Juan David Ortiz", salario: new Double("3050000.00"), telefono: "3021000027", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003028", nombre: "Enf. Paula Daza", salario: new Double("3600000.00"), telefono: "3021000028", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003029", nombre: "Enf. Sergio Ochoa", salario: new Double("2950000.00"), telefono: "3021000029", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003030", nombre: "Enf. Gabriela Soto", salario: new Double("3250000.00"), telefono: "3021000030", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003031", nombre: "Enf. Esteban Niño", salario: new Double("3550000.00"), telefono: "3021000031", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "003032", nombre: "Enf. Valeria Marín", salario: new Double("3000000.00"), telefono: "3021000032", hospital_id: 4, especialidad_id: 70 },
+
+  // Personal Administrativo (5)
+  { numero_colegiatura: "004016", nombre: "Adm. Claudia Paz", salario: new Double("2100000.00"), telefono: "3031000016", hospital_id: 4, especialidad_id: 63 },
+  { numero_colegiatura: "004017", nombre: "Adm. Héctor Vega", salario: new Double("2400000.00"), telefono: "3031000017", hospital_id: 4, especialidad_id: 63 },
+  { numero_colegiatura: "004018", nombre: "Adm. Gina Castro", salario: new Double("1800000.00"), telefono: "3031000018", hospital_id: 4, especialidad_id: 63 },
+  { numero_colegiatura: "004019", nombre: "Adm. Raúl Torres", salario: new Double("2050000.00"), telefono: "3031000019", hospital_id: 4, especialidad_id: 63 },
+  { numero_colegiatura: "004020", nombre: "Adm. Brenda Arias", salario: new Double("2350000.00"), telefono: "3031000020", hospital_id: 4, especialidad_id: 63 },
+
+  // Personal de Mantenimiento (3)
+  { numero_colegiatura: "00510", nombre: "Mant. Jorge Polo", salario: new Double("1450000.00"), telefono: "3041000010", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "00511", nombre: "Mant. Martha Cruz", salario: new Double("1650000.00"), telefono: "3041000011", hospital_id: 4, especialidad_id: 70 },
+  { numero_colegiatura: "00512", nombre: "Mant. Diego Peña", salario: new Double("1250000.00"), telefono: "3041000012", hospital_id: 4, especialidad_id: 70 }
+]);
+
+print("Se han insertado 50 documentos para el Hospital ID 4 en MedicosYPersonal.");
+
+db.MedicosYPersonal.insertMany([
+  // Hospital ID: 5 (Hospital Internacional de Colombia) - Bloque 5/5
+
+  // Director General (1)
+  { numero_colegiatura: "001005", nombre: "Director E HIC Intern.", salario: new Double("25000000.00"), telefono: "3001000005", hospital_id: 5, especialidad_id: 70 }, // Medicina General
+
+  // Médicos Especialistas (33)
+  { numero_colegiatura: "0020133", nombre: "Dr. Ana Sofía Pérez", salario: new Double("11500000.00"), telefono: "3011000133", hospital_id: 5, especialidad_id: 1 }, // Cirugía General
+  { numero_colegiatura: "0020134", nombre: "Dra. Luis Fernando Soto", salario: new Double("10800000.00"), telefono: "3011000134", hospital_id: 5, especialidad_id: 20 }, // Medicina Interna
+  { numero_colegiatura: "0020135", nombre: "Dr. Laura Victoria Díaz", salario: new Double("12000000.00"), telefono: "3011000135", hospital_id: 5, especialidad_id: 24 }, // Neurología
+  { numero_colegiatura: "0020136", nombre: "Dra. Pedro José Ramírez", salario: new Double("11200000.00"), telefono: "3011000136", hospital_id: 5, especialidad_id: 5 }, // Ortopedia y Traumatología
+  { numero_colegiatura: "0020137", nombre: "Dr. María Fernanda Gómez", salario: new Double("10500000.00"), telefono: "3011000137", hospital_id: 5, especialidad_id: 25 }, // Endocrinología
+  { numero_colegiatura: "0020138", nombre: "Dra. Juan Esteban López", salario: new Double("11800000.00"), telefono: "3011000138", hospital_id: 5, especialidad_id: 7 }, // Urología
+  { numero_colegiatura: "0020139", nombre: "Dr. Natalia Andrea Giraldo", salario: new Double("10900000.00"), telefono: "3011000139", hospital_id: 5, especialidad_id: 8 }, // Oftalmología
+  { numero_colegiatura: "0020140", nombre: "Dra. Sebastián Ruiz", salario: new Double("11600000.00"), telefono: "3011000140", hospital_id: 5, especialidad_id: 9 }, // Otorrinolaringología
+  { numero_colegiatura: "0020141", nombre: "Dr. Valentina Marín", salario: new Double("10600000.00"), telefono: "3011000141", hospital_id: 5, especialidad_id: 30 }, // Oncología
+  { numero_colegiatura: "0020142", nombre: "Dra. Miguel Ángel García", salario: new Double("11100000.00"), telefono: "3011000142", hospital_id: 5, especialidad_id: 4 }, // Neurocirugía
+  { numero_colegiatura: "0020143", nombre: "Dr. Sofía Alejandra Torres", salario: new Double("10400000.00"), telefono: "3011000143", hospital_id: 5, especialidad_id: 10 }, // Pediatría
+  { numero_colegiatura: "0020144", nombre: "Dra. Andrés Felipe Castro", salario: new Double("11900000.00"), telefono: "3011000144", hospital_id: 5, especialidad_id: 11 }, // Ginecología y Obstetricia
+  { numero_colegiatura: "0020145", nombre: "Dr. Daniela Camila Rojas", salario: new Double("10700000.00"), telefono: "3011000145", hospital_id: 5, especialidad_id: 40 }, // Dermatología
+  { numero_colegiatura: "0020146", nombre: "Dra. Camilo Andrés Salazar", salario: new Double("11400000.00"), telefono: "3011000146", hospital_id: 5, especialidad_id: 41 }, // Alergología
+  { numero_colegiatura: "0020147", nombre: "Dr. Estefanía Carolina Morales", salario: new Double("10300000.00"), telefono: "3011000147", hospital_id: 5, especialidad_id: 21 }, // Gastroenterología
+  { numero_colegiatura: "0020148", nombre: "Dra. Ricardo Javier Suárez", salario: new Double("11700000.00"), telefono: "3011000148", hospital_id: 5, especialidad_id: 50 }, // Radiología
+  { numero_colegiatura: "0020149", nombre: "Dr. Catalina Andrea Ramos", salario: new Double("11000000.00"), telefono: "3011000149", hospital_id: 5, especialidad_id: 51 }, // Anestesiología
+  { numero_colegiatura: "0020150", nombre: "Dra. Diego Alejandro Rincón", salario: new Double("11300000.00"), telefono: "3011000150", hospital_id: 5, especialidad_id: 52 }, // Hemodinamia
+  { numero_colegiatura: "0020151", nombre: "Dr. Paula Cristina Varela", salario: new Double("10950000.00"), telefono: "3011000151", hospital_id: 5, especialidad_id: 72 }, // Medicina del Deporte
+  { numero_colegiatura: "0020152", nombre: "Dra. José Daniel Rojas", salario: new Double("11550000.00"), telefono: "3011000152", hospital_id: 5, especialidad_id: 80 }, // Cuidados Paliativos
+  { numero_colegiatura: "0020153", nombre: "Dr. María Camila Pineda", salario: new Double("10850000.00"), telefono: "3011000153", hospital_id: 5, especialidad_id: 81 }, // Geriatría
+  { numero_colegiatura: "0020154", nombre: "Dra. Santiago Felipe Guzmán", salario: new Double("11750000.00"), telefono: "3011000154", hospital_id: 5, especialidad_id: 1 }, // Cirugía General
+  { numero_colegiatura: "0020155", nombre: "Dr. Sara Melissa Vélez", salario: new Double("11050000.00"), telefono: "3011000155", hospital_id: 5, especialidad_id: 20 }, // Medicina Interna
+  { numero_colegiatura: "0020156", nombre: "Dra. Julián Eduardo Sánchez", salario: new Double("11950000.00"), telefono: "3011000156", hospital_id: 5, especialidad_id: 24 }, // Neurología
+  { numero_colegiatura: "0020157", nombre: "Dr. Natalia Carolina Rivera", salario: new Double("10750000.00"), telefono: "3011000157", hospital_id: 5, especialidad_id: 5 }, // Ortopedia y Traumatología
+  { numero_colegiatura: "0020158", nombre: "Dra. Esteban Alejandro Torres", salario: new Double("11450000.00"), telefono: "3011000158", hospital_id: 5, especialidad_id: 25 }, // Endocrinología
+  { numero_colegiatura: "0020159", nombre: "Dr. Alejandra María Estrada", salario: new Double("10900000.00"), telefono: "3011000159", hospital_id: 5, especialidad_id: 7 }, // Urología
+  { numero_colegiatura: "0020160", nombre: "Dra. Camilo Andrés Restrepo", salario: new Double("11650000.00"), telefono: "3011000160", hospital_id: 5, especialidad_id: 8 }, // Oftalmología
+  { numero_colegiatura: "0020161", nombre: "Dr. Sofía Isabel Salazar", salario: new Double("10650000.00"), telefono: "3011000161", hospital_id: 5, especialidad_id: 9 }, // Otorrinolaringología
+  { numero_colegiatura: "0020162", nombre: "Dra. Daniel Sebastián Cárdenas", salario: new Double("11150000.00"), telefono: "3011000162", hospital_id: 5, especialidad_id: 30 }, // Oncología
+  { numero_colegiatura: "0020163", nombre: "Dr. Ana María Pardo", salario: new Double("10450000.00"), telefono: "3011000163", hospital_id: 5, especialidad_id: 4 }, // Neurocirugía
+  { numero_colegiatura: "0020164", nombre: "Dra. Christian David Guzmán", salario: new Double("11350000.00"), telefono: "3011000164", hospital_id: 5, especialidad_id: 10 }, // Pediatría
+  { numero_colegiatura: "0020165", nombre: "Dr. Laura Catalina Montoya", salario: new Double("10550000.00"), telefono: "3011000165", hospital_id: 5, especialidad_id: 11 }, // Ginecología y Obstetricia
+
+  // Enfermeros/as (8)
+  { numero_colegiatura: "003033", nombre: "Enf. Paola Andrea Ortiz", salario: new Double("3350000.00"), telefono: "3021000033", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003034", nombre: "Enf. Juan Sebastián Silva", salario: new Double("2950000.00"), telefono: "3021000034", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003035", nombre: "Enf. María Camila Herrera", salario: new Double("3550000.00"), telefono: "3021000035", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003036", nombre: "Enf. Daniel Felipe Bernal", salario: new Double("3150000.00"), telefono: "3021000036", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003037", nombre: "Enf. Ana María Quintero", salario: new Double("3450000.00"), telefono: "3021000037", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003038", nombre: "Enf. Luis Miguel Sotomayor", salario: new Double("3050000.00"), telefono: "3021000038", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003039", nombre: "Enf. Sofía Alejandra Vargas", salario: new Double("3250000.00"), telefono: "3021000039", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "003040", nombre: "Enf. Carlos Alberto Mora", salario: new Double("3650000.00"), telefono: "3021000040", hospital_id: 5, especialidad_id: 70 },
+
+  // Personal Administrativo (5)
+  { numero_colegiatura: "004021", nombre: "Adm. Laura Sofía Ríos", salario: new Double("2250000.00"), telefono: "3031000021", hospital_id: 5, especialidad_id: 63 },
+  { numero_colegiatura: "004022", nombre: "Adm. Fernando Andrés Duque", salario: new Double("1950000.00"), telefono: "3031000022", hospital_id: 5, especialidad_id: 63 },
+  { numero_colegiatura: "004023", nombre: "Adm. Valeria Isabel Giraldo", salario: new Double("2550000.00"), telefono: "3031000023", hospital_id: 5, especialidad_id: 63 },
+  { numero_colegiatura: "004024", nombre: "Adm. Santiago José López", salario: new Double("2100000.00"), telefono: "3031000024", hospital_id: 5, especialidad_id: 63 },
+  { numero_colegiatura: "004025", nombre: "Adm. Gabriela Alexandra Blanco", salario: new Double("2450000.00"), telefono: "3031000025", hospital_id: 5, especialidad_id: 63 },
+
+  // Personal de Mantenimiento (3)
+  { numero_colegiatura: "00513", nombre: "Mant. Miguel Ángel Salas", salario: new Double("1500000.00"), telefono: "3041000013", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "00514", nombre: "Mant. Carolina Estefanía Vélez", salario: new Double("1400000.00"), telefono: "3041000014", hospital_id: 5, especialidad_id: 70 },
+  { numero_colegiatura: "00515", nombre: "Mant. Juan Felipe Acosta", salario: new Double("1700000.00"), telefono: "3041000015", hospital_id: 5, especialidad_id: 70 }
 ]);
 
 // 13. 
