@@ -112,26 +112,27 @@
 
 //16. Consulta los tratamientos por área médica.
 
-    db.Tratamiento_Area.aggregate([
-      {$lookup: {
-          from: "Area_Especializada",
-          localField: "_id",
-          foreignField: "area_id",
-          as: "relacion"
-        }},
-      { $unwind: "$relacion" },
-      {$lookup: {
-          from: "Tratamiento",
-          localField: "relacion.tratamiento_id",
-          foreignField: "_id",
-          as: "tratamiento"
-        }},
-      { $unwind: "$tratamiento" },
-      {$project: {
-          _id: 0,
-          area: "$nombre",
-          tratamiento: "$tratamiento.nombre"
-        }}])
+db.Tratamiento_Area.aggregate([
+  {$lookup: {
+      from: "Area_Especializada",
+      localField: "area_id",
+      foreignField: "_id",
+      as: "area"
+    }},
+  { $unwind: "$area" },{
+    $lookup: {
+      from: "Tratamiento",
+      localField: "tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+    }},
+  { $unwind: "$tratamiento" },
+  {$project: {
+      _id: 0,
+      area: "$area.nombre",
+      tratamiento: "$tratamiento.nombre",
+      descripcion_tratamiento: "$tratamiento.descripcion"}}
+])
 
 //17. Muestra las áreas asociadas a cada hospital.
 
