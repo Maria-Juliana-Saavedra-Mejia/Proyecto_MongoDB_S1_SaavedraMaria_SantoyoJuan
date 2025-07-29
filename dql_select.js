@@ -249,6 +249,21 @@ db.Hospital_Area.aggregate([
 
 //33. Relaciona cada hospital con su director (usando su número de colegiatura).
 
+db.MedicosYPersonal.aggregate([
+  {$match: { numero_colegiatura: { $regex: /^001/ }
+    }},
+  {$lookup: {
+    from: "Hospital",
+    localField: "numero_colegiatura",
+    foreignField: "director_id",
+    as: "hospital"
+    }},
+    { $unwind: "$hospital" },
+  {$project: {
+            _id: 0,
+            nombre: "$nombre",
+            hospital: "$hospital.nombre"
+}}])
 
 //34. Muestra el nombre del hospital donde trabaja cada médico.
 
@@ -269,9 +284,21 @@ db.MedicosYPersonal.aggregate([
 }}])
 
 
-//35. Muestra los nombres de las áreas de especialidad de un hospital.
+//35. Muestra los nombres de las áreas de especialidad del hospital id:1.
 
-    
+db.Hospital_Area.aggregate([
+  {$match: { hospital_id: 1 }},
+  {$lookup: {
+      from: "Area_Especializada",
+      localField: "area_id",
+      foreignField: "_id",
+      as: "area"
+    }},
+  { $unwind: "$area" },
+  {$project: {
+      _id: 0,
+      nombre_area: "$area.nombre"
+}}])    
 
 //36. Muestra los médicos con su nombre de especialidad.
 
@@ -365,35 +392,176 @@ db.MedicosYPersonal.aggregate([
 
 //40. Muestra los pacientes con su ciudad de residencia.
 
-    
+db.Paciente.aggregate([
+  {$lookup: {
+      from: "Direccion",
+      localField: "direccion_id",
+      foreignField: "_id",
+      as: "direccion"
+    }},
+  { $unwind: "$direccion" },
+  {$project: {
+      _id: 0,
+      nombre: "$nombre",
+      direccion: "$direccion.ciudad",
+      cantidad_medicos: 1
+    }},
+])   
 
 //41. Consulta todas las visitas médicas realizadas por un médico específico.
 
-    
+db.Visita_Medica.aggregate([
+  {$match: {
+    medico_id: "0020001"
+}},
+  {$lookup: {
+      from: "MedicosYPersonal",
+      localField: "medico_id",
+      foreignField: "numero_colegiatura",
+      as: "Medico"
+    }},
+  { $unwind: "$Medico" },
+  {$project: {
+      _id: 0,
+      fecha: "$fecha",
+      hora: "$hora",
+      medico: "$Medico.nombre",
+    }},
+]) 
 
 //42. Cuenta cuántas visitas ha tenido un paciente en total.
 
-    
+db.Visita_Medica.aggregate([
+  {$match: {
+    paciente_id: 1
+}},
+  {$lookup: {
+      from: "Paciente",
+      localField: "paciente_id",
+      foreignField: "_id",
+      as: "Paciente"
+    }},
+  { $unwind: "$Paciente" },
+  {$group: {
+    _id: "$paciente_id",
+    paciente:{ $first:"$Paciente.nombre"},
+    total_visitas: { $sum: 1 }
+  }},
+  {$project: {
+      _id: 0,
+      paciente:1,
+      total_visitas:1
+    }}
+])    
 
 //43. Muestra las visitas con los datos del paciente asociado.
 
-    
+db.Visita_Medica.aggregate([
+  {$lookup: {
+      from: "Paciente",
+      localField: "paciente_id",
+      foreignField: "_id",
+      as: "Paciente"
+    }},
+  { $unwind: "$Paciente" },
+  {$project: {
+      _id: 1,
+      fecha:"$fecha",
+      hora:"$hora",
+      nombre_paciente: "$Paciente.nombre",
+      correo_paciente:"$Paciente.correo",
+      telefono_paciente:"$Paciente.telefono"
+    }}
+])   
 
 //44. Muestra las visitas junto con sus diagnósticos.
 
-    
+db.Visita_Diagnostico.aggregate([
+  {$lookup: {
+      from: "Visita_Medica",
+      localField: "visita_id",
+      foreignField: "_id",
+      as: "Visita"
+    }},
+  { $unwind: "$Visita" },
+  {$lookup: {
+    from: "Diagnostico",
+    localField: "diagnostico_id",
+    foreignField: "_id",
+    as: "Diagnostico"
+  }},
+{ $unwind: "$Diagnostico" },
+  {$project: {
+      _id: 0,
+      visita_id:"$Visita._id",
+      descripcion:"$Diagnostico.descripcion",
+    }}
+])    
 
 //45. Agrupa las visitas por día y cuenta cuántas hubo cada día.
 
-    
+db.Visita_Medica.aggregate([
+  {$group: {
+      _id: "$fecha", 
+      total_visitas: { $sum: 1 }
+    }},
+  {$project: {
+      _id: 0,
+      fecha: "$_id",
+      total_visitas: 1
+    }},
+  {$sort: { fecha: 1 } 
+}])   
 
 //46. Muestra cuál es el diagnóstico más frecuente en la base de datos.
 
-    
+db.Visita_Diagnostico.aggregate([
+  {$lookup: {
+    from: "Diagnostico",
+    localField: "diagnostico_id",
+    foreignField: "_id",
+    as: "Diagnostico"
+  }},
+{ $unwind: "$Diagnostico" },
+{$group: {
+  _id: "$diagnostico_id",
+  diagnostico:{ $first:"$Diagnostico.descripcion"},
+  total_diagnosticos: { $sum: 1 }
+}},
+{$project: {
+    _id: 0,
+    diagnostico: 1,
+    total_diagnosticos: 1
+  }
+},
+{ $sort: { total_diagnosticos: -1 } },
+{ $limit: 1 }
+])
 
-//47. Lista los pacientes que han recibido más de tres diagnósticos distintos.
+//47. Lista los pacientes que han recibido un diagnósticos.
 
-    
+db.Visita_Diagnostico.aggregate([
+  {$lookup: {
+      from: "Visita_Medica",
+      localField: "visita_id",
+      foreignField: "_id",
+      as: "visita"
+    }},
+  { $unwind: "$visita" },
+  {$group: {
+      _id: "$visita.paciente_id"
+    }},
+  {$lookup: {
+      from: "Paciente",
+      localField: "_id",
+      foreignField: "_id",
+      as: "paciente"
+    }},
+  { $unwind: "$paciente" },
+  {$project: {
+      _id: 0,
+      nombre: "$paciente.nombre"
+}}]) 
 
 //48. Muestra cuántos médicos hay por especialidad.
 
