@@ -173,9 +173,9 @@ db.Tratamiento_Area.aggregate([
 
     db.MedicosYPersonal.find({ numero_colegiatura: /^003/ })
 
-//22. Consulta el inventario de medicamentos con menos de 10 unidades disponibles.
+//22. Consulta el inventario de medicamentos con menos de 100 unidades disponibles.
 
-    db.Inventario.find({ disponibilidad: { $lt: 10 } })
+    db.Inventario.find({ disponibilidad: { $lt: 100 } })
 
 //23. Ordena los registros de inventario por fecha de ingreso más reciente.
 
