@@ -224,7 +224,28 @@ db.MedicosYPersonal.aggregate([
     }}])
 //32. Muestra los hospitales con más de 5 áreas especializadas.
 
-
+db.Hospital_Area.aggregate([
+  {
+    $group: {
+      _id: "$hospital_id",          
+      total_areas: { $sum: 1 }     
+    }
+  },
+  {$match: {
+      total_areas: { $gt: 5 }      
+    }},
+  {$lookup: {
+      from: "Hospital",
+      localField: "_id",
+      foreignField: "_id",
+      as: "hospital"
+    }},
+  { $unwind: "$hospital" },
+  {$project: {
+      _id: 0,
+      hospital: "$hospital.nombre",
+      total_areas: 1
+  }}])
 
 //33. Relaciona cada hospital con su director (usando su número de colegiatura).
 
