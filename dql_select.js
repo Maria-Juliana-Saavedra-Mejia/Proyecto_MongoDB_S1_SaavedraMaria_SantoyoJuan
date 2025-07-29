@@ -321,7 +321,26 @@ db.MedicosYPersonal.aggregate([
 
 //39. Muestra el total de personal médico agrupado por hospital (nombre).
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: {
+      numero_colegiatura: { $regex: /^002/ }
+}},
+  {$group: {
+      _id: "$hospital_id",
+      total_medicos: { $sum: 1 }
+    }},
+  {$lookup: {
+      from: "Hospital",
+      localField: "_id",
+      foreignField: "_id",
+      as: "hospital"
+    }},
+  { $unwind: "$hospital" },
+  {$project: {
+      _id: 0,
+      hospital: "$hospital.nombre",
+      total_medicos: 1
+    }}])
 
 //40. Muestra los pacientes con su ciudad de residencia.
 
