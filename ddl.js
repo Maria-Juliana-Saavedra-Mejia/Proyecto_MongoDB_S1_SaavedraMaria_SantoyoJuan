@@ -49,7 +49,7 @@ db.createCollection("MedicosYPersonal", {
       bsonType: "object",
       required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id"],
       properties: {
-        numero_colegiatura: { bsonType: "string" }, // Para el prefijo del tipo de personal
+        numero_colegiatura: { bsonType: "string" }, 
         nombre: { bsonType: "string" },
         salario: { bsonType: "double" },
         telefono: { bsonType: "string" },
@@ -64,15 +64,15 @@ db.createCollection("Paciente", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["_id", "nombre", "correo", "telefono", "hospital_id", "especialidad_id","seguro_medico_id" ],
+      required: ["_id", "nombre", "correo", "telefono", "hospital_id", "especialidad_id","seguro_medico_id", "direccion_id" ],
       properties: {
-        _id: { bsonType: "int" }, 
+        _id: { bsonType: "int" },
         nombre: { bsonType: "string" },
         correo: { bsonType: "string" },
         telefono: { bsonType: "string" },
         hospital_id:{ bsonType: "int" },
-        seguro_medico_id:{ bsonType: "int" }, 
-        direccion_id:{ bsonType: "int" }
+        seguro_medico_id:{ bsonType: "int" },
+        direccion_id:{ bsonType: "int" } 
       }
     }
   }
