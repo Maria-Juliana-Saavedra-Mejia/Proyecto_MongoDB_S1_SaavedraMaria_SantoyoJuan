@@ -565,31 +565,129 @@ db.Visita_Diagnostico.aggregate([
 
 //48. Muestra cuántos médicos hay por especialidad.
 
-    
+db.MedicosYPersonal.aggregate([
+  { $match: { numero_colegiatura: { $regex: /^002/ } } }, 
+  {$lookup: {
+      from: "Especialidad",
+      localField: "especialidad_id",
+      foreignField: "_id",
+      as: "especialidad"
+    }},
+  { $unwind: "$especialidad" },
+  {$group: {
+      _id: "$especialidad.nombre",
+      total_medicos: { $sum: 1 }
+    }},
+  {$project: {
+      _id: 0,
+      especialidad: "$_id",
+      total_medicos: 1
+}}])
 
-//49. Lista los médicos que ganan más de $//5,000.
+//49. Lista los médicos que ganan más de $5000000.
 
-    
+db.MedicosYPersonal.find({numero_colegiatura: /^002/, salario:{$gt:5000000}}) 
 
 //50. Muestra los medicamentos que no tienen disponibilidad.
 
-    
+db.Inventario.aggregate([
+  { $match: { disponibilidad:0} }, 
+  {$lookup: {
+      from: "Medicamento",
+      localField: "medicamento_id",
+      foreignField: "_id",
+      as: "medicamento"
+    }},
+  { $unwind: "$medicamento" },
+  {$project: {
+      _id: 0,
+      medicamento: "$medicamento.nombre",
+      total_medicamentos: "$disponibilidad"
+}}])
+
+
 
 //51. Muestra el salario promedio por especialidad médica.
 
-    
+db.MedicosYPersonal.aggregate([
+  { $match: { numero_colegiatura: { $regex: /^002/ } } }, 
+  {$lookup: {
+      from: "Especialidad",
+      localField: "especialidad_id",
+      foreignField: "_id",
+      as: "especialidad"
+    }},
+  { $unwind: "$especialidad" },
+  {$group: {
+      _id: "$especialidad.nombre",
+      total_medicos: { $sum: 1 },
+      promedio_salario: {$avg:"$salario"}
+    }},
+  {$project: {
+      _id: 0,
+      especialidad: "$_id",
+      total_medicos: 1,
+      promedio_salario:1
+}}])   
 
 //52. Cuenta cuántos medicamentos hay por tipo.
 
-    
+db.Medicamento.aggregate([
+  {$lookup: {
+      from: "Tipo_Medicamento",
+      localField: "tipo_medicamento_id",
+      foreignField: "_id",
+      as: "Medicamento"
+    }},
+  { $unwind: "$Medicamento" },
+  {$group: {
+      _id: "$Medicamento.nombre",
+      total_medicamentos: { $sum: 1 },
+    }},
+  {$project: {
+      _id: 0,
+      nombre_medicamento: "$_id",
+      total_medicamentos: 1
+}}])    
 
 //53. Muestra el nombre del medicamento y su fabricante.
 
-    
+db.Medicamento.aggregate([
+  {$lookup: {
+      from: "Fabricante",
+      localField: "fabricante_id",
+      foreignField: "_id",
+      as: "Fabricante"
+    }},
+  { $unwind: "$Fabricante" },
+  {$project: {
+      _id: 0,
+      nombre_medicamento: "$nombre",
+      nombre_fabricante: "$Fabricante.nombre"
+}}])       
 
 //54. Muestra los tratamientos con los medicamentos que usan.
 
-    
+db.Tratamiento.aggregate([
+  {$lookup: {
+      from: "Tratamiento_Medicamento",
+      localField: "_id",
+      foreignField: "tratamiento_id",
+      as: "relaciones"
+    }},
+  { $unwind: "$relaciones" },
+  {$lookup: {
+      from: "Medicamento",
+      localField: "relaciones.medicamento_id",
+      foreignField: "_id",
+      as: "medicamento"
+    }},
+  { $unwind: "$medicamento" },
+  {$project: {
+      _id: 0,
+      tratamiento: "$nombre",
+      medicamento: "$medicamento.nombre"
+}}])  
 
 //55. Muestra el costo total por tipo de tratamiento.
 
