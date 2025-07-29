@@ -3536,3 +3536,265 @@ db.createUser(
 
 **Permisos principales:**
 - **Monitoreo del cluster:** Supervisión del estado y rendimiento de la base de datos
+
+
+---
+
+# Funciones 
+
+Estas funciones se deben ejecutar directamente desde **mongosh** o cargar en Compass como scripts reutilizables. No se pueden registrar con db.system.js.save() en MongoDB Atlas debido a restricciones de seguridad.
+
+Para usar estas funciones:
+
+```js
+load("funciones.js"); 
+nombreDeFuncion(parametros);
+```
+
+---
+
+#### 1. contarPacientesPorHospital()
+
+**Objetivo**: Cuenta cuántos pacientes están registrados por hospital.
+**Funcionalidad**: Usa $group para agrupar por hospital_id y suma.
+
+**Ejemplo de uso**:
+
+```js
+contarPacientesPorHospital();
+```
+
+---
+
+#### 2. buscarMedicamentosPorNombre(nombre)
+
+**Objetivo**: Buscar medicamentos cuyo nombre contenga cierto texto.
+**Funcionalidad**: Utiliza una búsqueda con $regex (insensible a mayúsculas).
+
+**Ejemplo**:
+
+```js
+buscarMedicamentosPorNombre("paracetamol");
+```
+
+---
+
+#### 3. visitasPorPaciente(pacienteId)
+
+**Objetivo**: Mostrar todas las visitas médicas asociadas a un paciente específico.
+
+**Ejemplo**:
+
+```js
+visitasPorPaciente(12);
+```
+
+---
+
+#### 4. medicosPorEspecialidad()
+
+**Objetivo**: Muestra cuántos médicos hay por cada especialidad.
+
+**Ejemplo**:
+
+```js
+medicosPorEspecialidad();
+```
+
+---
+
+#### 5. medicamentosConBajaDisponibilidad()
+
+**Objetivo**: Listar medicamentos con inventario menor a 50 unidades.
+**Funcionalidad**: Se usa $match, $lookup y $project`.
+
+**Ejemplo**:
+
+```js
+medicamentosConBajaDisponibilidad();
+```
+
+---
+
+
+#### 6. tratamientosPorHospital()
+
+**Objetivo**: Obtener todos los tratamientos que han sido aplicados por hospital.
+**Funcionalidad**: Hace múltiples lookup entre diagnóstico, paciente y tratamiento.
+
+**Ejemplo**:
+
+```js
+tratamientosPorHospital();
+```
+
+---
+
+#### 7. diagnosticosPorEspecialidad()
+
+**Objetivo**: Mostrar los diagnósticos comunes según la especialidad médica.
+**Funcionalidad**: Agrupa usando el prefijo 002 de colegiatura.
+
+**Ejemplo**:
+
+```js
+diagnosticosPorEspecialidad();
+```
+
+---
+
+#### 8. inventarioPorTipoMedicamento()
+
+**Objetivo**: Ver la disponibilidad total agrupada por tipo de medicamento.
+
+**Ejemplo**:
+
+```js
+inventarioPorTipoMedicamento();
+```
+
+---
+
+#### 9. resumenHospitalario()
+
+**Objetivo**: Entregar un resumen total de hospitales, médicos, pacientes y visitas.
+
+**Ejemplo**:
+
+```js
+resumenHospitalario();
+```
+
+---
+
+#### 10. tratamientosConMasDe3Medicamentos()
+
+**Objetivo**: Identificar tratamientos que usan más de 3 medicamentos.
+
+**Ejemplo**:
+
+```js
+tratamientosConMasDe3Medicamentos();
+```
+
+---
+
+#### 11. pacientesConMuchasVisitas()
+
+**Objetivo**: Lista pacientes que han tenido más de 5 visitas.
+
+**Ejemplo**:
+
+```js
+pacientesConMuchasVisitas();
+```
+
+---
+
+#### 12. medicamentosSinUso()
+
+**Objetivo**: Muestra medicamentos que no han sido usados en ningún tratamiento.
+
+**Ejemplo**:
+
+```js
+medicamentosSinUso();
+```
+
+---
+
+#### 13. tratamientosPorTipo()
+
+**Objetivo**: Agrupa tratamientos por su tipo.
+
+**Ejemplo**:
+
+```js
+tratamientosPorTipo();
+```
+
+---
+
+#### 14. medicamentosPorFabricante()
+
+**Objetivo**: Total de medicamentos creados por cada fabricante.
+
+**Ejemplo**:
+
+```js
+medicamentosPorFabricante();
+```
+
+---
+
+#### 15. diagnosticosFrecuentes()
+
+**Objetivo**: Diagnósticos más comunes (top 5).
+
+**Ejemplo**:
+
+```js
+diagnosticosFrecuentes();
+```
+
+---
+
+#### 16. disponibilidadPorUbicacion()
+
+**Objetivo**: Total de inventario agrupado por ubicación.
+
+**Ejemplo**:
+
+```js
+disponibilidadPorUbicacion();
+```
+
+---
+
+#### 17. resultadosPorTratamiento()
+
+**Objetivo**: Ver todos los resultados asociados a cada tratamiento.
+
+**Ejemplo**:
+
+```js
+resultadosPorTratamiento();
+```
+
+---
+
+#### 18. visitasPorMedico()
+
+**Objetivo**: Número de visitas realizadas por cada médico.
+
+**Ejemplo**:
+
+```js
+visitasPorMedico();
+```
+
+---
+
+#### 19. promedioVisitasPorPaciente()
+
+**Objetivo**: Calcular el promedio de visitas médicas por paciente.
+
+**Ejemplo**:
+
+```js
+promedioVisitasPorPaciente();
+```
+
+---
+
+#### 20. medicamentosPiso1BajaDisponibilidad()
+
+**Objetivo**: Medicamentos con baja disponibilidad (<100) en el piso 1.
+
+**Ejemplo**:
+
+```js
+medicamentosPiso1BajaDisponibilidad();
+```
+
+
