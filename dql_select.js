@@ -1,52 +1,52 @@
-1. Muestra el nombre de todos los hospitales, ocultando el `_id`.
+//1. Muestra el nombre de todos los hospitales, ocultando el `_id`.
 
-   db.Hospital.find({},{nombre:1,_id:0});
+   db.Hospital.find({},{nombre://1,_id:0});
 
-2. Muestra todos los medicamentos con sus nombres.
+//2. Muestra todos los medicamentos con sus nombres.
 
-   db.Medicamento.find({},{nombre:1, _id:0, descripcion:1});
+   db.Medicamento.find({},{nombre://1, _id:0, descripcion://1});
 
-3. Lista todas las especialidades médicas disponibles.
+//3. Lista todas las especialidades médicas disponibles.
 
    db.Especialidad.find();
 
-4. Muestra las descripciones de todos los diagnósticos.
+//4. Muestra las descripciones de todos los diagnósticos.
 
-   db.Diagnostico.find({},{descripcion:1, _id:0});
+   db.Diagnostico.find({},{descripcion://1, _id:0});
 
-5. Lista todos los tipos de medicamentos registrados.
+//5. Lista todos los tipos de medicamentos registrados.
 
-   db.Tipo_Medicamento.find({}, {nombre: 1, _id: 0});
+   db.Tipo_Medicamento.find({}, {nombre: //1, _id: 0});
 
-6. Muestra los nombres de los tipos de tratamiento existentes.
+//6. Muestra los nombres de los tipos de tratamiento existentes.
 
-   db.Tratamiento.find({},{nombre:1});
+   db.Tratamiento.find({},{nombre://1});
 
-7. Lista todos los fabricantes de medicamentos.
+//7. Lista todos los fabricantes de medicamentos.
 
-   db.Fabricante.find({}, {nombre: 1, _id: 0});
+   db.Fabricante.find({}, {nombre: //1, _id: 0});
 
-8. Muestra el nombre de cada persona registrada en `MedicosYPersonal`.
+//8. Muestra el nombre de cada persona registrada en `MedicosYPersonal`.
 
-   db.MedicosYPersonal.find({},{nombre:1 , _id:0 });
+   db.MedicosYPersonal.find({},{nombre://1 , _id:0 });
 
-9. Lista los pacientes registrados con su nombre.
+//9. Lista los pacientes registrados con su nombre.
 
-   db.Paciente.find({},{nombre:1,_id:0});
+   db.Paciente.find({},{nombre://1,_id:0});
 
-10. Muestra todas las descripciones de los resultados de tratamientos.
+//10. Muestra todas las descripciones de los resultados de tratamientos.
 
-    db.Resultado.find({},{descripcion:1, _id:0});
+    db.Resultado.find({},{descripcion://1, _id:0});
 
-11. Muestra los tratamientos con su nombre y descripción.
+//11. Muestra los tratamientos con su nombre y descripción.
 
-    db.Tratamiento.find({},{nombre:1,descripcion:1,_id:0});
+    db.Tratamiento.find({},{nombre://1,descripcion://1,_id:0});
 
-12. Consulta el inventario con los IDs de medicamentos y su disponibilidad.
+//12. Consulta el inventario con los IDs de medicamentos y su disponibilidad.
 
-    db.Inventario.find({}, {disponibilidad: 1, medicamento_id: 1, _id: 0});
+    db.Inventario.find({}, {disponibilidad: //1, medicamento_id: //1, _id: 0});
 
-13. Muestra las visitas médicas con fecha, hora y médico asignado.
+//13. Muestra las visitas médicas con fecha, hora y médico asignado.
 
     db.Visita_Medica.aggregate([
       {$lookup: {
@@ -59,12 +59,12 @@
       { $unwind: "$medico" },
       {$project: {
           _id: 0,
-          fecha: 1,
-          hora: 1,
+          fecha: //1,
+          hora: //1,
           nombre_medico: "$medico.nombre"
         } }])
 
-14. Consulta todos los diagnósticos-tratamiento.
+//14. Consulta todos los diagnósticos-tratamiento.
 
     db.Diagnostico.aggregate([
       {$lookup: {
@@ -87,7 +87,7 @@
           tratamiento: "$tratamiento.nombre"
         } }])
 
-15. Consulta los tratamientos-medicamentos registrados.
+//15. Consulta los tratamientos-medicamentos registrados.
 
     db.Medicamento.aggregate([
       {$lookup: {
@@ -110,7 +110,7 @@
           tratamiento: "$tratamiento.nombre"
         }}])
 
-16. Consulta los tratamientos por área médica.
+//16. Consulta los tratamientos por área médica.
 
     db.Area_Especializada.aggregate([
       {$lookup: {
@@ -133,7 +133,7 @@
           tratamiento: "$tratamiento.nombre"
         }}])
 
-17. Muestra las áreas asociadas a cada hospital.
+//17. Muestra las áreas asociadas a cada hospital.
 
     db.Area_Especializada.aggregate([
       {$lookup: {
@@ -156,338 +156,337 @@
           hospital: "$hospital.nombre"
         }}])
 
-18. Muestra los nombres de los médicos que trabajan en el hospital con ID 1.
+//18. Muestra los nombres de los médicos que trabajan en el hospital con ID //1.
 
-    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id: 1 },{ _id: 0, nombre: 1})
+    db.MedicosYPersonal.find({ numero_colegiatura: 2, hospital_id: //1 },{ _id: 0, nombre: //1})
 
-19. Lista los pacientes asignados al hospital con ID 1.
+//19. Lista los pacientes asignados al hospital con ID //1.
 
-    db.Paciente.find({ hospital_id: 1 })
+    db.Paciente.find({ hospital_id: //1 })
 
-20. Busca medicamentos cuyo nombre contenga "paracetamol".
+//20. Busca medicamentos cuyo nombre contenga "paracetamol".
 
     db.medicamento.find({nombre:/paracetamol/i})
 
-21. Muestra los trabajadores con `numero_colegiatura` igual a 002.
+//21. Muestra los trabajadores con `numero_colegiatura` igual a 002.
 
     db.MedicosYPersonal.find({ numero_colegiatura: 2 })
 
-22. Consulta el inventario de medicamentos con menos de 10 unidades disponibles.
+//22. Consulta el inventario de medicamentos con menos de //10 unidades disponibles.
 
-    db.Inventario.find({ disponibilidad: { $lt: 10 } })
+    db.Inventario.find({ disponibilidad: { $lt: //10 } })
 
-23. Ordena los registros de inventario por fecha de ingreso más reciente.
+//23. Ordena los registros de inventario por fecha de ingreso más reciente.
 
-    db.Inventario.find().sort({ fecha_ingreso: -1 })
+    db.Inventario.find().sort({ fecha_ingreso: -//1 })
 
-24. Busca tratamientos de un tipo específico.
+//24. Busca tratamientos de un tipo específico.
 
-    
+    db.Tratamiento.
 
-25. Encuentra medicamentos de un tipo específico.
-
-    
-
-26. Muestra medicamentos de un fabricante en particular.
+//25. Encuentra medicamentos de un tipo específico.
 
     
 
-27. Consulta todos los pacientes que tienen asignado un seguro médico.
+//26. Muestra medicamentos de un fabricante en particular.
+
+    
+
+//27. Consulta todos los pacientes que tienen asignado un seguro médico.
 
     db.Paciente.find({ seguro_medico_id: { $exists: true, $ne: null } })
 
-28. Cuenta cuántos pacientes hay por hospital.
+//28. Cuenta cuántos pacientes hay por hospital.
 
     db.Paciente.aggregate([
       {$group: {
           _id: "$hospital_id",
-          totalPacientes: { $sum: 1 }
+          totalPacientes: { $sum: //1 }
         } }])
 
-29. Muestra todos los historiales médicos de un paciente.
+//29. Muestra todos los historiales médicos de un paciente.
 
     
 
-30. Consulta diagnósticos que contengan "asma" en su descripción.
+//30. Consulta diagnósticos que contengan "asma" en su descripción.
 
     
 
-31. Cuenta cuántos médicos hay en total por hospital.
+//31. Cuenta cuántos médicos hay en total por hospital.
 
     
 
-32. Muestra los hospitales con más de 10 áreas especializadas.
+//32. Muestra los hospitales con más de //10 áreas especializadas.
 
     
 
-33. Relaciona cada hospital con su director (usando su número de colegiatura).
+//33. Relaciona cada hospital con su director (usando su número de colegiatura).
 
     
 
-34. Muestra el nombre del hospital donde trabaja cada médico.
+//34. Muestra el nombre del hospital donde trabaja cada médico.
 
     
 
-35. Muestra los nombres de las áreas de especialidad de un hospital.
+//35. Muestra los nombres de las áreas de especialidad de un hospital.
 
     
 
-36. Muestra los médicos con su nombre de especialidad.
+//36. Muestra los médicos con su nombre de especialidad.
 
     
 
-37. Agrupa a los médicos por especialidad y cuenta cuántos hay por cada una.
+//37. Agrupa a los médicos por especialidad y cuenta cuántos hay por cada una.
 
     
 
-38. Ordena los hospitales por cantidad de personal médico.
+//38. Ordena los hospitales por cantidad de personal médico.
 
     
 
-39. Muestra el total de personal médico agrupado por hospital (nombre).
+//39. Muestra el total de personal médico agrupado por hospital (nombre).
 
     
 
-40. Muestra los pacientes con su ciudad de residencia.
+//40. Muestra los pacientes con su ciudad de residencia.
 
     
 
-41. Consulta todas las visitas médicas realizadas por un médico específico.
+//41. Consulta todas las visitas médicas realizadas por un médico específico.
 
     
 
-42. Cuenta cuántas visitas ha tenido un paciente en total.
+//42. Cuenta cuántas visitas ha tenido un paciente en total.
 
     
 
-43. Muestra las visitas con los datos del paciente asociado.
+//43. Muestra las visitas con los datos del paciente asociado.
 
     
 
-44. Muestra las visitas junto con sus diagnósticos.
+//44. Muestra las visitas junto con sus diagnósticos.
 
     
 
-45. Agrupa las visitas por día y cuenta cuántas hubo cada día.
+//45. Agrupa las visitas por día y cuenta cuántas hubo cada día.
 
     
 
-46. Muestra cuál es el diagnóstico más frecuente en la base de datos.
+//46. Muestra cuál es el diagnóstico más frecuente en la base de datos.
 
     
 
-47. Lista los pacientes que han recibido más de tres diagnósticos distintos.
+//47. Lista los pacientes que han recibido más de tres diagnósticos distintos.
 
     
 
-48. Muestra cuántos médicos hay por especialidad.
+//48. Muestra cuántos médicos hay por especialidad.
 
     
 
-49. Lista los médicos que ganan más de $5,000.
+//49. Lista los médicos que ganan más de $//5,000.
 
     
 
-50. Muestra los medicamentos que no tienen disponibilidad.
+//50. Muestra los medicamentos que no tienen disponibilidad.
 
     
 
-51. Muestra el salario promedio por especialidad médica.
+//51. Muestra el salario promedio por especialidad médica.
 
     
 
-52. Cuenta cuántos medicamentos hay por tipo.
+//52. Cuenta cuántos medicamentos hay por tipo.
 
     
 
-53. Muestra el nombre del medicamento y su fabricante.
+//53. Muestra el nombre del medicamento y su fabricante.
 
     
 
-54. Muestra los tratamientos con los medicamentos que usan.
+//54. Muestra los tratamientos con los medicamentos que usan.
 
     
 
-55. Muestra el costo total por tipo de tratamiento.
+//55. Muestra el costo total por tipo de tratamiento.
 
     
 
-56. Muestra los hospitales con más de 20 empleados.
+//56. Muestra los hospitales con más de 20 empleados.
 
     
 
-57. Muestra los diagnósticos más comunes y cuántas veces se repiten.
+//57. Muestra los diagnósticos más comunes y cuántas veces se repiten.
 
     
 
-58. Muestra las visitas agrupadas por paciente y cuántas tiene cada uno.
+//58. Muestra las visitas agrupadas por paciente y cuántas tiene cada uno.
 
     
 
-59. Relaciona diagnósticos con tratamientos y medicamentos.
+//59. Relaciona diagnósticos con tratamientos y medicamentos.
 
     
 
-60. Muestra cuántas veces se ha usado cada medicamento en tratamientos.
+//60. Muestra cuántas veces se ha usado cada medicamento en tratamientos.
 
     
 
-61. Agrupa pacientes por ciudad y cuenta cuántos hay por cada una.
+//61. Agrupa pacientes por ciudad y cuenta cuántos hay por cada una.
 
     
 
-62. Muestra los tratamientos con más de tres medicamentos asociados.
+//62. Muestra los tratamientos con más de tres medicamentos asociados.
 
     
 
-63. Muestra el historial clínico completo de un paciente incluyendo diagnóstico y tratamiento.
+//63. Muestra el historial clínico completo de un paciente incluyendo diagnóstico y tratamiento.
 
     
 
-64. Agrupa tratamientos por tipo y cuenta cuántos hay de cada tipo.
+//64. Agrupa tratamientos por tipo y cuenta cuántos hay de cada tipo.
 
     
 
-65. Muestra los resultados agrupados por tratamiento.
+//65. Muestra los resultados agrupados por tratamiento.
 
     
 
-66. Muestra cuántos pacientes tiene cada hospital.
+//66. Muestra cuántos pacientes tiene cada hospital.
 
     
 
-67. Relaciona cada tratamiento con su tipo y costo.
+//67. Relaciona cada tratamiento con su tipo y costo.
 
     
 
-68. Muestra los diagnósticos más comunes por especialidad médica.
+//68. Muestra los diagnósticos más comunes por especialidad médica.
 
     
 
-69. Muestra el número total de visitas por médico.
+//69. Muestra el número total de visitas por médico.
 
     
 
-70. Muestra el promedio de visitas por paciente.
+//70. Muestra el promedio de visitas por paciente.
 
     
 
-71. Muestra las enfermedades más comunes en el hospital 1.
+//71. Muestra las enfermedades más comunes en el hospital //1.
 
     
 
-72. Muestra los medicamentos más usados en tratamientos exitosos.
+//72. Muestra los medicamentos más usados en tratamientos exitosos.
 
     
 
-73. Muestra el nombre de cada tratamiento y los diagnósticos en los que se ha aplicado.
+//73. Muestra el nombre de cada tratamiento y los diagnósticos en los que se ha aplicado.
 
     
 
-74. Agrupa pacientes por seguro médico y cuenta cuántos hay.
+//74. Agrupa pacientes por seguro médico y cuenta cuántos hay.
 
     
 
-75. Muestra los tratamientos realizados en cada área médica.
+//75. Muestra los tratamientos realizados en cada área médica.
 
     
 
-76. Calcula el total de unidades de inventario por tipo de medicamento.
+//76. Calcula el total de unidades de inventario por tipo de medicamento.
 
     
 
-77. Agrupa diagnósticos por mes de registro y cuenta cuántos hubo cada mes.
+//77. Agrupa diagnósticos por mes de registro y cuenta cuántos hubo cada mes.
 
     
 
-78. Muestra la disponibilidad de medicamentos por ubicación.
+//78. Muestra la disponibilidad de medicamentos por ubicación.
 
     
 
-79. Lista las visitas ordenadas por fecha más reciente.
+//79. Lista las visitas ordenadas por fecha más reciente.
 
     
 
-80. Muestra los diagnósticos que tienen más de un tratamiento asociado.
+//80. Muestra los diagnósticos que tienen más de un tratamiento asociado.
 
     
 
-81. Agrupa medicamentos por fabricante y suma su disponibilidad total.
+//81. Agrupa medicamentos por fabricante y suma su disponibilidad total.
 
     
 
-82. Muestra cuántos tratamientos activos hay por hospital.
+//82. Muestra cuántos tratamientos activos hay por hospital.
 
     
 
-83. Relaciona cada tratamiento con los pacientes que lo han recibido.
+//83. Relaciona cada tratamiento con los pacientes que lo han recibido.
 
     
 
-84. Muestra las visitas que se realizaron entre dos fechas específicas.
+//84. Muestra las visitas que se realizaron entre dos fechas específicas.
 
     
 
-85. Muestra los diagnósticos y sus resultados clínicos asociados.
+//85. Muestra los diagnósticos y sus resultados clínicos asociados.
 
     
 
-86. Muestra el salario promedio, mínimo y máximo por especialidad médica.
+//86. Muestra el salario promedio, mínimo y máximo por especialidad médica.
 
     
 
-87. Muestra los medicamentos más usados por pacientes con diagnóstico "diabetes".
+//87. Muestra los medicamentos más usados por pacientes con diagnóstico "diabetes".
 
     
 
-88. Muestra el crecimiento mensual de visitas durante el último año.
+//88. Muestra el crecimiento mensual de visitas durante el último año.
 
     
 
-89. Muestra qué pacientes han recibido más de cinco tratamientos distintos.
+//89. Muestra qué pacientes han recibido más de cinco tratamientos distintos.
 
     
 
-90. Agrupa el personal por rol y muestra cuántos hay por cada uno.
+//90. Agrupa el personal por rol y muestra cuántos hay por cada uno.
 
     
 
-91. Muestra qué áreas médicas tienen más tratamientos asociados.
+//91. Muestra qué áreas médicas tienen más tratamientos asociados.
 
     
 
-92. Muestra cuántos tratamientos hay por tipo de enfermedad.
+//92. Muestra cuántos tratamientos hay por tipo de enfermedad.
 
     
 
-93. Lista los medicamentos que han sido usados en más de un hospital.
+//93. Lista los medicamentos que han sido usados en más de un hospital.
 
     
 
-94. Muestra el costo total de tratamientos agrupado por hospital.
+//94. Muestra el costo total de tratamientos agrupado por hospital.
 
     
 
-95. Muestra cuáles tratamientos han tenido los mejores resultados.
+//95. Muestra cuáles tratamientos han tenido los mejores resultados.
 
     
 
-96. Agrupa pacientes por grupos de edad (si existiera ese campo).
+//96. Agrupa pacientes por grupos de edad (si existiera ese campo).
 
     
 
-97. Muestra el porcentaje de visitas que tienen diagnóstico registrado.
+//97. Muestra el porcentaje de visitas que tienen diagnóstico registrado.
 
     
 
-98. Muestra las visitas que no tienen diagnóstico asociado.
+//98. Muestra las visitas que no tienen diagnóstico asociado.
 
     
 
-99. Muestra los medicamentos que no han sido usados en ningún tratamiento.
+//99. Muestra los medicamentos que no han sido usados en ningún tratamiento.
 
     
 
-100. Muestra un resumen total de hospitales, médicos, pacientes y visitas.
+//100. Muestra un resumen total de hospitales, médicos, pacientes y visitas.
 
-     
