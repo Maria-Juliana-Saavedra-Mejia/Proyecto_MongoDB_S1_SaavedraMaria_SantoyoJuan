@@ -8,7 +8,7 @@ db.createCollection("Hospital", {
       properties: {
         _id: { bsonType: "int" }, 
         nombre: { bsonType: "string" },
-        director_id: { bsonType: "int" }
+        director_id: { bsonType: "string" }
       }
     }
   }
