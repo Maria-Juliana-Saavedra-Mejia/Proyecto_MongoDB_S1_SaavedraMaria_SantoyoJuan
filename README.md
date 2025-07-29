@@ -2252,3 +2252,853 @@ db.createCollection("Visita_Diagnostico", {
 ```
 show collections;
 ```
+
+## 1\. Hospital
+
+Colección principal para almacenar la información de los hospitales.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Hospital", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "director_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        director_id: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Hospital.insertOne(
+  {
+    _id: 1,
+    nombre: "Hospital General Metropolitano",
+    director_id: "MED001"
+  }
+);
+```
+
+-----
+
+## 2\. Hospital\_Area
+
+Colección para vincular hospitales con áreas especializadas, representando una relación uno a muchos donde un hospital tiene muchas áreas y un área pertenece a un hospital.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Hospital_Area", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "area_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        area_id: { bsonType: "int" },
+        director_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Hospital_Area.insertOne(
+  {
+    _id: 1,
+    area_id: 201, // ID de Área Especializada
+    director_id: 1 // ID de Hospital
+  }
+);
+```
+
+-----
+
+## 3\. Area\_Especializada
+
+Colección para definir las diferentes áreas o departamentos especializados dentro de un hospital.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Area_Especializada", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "descripcion"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        descripcion: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Area_Especializada.insertOne(
+  {
+    _id: 201,
+    nombre: "Quirófano Central",
+    descripcion: "Área destinada a procedimientos quirúrgicos complejos."
+  }
+);
+```
+
+-----
+
+## 4\. MedicosYPersonal
+
+Colección para almacenar la información de los médicos y otro personal del hospital.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("MedicosYPersonal", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id"],
+      properties: {
+        numero_colegiatura: { bsonType: "string" },
+        nombre: { bsonType: "string" },
+        salario: { bsonType: "double" },
+        telefono: { bsonType: "string" },
+        hospital_id:{ bsonType: "int" },
+        especialidad_id:{ bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.MedicosYPersonal.insertOne(
+  {
+    numero_colegiatura: "MED001",
+    nombre: "Dr. Juan Pérez",
+    salario: 7500.00,
+    telefono: "+573101234567",
+    hospital_id: 1, // ID del Hospital
+    especialidad_id: 1 // ID de Especialidad (Cardiología)
+  }
+);
+```
+
+-----
+
+## 5\. Paciente
+
+Colección para almacenar la información de los pacientes.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Paciente", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "correo", "telefono", "hospital_id", "seguro_medico_id", "direccion_id" ],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        correo: { bsonType: "string" },
+        telefono: { bsonType: "string" },
+        hospital_id:{ bsonType: "int" },
+        seguro_medico_id:{ bsonType: "int" },
+        direccion_id:{ bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Paciente.insertOne(
+  {
+    _id: 1,
+    nombre: "Ana María García",
+    correo: "ana.garcia@example.com",
+    telefono: "+573209876543",
+    hospital_id: 1, // ID del Hospital
+    seguro_medico_id: 1, // ID de Seguro Médico
+    direccion_id: 1 // ID de Dirección
+  }
+);
+```
+
+-----
+
+## 6\. Especialidad
+
+Colección para categorizar las especialidades médicas.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Especialidad", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Especialidad.insertOne(
+  {
+    _id: 1,
+    nombre: "Cardiología"
+  }
+);
+```
+
+-----
+
+## 7\. Seguros\_Medicos
+
+Colección para listar los diferentes seguros médicos aceptados por el hospital.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Seguros_Medicos", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Seguros_Medicos.insertOne(
+  {
+    _id: 1,
+    nombre: "Seguro Universal Salud"
+  }
+);
+```
+
+-----
+
+## 8\. Direccion
+
+Colección para almacenar las direcciones, usada para normalizar los datos de ubicación.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Direccion", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "calle", "ciudad", "codigo_postal" ],
+      properties: {
+        _id: { bsonType: "int" },
+        calle: { bsonType: "string" },
+        ciudad: { bsonType: "string" },
+        codigo_postal: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Direccion.insertOne(
+  {
+    _id: 1,
+    calle: "Carrera 10 #20-30",
+    ciudad: "Bogotá",
+    codigo_postal: "110111"
+  }
+);
+```
+
+-----
+
+## 9\. Visita\_Medica
+
+Registra cada visita de un paciente a un médico.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Visita_Medica", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "fecha", "hora", "medico_id", "paciente_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        fecha: { bsonType: "date" },
+        hora: {
+          bsonType: "string",
+          pattern: "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        medico_id: { bsonType: "string" },
+        paciente_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Visita_Medica.insertOne(
+  {
+    _id: 1,
+    fecha: ISODate("2024-07-28T09:00:00Z"),
+    hora: "09:00",
+    medico_id: "MED001", // Número de Colegiatura del Médico
+    paciente_id: 1 // ID del Paciente
+  }
+);
+```
+
+-----
+
+## 10\. Historial\_Medico
+
+Contiene los diagnósticos registrados para un paciente a lo largo del tiempo.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Historial_Medico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "diagnostico_id", "paciente_id", "fecha_registro" ],
+      properties: {
+        _id: { bsonType: "int" },
+        diagnostico_id: { bsonType: "int" },
+        paciente_id: { bsonType: "int" },
+        fecha_registro: { bsonType: "date" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Historial_Medico.insertOne(
+  {
+    _id: 1,
+    diagnostico_id: 1, // ID de Diagnóstico (Gripe común)
+    paciente_id: 1, // ID del Paciente
+    fecha_registro: ISODate("2024-07-28T09:30:00Z")
+  }
+);
+```
+
+-----
+
+## 11\. Diagnostico
+
+Lista de posibles diagnósticos médicos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Diagnostico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "descripcion" ],
+      properties: {
+        _id: { bsonType: "int" },
+        descripcion: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Diagnostico.insertOne(
+  {
+    _id: 1,
+    descripcion: "Gripe común"
+  }
+);
+```
+
+-----
+
+## 12\. Tratamiento\_Area
+
+Relación muchos a muchos entre `Tipo_Tratamiento` y `Area_Especializada`, indicando qué tratamientos se pueden realizar en qué áreas.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Tratamiento_Area", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "tratamiento_id", "area_id" ],
+      properties: {
+        _id: { bsonType: "int" },
+        tratamiento_id: { bsonType: "int" },
+        area_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Tratamiento_Area.insertOne(
+  {
+    _id: 1,
+    tratamiento_id: 1, // ID de Tipo_Tratamiento (Cirugía)
+    area_id: 201 // ID de Área_Especializada (Quirófano)
+  }
+);
+```
+
+-----
+
+## 13\. Tratamiento\_Medicamento
+
+Relación muchos a muchos entre `Tipo_Tratamiento` y `Medicamento`, indicando qué medicamentos se utilizan en qué tratamientos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Tratamiento_Medicamento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "tratamiento_id", "medicamento_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        tratamiento_id: { bsonType: "int" },
+        medicamento_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Tratamiento_Medicamento.insertOne(
+  {
+    _id: 1,
+    tratamiento_id: 3, // ID de Tipo_Tratamiento (Tratamiento Farmacológico)
+    medicamento_id: 1 // ID de Medicamento (Amlodipino)
+  }
+);
+```
+
+-----
+
+## 14\. Tratamiento
+
+Describe un tratamiento específico que puede ser parte de un tipo de tratamiento general.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Tratamiento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "descripcion", "nombre", "tipo_tratamiento_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        descripcion: { bsonType: "string" },
+        tipo_tratamiento_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Tratamiento.insertOne(
+  {
+    _id: 1,
+    nombre: "Apendicectomía",
+    descripcion: "Procedimiento quirúrgico para extirpar el apéndice.",
+    tipo_tratamiento_id: 1 // ID de Tipo_Tratamiento (Cirugía)
+  }
+);
+```
+
+-----
+
+## 15\. Resultado
+
+Registra los resultados de los tratamientos o procedimientos médicos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Resultado", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "descripcion", "tratamiento_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        descripcion: { bsonType: "string" },
+        tratamiento_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Resultado.insertOne(
+  {
+    _id: 1,
+    descripcion: "Resultados de exámenes de laboratorio normales para chequeo general.",
+    tratamiento_id: 10 // ID de Tipo_Tratamiento (Vacunación)
+  }
+);
+```
+
+-----
+
+## 16\. Tipo\_Tratamiento
+
+Categoriza los diferentes tipos generales de tratamientos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Tipo_Tratamiento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "costo_base"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        costo_base: { bsonType: "double" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Tipo_Tratamiento.insertOne(
+  {
+    _id: 1,
+    nombre: "Cirugía",
+    costo_base: 5000.00
+  }
+);
+```
+
+-----
+
+## 17\. Medicamento
+
+Información detallada sobre los medicamentos disponibles.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Medicamento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre", "fabricante_id","tipo_medicamento_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" },
+        fabricante_id: { bsonType: "int" },
+        tipo_medicamento_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Medicamento.insertOne(
+  {
+    _id: 1,
+    nombre: "Amlodipino",
+    fabricante_id: 1, // ID de Fabricante
+    tipo_medicamento_id: 1 // ID de Tipo_Medicamento (Antihipertensivo)
+  }
+);
+```
+
+-----
+
+## 18\. Fabricante
+
+Lista de fabricantes de medicamentos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Fabricante", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Fabricante.insertOne(
+  {
+    _id: 1,
+    nombre: "Laboratorios Alfa"
+  }
+);
+```
+
+-----
+
+## 19\. Tipo\_Medicamento
+
+Categoriza los medicamentos por su tipo terapéutico.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Tipo_Medicamento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "nombre"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Tipo_Medicamento.insertOne(
+  {
+    _id: 1,
+    nombre: "Antihipertensivo"
+  }
+);
+```
+
+-----
+
+## 20\. Inventario
+
+Controla la disponibilidad y ubicación de los medicamentos.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Inventario", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "disponibilidad", "medicamento_id","ubicacion_id","fecha_ingreso"],
+      properties: {
+        _id: { bsonType: "int" },
+        disponibilidad: { bsonType: "int" },
+        ubicacion_id: { bsonType: "int" },
+        medicamento_id: { bsonType: "int" },
+        fecha_ingreso: { bsonType: "date" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Inventario.insertOne(
+  {
+    _id: 1,
+    disponibilidad: 100,
+    medicamento_id: 1, // ID de Medicamento (Amlodipino)
+    ubicacion_id: 1, // ID de Ubicación
+    fecha_ingreso: ISODate("2024-06-01T00:00:00Z")
+  }
+);
+```
+
+-----
+
+## 21\. Diagnostico\_Tratamiento
+
+Relación muchos a muchos entre `Diagnostico` y `Tipo_Tratamiento`, indicando qué tratamientos son aplicables a cada diagnóstico.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Diagnostico_Tratamiento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "diagnostico_id", "tratamiento_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        diagnostico_id: { bsonType: "int" },
+        tratamiento_id: { bsonType: "int" }
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Diagnostico_Tratamiento.insertOne(
+  {
+    _id: 1,
+    diagnostico_id: 1, // ID de Diagnóstico (Gripe común)
+    tratamiento_id: 3 // ID de Tipo_Tratamiento (Tratamiento Farmacológico)
+  }
+);
+```
+
+-----
+
+## 22\. Ubicacion
+
+Define las ubicaciones físicas para el inventario.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Ubicacion", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "edificio", "piso", "estante"],
+      properties: {
+        _id: { bsonType: "int" },
+        nombre: { bsonType: "string" } // Nota: El esquema proporcionado solo tiene 'nombre', no 'edificio', 'piso', 'estante'. Se usará 'nombre' para el ejemplo.
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Ubicacion.insertOne(
+  {
+    _id: 1,
+    nombre: "Farmacia Principal - Estante A1"
+  }
+);
+```
+
+-----
+
+## 23\. Visita\_Diagnostico
+
+Relación muchos a muchos entre `Visita_Medica` y `Diagnostico`, permitiendo múltiples diagnósticos por visita.
+
+**Esquema de la Colección:**
+
+```javascript
+db.createCollection("Visita_Diagnostico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["_id", "visita_id", "diagnostico_id"],
+      properties: {
+        _id: { bsonType: "int" },
+        visita_id: { bsonType: "int" },
+        diagnostico_id: { bsonType: "int" },
+      }
+    }
+  }
+});
+```
+
+**Ejemplo de Inserción:**
+
+```javascript
+db.Visita_Diagnostico.insertOne(
+  {
+    _id: 1,
+    visita_id: 1, // ID de Visita_Medica
+    diagnostico_id: 1 // ID de Diagnóstico (Gripe común)
+  }
+);
+```
+
+```
+```
