@@ -3102,7 +3102,6 @@ db.Visita_Diagnostico.insertOne(
 );
 ```
 
-
 ## **Consultas Básicas**
 
 
