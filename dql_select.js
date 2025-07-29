@@ -1,6 +1,6 @@
 //1. Muestra el nombre de todos los hospitales, ocultando el `_id`.
 
-   db.Hospital.find({},{nombre:1,_id:0});
+db.Hospital.find({},{nombre:1,_id:0});
 
 //2. Muestra todos los medicamentos con sus nombres y descripciones.
 
@@ -807,39 +807,214 @@ db.Tratamiento_Medicamento.aggregate([
 
 //61. Agrupa pacientes por ciudad y cuenta cuántos hay por cada una.
 
-   
+db.Paciente.aggregate([
+{$lookup: {
+  from: "Direccion",
+  localField: "direccion_id",
+  foreignField: "_id",
+  as: "direccion"
+}},
+{ $unwind: "$direccion" },
+{$group: {
+_id: "$direccion.ciudad",
+total_personas_ciudad: { $sum: 1 }
+}},
+{$project: {
+  _id: 1,
+  total_personas_ciudad: 1}}
+])     
 
 //62. Muestra los tratamientos con más de tres medicamentos asociados.
 
-    
+db.Tratamiento_Medicamento.aggregate([
+  {$group: {
+      _id: "$tratamiento_id",
+      total_medicamentos: { $sum: 1 }
+    }},
+  {$match: {
+      total_medicamentos: { $gt: 3 }
+    }},
+  {$lookup: {
+      from: "Tratamiento",
+      localField: "_id",
+      foreignField: "_id",
+      as: "tratamiento"
+    }},
+  { $unwind: "$tratamiento" },
+  {$project: {
+      _id: 0,
+      tratamiento: "$tratamiento.nombre",
+      total_medicamentos: 1
+}}])    
 
-//63. Muestra el historial clínico completo de un paciente incluyendo diagnóstico y tratamiento.
+//63. Lista los diagnósticos y tratamientos de un paciente.
 
-    
+db.Historial_Medico.aggregate([
+  { $match: { paciente_id: 18 } }, 
+  {$lookup: {
+      from: "Diagnostico",
+      localField: "diagnostico_id",
+      foreignField: "_id",
+      as: "diagnostico"
+    }},
+  { $unwind: "$diagnostico" },
+  {$lookup: {
+      from: "Diagnostico_Tratamiento",
+      localField: "diagnostico_id",
+      foreignField: "diagnostico_id",
+      as: "dt"
+    }},
+  { $unwind: "$dt" },
+  {$lookup: {
+      from: "Tratamiento",
+      localField: "dt.tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+    }
+  },
+  { $unwind: "$tratamiento" },
+  {$project: {
+      _id: 0,
+      fecha: "$fecha_registro",
+      diagnostico: "$diagnostico.descripcion",
+      tratamiento: "$tratamiento.nombre"
+}}])
 
 //64. Agrupa tratamientos por tipo y cuenta cuántos hay de cada tipo.
 
-    
+db.Tratamiento.aggregate([
+  {$lookup: {
+      from: "Tipo_Tratamiento",
+      localField: "tipo_tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+    }},
+  { $unwind: "$tratamiento" },
+  {$group: {
+    _id: "$tratamiento.nombre",
+    tipo_tratamiento_cantidad: { $sum: 1 }
+  }},
+  {$project: {
+      _id: 1,
+      tipo_tratamiento_cantidad:1
+}}])   
 
 //65. Muestra los resultados agrupados por tratamiento.
 
-    
+db.Resultado.aggregate([
+  {$lookup: {
+      from: "Tratamiento",
+      localField: "tratamiento_id",
+      foreignField: "_id",
+      as: "tratamiento"
+    }},
+  { $unwind: "$tratamiento" },
+  {$group: {
+      _id: "$tratamiento.nombre",
+      resultados: { $push: "$descripcion" }
+    }},
+  {$project: {
+      _id: 0,
+      tratamiento: "$_id",
+      resultados: 1
+}}])   
 
 //66. Muestra cuántos pacientes tiene cada hospital.
 
-    
+db.Paciente.aggregate([
+  {$lookup: {
+      from: "Hospital",
+      localField: "hospital_id",
+      foreignField: "_id",
+      as: "hospital"
+    }},
+  { $unwind: "$hospital" },
+  {$group: {
+    _id: "$hospital.nombre",
+    total_pacientes: { $sum: 1 }
+  }},
+  {$project: {
+      _id: 1,
+      total_pacientes: 1
+}}])   
 
 //67. Relaciona cada tratamiento con su tipo y costo.
 
-    
+db.Tratamiento.aggregate([
+  {$lookup: {
+      from: "Tipo_Tratamiento",
+      localField: "tipo_tratamiento_id",
+      foreignField: "_id",
+      as: "tipo"
+    }},
+  { $unwind: "$tipo" },
+  {$project: {
+      _id: 0,
+      tratamiento: "$nombre",
+      tipo: "$tipo.nombre",
+      costo: "$tipo.costo_base"
+}}])  
 
 //68. Muestra los diagnósticos más comunes por especialidad médica.
 
-    
+db.Visita_Diagnostico.aggregate([
+  {$lookup: {
+      from: "Diagnostico",
+      localField: "diagnostico_id",
+      foreignField: "_id",
+      as: "diagnostico"
+    }},
+  { $unwind: "$diagnostico" },
+  {$lookup: {
+      from: "Visita_Medica",
+      localField: "visita_id",
+      foreignField: "_id",
+      as: "visita"
+    }},
+  { $unwind: "$visita" },
+  {$lookup: {
+      from: "MedicosYPersonal",
+      localField: "visita.medico_id",
+      foreignField: "numero_colegiatura",
+      as: "medico"
+    }},
+  { $unwind: "$medico" },
+  {$lookup: {
+      from: "Especialidad",
+      localField: "medico.especialidad_id",
+      foreignField: "_id",
+      as: "especialidad"
+    }},
+  { $unwind: "$especialidad" },
+  {$group: {
+      _id: {
+        especialidad: "$especialidad.nombre",
+        diagnostico: "$diagnostico.descripcion"
+      },
+      total: { $sum: 1 }
+    }},
+  {$sort: { "_id.especialidad": 1, total: -1 }
+  }])
 
 //69. Muestra el número total de visitas por médico.
 
-    
+db.Visita_Medica.aggregate([
+  {$group: {
+      _id: "$medico_id",
+      total_visitas: { $sum: 1 }
+    }},
+  {$lookup: {
+      from: "MedicosYPersonal",
+      localField: "_id",
+      foreignField: "numero_colegiatura",
+      as: "medico"
+    }},
+  { $unwind: "$medico" },
+  {$project: {
+      _id: 0,
+      nombre_medico: "$medico.nombre",
+      total_visitas: 1
+    }}])   
 
 //70. Muestra el promedio de visitas por paciente.
 
