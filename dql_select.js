@@ -691,31 +691,123 @@ db.Tratamiento.aggregate([
 
 //55. Muestra el costo total por tipo de tratamiento.
 
-    
+db.Tipo_Tratamiento.find({},{_id: 0,nombre: 1,costo: 1})
 
 //56. Muestra los hospitales con más de 20 empleados.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$lookup: {
+    from: "Hospital",
+    localField: "hospital_id",
+    foreignField: "_id",
+    as: "Hospital"
+  }},
+{ $unwind: "$Hospital" },
+{$group: {
+  _id: "$Hospital.nombre",
+  total_personal: { $sum: 1 }
+}},
+{$match: {
+    total_personal: { $gt: 20 }
+  }},
+{$project: {
+    _id: 1,
+    total_personal: 1
+  }
+},
+{ $sort: { total_personal: 1 } },
+])   
 
 //57. Muestra los diagnósticos más comunes y cuántas veces se repiten.
 
-    
+db.Visita_Diagnostico.aggregate([
+  {$group: {
+    _id: "$diagnostico_id",
+    total: { $sum: 1 }
+  }},
+  {$lookup: {
+      from: "Diagnostico",
+      localField: "_id",
+      foreignField: "_id",
+      as: "diagnostico"
+    }},
+  { $unwind: "$diagnostico" },
+  {$project: {
+      _id: 0,
+      diagnostico: "$diagnostico.descripcion",
+      total: 1}},
+  { $sort: { total: -1 } }
+])    
 
 //58. Muestra las visitas agrupadas por paciente y cuántas tiene cada uno.
 
-    
+db.Visita_Medica.aggregate([
+  {$lookup: {
+      from: "Paciente",
+      localField: "paciente_id",
+      foreignField: "_id",
+      as: "paciente"
+    }},
+  { $unwind: "$paciente" },
+  {$group: {
+    _id: "$paciente.nombre",
+    total_Visitas: { $sum: 1 }
+  }},
+  {$project: {
+      _id: 1,
+      diagnostico: 1,
+      total_Visitas: 1}}
+])    
 
 //59. Relaciona diagnósticos con tratamientos y medicamentos.
 
-    
+db.Diagnostico_Tratamiento.aggregate([
+  {$lookup: {
+      from: "Diagnostico",
+      localField: "diagnostico_id",
+      foreignField: "_id",
+      as: "diagnostico"
+    }},
+  { $unwind: "$diagnostico" },
+  {$lookup: {
+    from: "Tratamiento",
+    localField: "tratamiento_id",
+    foreignField: "_id",
+    as: "Tratamiento"
+  }},
+{ $unwind: "$Tratamiento" },
+  {$project: {
+      _id: 1,
+      diagnostico: "$diagnostico.descripcion",
+      Tratamiento: "$Tratamiento.nombre"
+    }}
+])   
 
 //60. Muestra cuántas veces se ha usado cada medicamento en tratamientos.
 
-    
+db.Tratamiento_Medicamento.aggregate([
+  {$group: {
+      _id: "$medicamento_id",
+      veces_usado: { $sum: 1 }
+    }},
+  {$lookup: {
+      from: "Medicamento",
+      localField: "_id",
+      foreignField: "_id",
+      as: "medicamento"
+    }},
+  { $unwind: "$medicamento" },
+  {$project: {
+      _id: 0,
+      medicamento: "$medicamento.nombre",
+      veces_usado: 1
+    }},
+  { $sort: { veces_usado: -1 } }
+]) 
 
 //61. Agrupa pacientes por ciudad y cuenta cuántos hay por cada una.
 
-    
+   
 
 //62. Muestra los tratamientos con más de tres medicamentos asociados.
 
