@@ -186,11 +186,11 @@
 
 //25. Encuentra medicamentos de un tipo específico.
 
-    
+  db.Tratamiento.find({ tipo_tratamiento_id: 1 })
 
 //26. Muestra medicamentos de un fabricante en particular.
 
-    
+    db.Medicamento.find({ fabricante_id: 1 })
 
 //27. Consulta todos los pacientes que tienen asignado un seguro médico.
 
