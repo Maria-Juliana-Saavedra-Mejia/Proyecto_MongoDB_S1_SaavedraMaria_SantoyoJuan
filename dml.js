@@ -6233,4 +6233,280 @@ db.Paciente.insertMany([{
   "direccion_id": 1500
 }])
 
-// 14. 
+// 14. Medicamento
+db.Medicamento.insertMany([
+  {
+    _id: 1,
+    nombre: "Amlodipino",
+    descripcion: "Bloqueador de los canales de calcio utilizado para tratar la hipertensión y la angina de pecho.",
+    dosis: "5 mg",
+    presentacion: "Tableta",
+    fabricante_id: 6, // Ejemplo de ID de fabricante
+    tipo_medicamento_id: 1 // Ejemplo de ID de tipo de medicamento (Ej: Cardiovascular)
+  },
+  {
+    _id: 2,
+    nombre: "Levotiroxina",
+    descripcion: "Hormona tiroidea sintética utilizada para tratar el hipotiroidismo.",
+    dosis: "100 mcg",
+    presentacion: "Tableta",
+    fabricante_id: 7,
+    tipo_medicamento_id: 4 // Ejemplo de ID de tipo de medicamento (Ej: Hormonal)
+  },
+  {
+    _id: 3,
+    nombre: "Valsartán",
+    descripcion: "Antagonista del receptor de angiotensina II, utilizado para la hipertensión e insuficiencia cardíaca.",
+    dosis: "80 mg",
+    presentacion: "Tableta",
+    fabricante_id: 6,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 4,
+    nombre: "Simvastatina",
+    descripcion: "Estatina que reduce los niveles de colesterol y triglicéridos en la sangre.",
+    dosis: "20 mg",
+    presentacion: "Tableta",
+    fabricante_id: 8,
+    tipo_medicamento_id: 2 // Ejemplo de ID de tipo de medicamento (Ej: Hipolipemiante)
+  },
+  {
+    _id: 5,
+    nombre: "Escitalopram",
+    descripcion: "Antidepresivo ISRS, utilizado para el trastorno depresivo mayor y trastornos de ansiedad.",
+    dosis: "10 mg",
+    presentacion: "Tableta",
+    fabricante_id: 9,
+    tipo_medicamento_id: 5 // Ejemplo de ID de tipo de medicamento (Ej: Psiquiátrico)
+  },
+  {
+    _id: 6,
+    nombre: "Gabapentina",
+    descripcion: "Anticonvulsivante y analgésico, utilizado para la epilepsia y el dolor neuropático.",
+    dosis: "300 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 10,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 7,
+    nombre: "Tamsulosina",
+    descripcion: "Alfa-bloqueante utilizado para tratar los síntomas de la hiperplasia prostática benigna (HPB).",
+    dosis: "0.4 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 11,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 8,
+    nombre: "Pregabalina",
+    descripcion: "Anticonvulsivante y analgésico, utilizado para el dolor neuropático, fibromialgia y ansiedad.",
+    dosis: "75 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 10,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 9,
+    nombre: "Citalopram",
+    descripcion: "Antidepresivo ISRS, utilizado para el trastorno depresivo y de pánico.",
+    dosis: "20 mg",
+    presentacion: "Tableta",
+    fabricante_id: 9,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 10,
+    nombre: "Hidroclorotiazida",
+    descripcion: "Diurético tiazídico, utilizado para tratar la hipertensión y el edema.",
+    dosis: "25 mg",
+    presentacion: "Tableta",
+    fabricante_id: 6,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 11,
+    nombre: "Ranitidina",
+    descripcion: "Antagonista de los receptores H2, reduce la producción de ácido estomacal (ahora menos común).",
+    dosis: "150 mg",
+    presentacion: "Tableta",
+    fabricante_id: 7,
+    tipo_medicamento_id: 3 // Ejemplo de ID de tipo de medicamento (Ej: Gastrointestinal)
+  },
+  {
+    _id: 12,
+    nombre: "Colecalciferol",
+    descripcion: "Vitamina D3, suplemento para deficiencia de vitamina D y salud ósea.",
+    dosis: "2000 UI",
+    presentacion: "Cápsula",
+    fabricante_id: 12,
+    tipo_medicamento_id: 6 // Ejemplo de ID de tipo de medicamento (Ej: Vitamina/Suplemento)
+  },
+  {
+    _id: 13,
+    nombre: "Montelukast",
+    descripcion: "Antagonista del receptor de leucotrienos, utilizado para el asma y la rinitis alérgica.",
+    dosis: "10 mg",
+    presentacion: "Tableta",
+    fabricante_id: 13,
+    tipo_medicamento_id: 4 // Ejemplo de ID de tipo de medicamento (Ej: Respiratorio)
+  },
+  {
+    _id: 14,
+    nombre: "Clopidogrel",
+    descripcion: "Antiagregante plaquetario, previene la formación de coágulos en enfermedades cardiovasculares.",
+    dosis: "75 mg",
+    presentacion: "Tableta",
+    fabricante_id: 14,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 15,
+    nombre: "Metoprolol",
+    descripcion: "Beta-bloqueante utilizado para la hipertensión, angina de pecho y arritmias.",
+    dosis: "50 mg",
+    presentacion: "Tableta",
+    fabricante_id: 6,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 16,
+    nombre: "Naproxeno",
+    descripcion: "Antiinflamatorio no esteroideo (AINE) con propiedades analgésicas y antiinflamatorias.",
+    dosis: "500 mg",
+    presentacion: "Tableta",
+    fabricante_id: 7,
+    tipo_medicamento_id: 3
+  },
+  {
+    _id: 17,
+    nombre: "Pantoprazol",
+    descripcion: "Inhibidor de la bomba de protones, reduce la producción de ácido estomacal.",
+    dosis: "40 mg",
+    presentacion: "Tableta",
+    fabricante_id: 8,
+    tipo_medicamento_id: 3
+  },
+  {
+    _id: 18,
+    nombre: "Rosuvastatina",
+    descripcion: "Estatina potente que reduce los niveles de colesterol LDL.",
+    dosis: "10 mg",
+    presentacion: "Tableta",
+    fabricante_id: 15,
+    tipo_medicamento_id: 2
+  },
+  {
+    _id: 19,
+    nombre: "Duloxetina",
+    descripcion: "Inhibidor de la recaptación de serotonina y norepinefrina (IRSN), para depresión, ansiedad y dolor neuropático.",
+    dosis: "30 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 9,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 20,
+    nombre: "Meloxicam",
+    descripcion: "Antiinflamatorio no esteroideo (AINE), utilizado para la osteoartritis y artritis reumatoide.",
+    dosis: "15 mg",
+    presentacion: "Tableta",
+    fabricante_id: 7,
+    tipo_medicamento_id: 3
+  },
+  {
+    _id: 21,
+    nombre: "Fexofenadina",
+    descripcion: "Antihistamínico no sedante para el alivio de los síntomas de la rinitis alérgica.",
+    dosis: "180 mg",
+    presentacion: "Tableta",
+    fabricante_id: 13,
+    tipo_medicamento_id: 4
+  },
+  {
+    _id: 22,
+    nombre: "Alprazolam",
+    descripcion: "Benzodiacepina de acción corta, utilizada para el trastorno de ansiedad y de pánico.",
+    dosis: "0.5 mg",
+    presentacion: "Tableta",
+    fabricante_id: 10,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 23,
+    nombre: "Venlafaxina",
+    descripcion: "Inhibidor de la recaptación de serotonina y norepinefrina (IRSN), para depresión, ansiedad y trastorno de pánico.",
+    dosis: "75 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 9,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 24,
+    nombre: "Celecoxib",
+    descripcion: "Antiinflamatorio no esteroideo (AINE) inhibidor selectivo de la COX-2, para artritis y dolor.",
+    dosis: "200 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 14,
+    tipo_medicamento_id: 3
+  },
+  {
+    _id: 25,
+    nombre: "Dexametasona",
+    descripcion: "Corticoesteroide potente con propiedades antiinflamatorias e inmunosupresoras.",
+    dosis: "4 mg",
+    presentacion: "Tableta",
+    fabricante_id: 16,
+    tipo_medicamento_id: 4
+  },
+  {
+    _id: 26,
+    nombre: "Cefalexina",
+    descripcion: "Antibiótico cefalosporina de primera generación, para infecciones bacterianas.",
+    dosis: "500 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 7,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 27,
+    nombre: "Fluoxetina",
+    descripcion: "Antidepresivo ISRS, utilizado para depresión, trastorno obsesivo-compulsivo y bulimia nerviosa.",
+    dosis: "20 mg",
+    presentacion: "Cápsula",
+    fabricante_id: 9,
+    tipo_medicamento_id: 5
+  },
+  {
+    _id: 28,
+    nombre: "Doxazosin",
+    descripcion: "Alfa-bloqueante utilizado para tratar la hipertensión y los síntomas de la HPB.",
+    dosis: "4 mg",
+    presentacion: "Tableta",
+    fabricante_id: 6,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 29,
+    nombre: "Spironolactona",
+    descripcion: "Diurético ahorrador de potasio, utilizado para la insuficiencia cardíaca, hipertensión y edema.",
+    dosis: "25 mg",
+    presentacion: "Tableta",
+    fabricante_id: 16,
+    tipo_medicamento_id: 1
+  },
+  {
+    _id: 30,
+    nombre: "Moxifloxacino",
+    descripcion: "Antibiótico fluoroquinolona de cuarta generación, para infecciones respiratorias y cutáneas.",
+    dosis: "400 mg",
+    presentacion: "Tableta",
+    fabricante_id: 7,
+    tipo_medicamento_id: 1
+  }
+]);
+
+// 15. Tratamiento
+
+
