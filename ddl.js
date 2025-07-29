@@ -42,18 +42,19 @@ db.createCollection("Area_Especializada", {
   }
 });
 
+
 db.createCollection("MedicosYPersonal", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id" ],
+      required: ["numero_colegiatura", "nombre", "salario", "telefono", "hospital_id", "especialidad_id"],
       properties: {
-        numero_colegiatura: { bsonType: "int" }, 
+        numero_colegiatura: { bsonType: "string" }, // Para el prefijo del tipo de personal
         nombre: { bsonType: "string" },
         salario: { bsonType: "double" },
         telefono: { bsonType: "string" },
         hospital_id:{ bsonType: "int" },
-        especialidad_id:{ bsonType: "int" }, 
+        especialidad_id:{ bsonType: "int" }
       }
     }
   }
