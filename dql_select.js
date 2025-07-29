@@ -2,7 +2,7 @@
 
    db.Hospital.find({},{nombre:1,_id:0});
 
-//2. Muestra todos los medicamentos con sus nombres.
+//2. Muestra todos los medicamentos con sus nombres y descripciones.
 
    db.Medicamento.find({},{nombre:1, _id:0, descripcion:1});
 
