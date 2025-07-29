@@ -197,6 +197,7 @@ plataforma Github, estos archivos se encuentran en formato js y se dividen en 6 
 
 ---
 
+
 <h1 align="center";>
 
 # Planificación 
@@ -2291,7 +2292,7 @@ db.Hospital.insertOne(
 
 -----
 
-## 2\. Hospital\_Area
+## 2. Hospital_Area
 
 Colección para vincular hospitales con áreas especializadas, representando una relación uno a muchos donde un hospital tiene muchas áreas y un área pertenece a un hospital.
 
@@ -2327,7 +2328,7 @@ db.Hospital_Area.insertOne(
 
 -----
 
-## 3\. Area\_Especializada
+## 3. Area_Especializada
 
 Colección para definir las diferentes áreas o departamentos especializados dentro de un hospital.
 
@@ -2363,7 +2364,7 @@ db.Area_Especializada.insertOne(
 
 -----
 
-## 4\. MedicosYPersonal
+## 4. MedicosYPersonal
 
 Colección para almacenar la información de los médicos y otro personal del hospital.
 
@@ -2405,7 +2406,7 @@ db.MedicosYPersonal.insertOne(
 
 -----
 
-## 5\. Paciente
+## 5. Paciente
 
 Colección para almacenar la información de los pacientes.
 
@@ -2449,7 +2450,7 @@ db.Paciente.insertOne(
 
 -----
 
-## 6\. Especialidad
+## 6. Especialidad
 
 Colección para categorizar las especialidades médicas.
 
@@ -2483,7 +2484,7 @@ db.Especialidad.insertOne(
 
 -----
 
-## 7\. Seguros\_Medicos
+## 7. Seguros_Medicos
 
 Colección para listar los diferentes seguros médicos aceptados por el hospital.
 
@@ -2517,7 +2518,7 @@ db.Seguros_Medicos.insertOne(
 
 -----
 
-## 8\. Direccion
+## 8. Direccion
 
 Colección para almacenar las direcciones, usada para normalizar los datos de ubicación.
 
@@ -2555,7 +2556,7 @@ db.Direccion.insertOne(
 
 -----
 
-## 9\. Visita\_Medica
+## 9. Visita_Medica
 
 Registra cada visita de un paciente a un médico.
 
@@ -2598,7 +2599,7 @@ db.Visita_Medica.insertOne(
 
 -----
 
-## 10\. Historial\_Medico
+## 10. Historial_Medico
 
 Contiene los diagnósticos registrados para un paciente a lo largo del tiempo.
 
@@ -2636,7 +2637,7 @@ db.Historial_Medico.insertOne(
 
 -----
 
-## 11\. Diagnostico
+## 11. Diagnostico
 
 Lista de posibles diagnósticos médicos.
 
@@ -2670,7 +2671,7 @@ db.Diagnostico.insertOne(
 
 -----
 
-## 12\. Tratamiento\_Area
+## 12. Tratamiento_Area
 
 Relación muchos a muchos entre `Tipo_Tratamiento` y `Area_Especializada`, indicando qué tratamientos se pueden realizar en qué áreas.
 
@@ -2706,7 +2707,7 @@ db.Tratamiento_Area.insertOne(
 
 -----
 
-## 13\. Tratamiento\_Medicamento
+## 13. Tratamiento_Medicamento
 
 Relación muchos a muchos entre `Tipo_Tratamiento` y `Medicamento`, indicando qué medicamentos se utilizan en qué tratamientos.
 
@@ -2742,7 +2743,7 @@ db.Tratamiento_Medicamento.insertOne(
 
 -----
 
-## 14\. Tratamiento
+## 14. Tratamiento
 
 Describe un tratamiento específico que puede ser parte de un tipo de tratamiento general.
 
@@ -2780,7 +2781,7 @@ db.Tratamiento.insertOne(
 
 -----
 
-## 15\. Resultado
+## 15. Resultado
 
 Registra los resultados de los tratamientos o procedimientos médicos.
 
@@ -2816,7 +2817,7 @@ db.Resultado.insertOne(
 
 -----
 
-## 16\. Tipo\_Tratamiento
+## 16. Tipo_Tratamiento
 
 Categoriza los diferentes tipos generales de tratamientos.
 
@@ -2852,7 +2853,7 @@ db.Tipo_Tratamiento.insertOne(
 
 -----
 
-## 17\. Medicamento
+## 17. Medicamento
 
 Información detallada sobre los medicamentos disponibles.
 
@@ -2890,7 +2891,7 @@ db.Medicamento.insertOne(
 
 -----
 
-## 18\. Fabricante
+## 18. Fabricante
 
 Lista de fabricantes de medicamentos.
 
@@ -2924,7 +2925,7 @@ db.Fabricante.insertOne(
 
 -----
 
-## 19\. Tipo\_Medicamento
+## 19. Tipo_Medicamento
 
 Categoriza los medicamentos por su tipo terapéutico.
 
@@ -2958,7 +2959,7 @@ db.Tipo_Medicamento.insertOne(
 
 -----
 
-## 20\. Inventario
+## 20. Inventario
 
 Controla la disponibilidad y ubicación de los medicamentos.
 
@@ -2998,7 +2999,7 @@ db.Inventario.insertOne(
 
 -----
 
-## 21\. Diagnostico\_Tratamiento
+## 21. Diagnostico_Tratamiento
 
 Relación muchos a muchos entre `Diagnostico` y `Tipo_Tratamiento`, indicando qué tratamientos son aplicables a cada diagnóstico.
 
@@ -3034,7 +3035,7 @@ db.Diagnostico_Tratamiento.insertOne(
 
 -----
 
-## 22\. Ubicacion
+## 22. Ubicacion
 
 Define las ubicaciones físicas para el inventario.
 
@@ -3068,7 +3069,7 @@ db.Ubicacion.insertOne(
 
 -----
 
-## 23\. Visita\_Diagnostico
+## 23. Visita_Diagnostico
 
 Relación muchos a muchos entre `Visita_Medica` y `Diagnostico`, permitiendo múltiples diagnósticos por visita.
 
@@ -3798,3 +3799,32 @@ medicamentosPiso1BajaDisponibilidad();
 ```
 
 
+# CONTRIBUCIONES DE LOS INTEGRANTES
+
+### Maria Juliana Saavedra Mejia
+- Documentación de los **modelos** y del proceso de **normalización**.
+- Construcción del **modelo físico** de la base de datos.
+- Desarrollo de las **colecciones** (`ddl.js`) con validación `$jsonSchema`.
+- Elaboración de las **consultas MongoDB** (`dql_select.js`) y las **funciones reutilizables** (`dql_funciones.js`).
+- Redacción de la **documentación técnica completa** y explicación de uso de cada script.
+
+### Juan David Santoyo Jaimes
+- Diseño del **diagrama lógico** y **Normalizacion hasta 3fn** del sistema.
+- Creación y definición de los **usuarios de base de datos** y sus roles.
+- Documentación detallada de los usuarios y sus permisos.
+- Inserción de los **datos** en las colecciones (`dml.js`).
+
+---
+
+
+## 📬 Contacto
+
+En caso de preguntas, sugerencias o problemas con la implementación del sistema hospitalario, puedes contactar a:
+
+**Maria Juliana Saavedra Mejia**  
+📧 saavedra.mariaju@gmail.com
+
+**Juan David Santoyo Jaimes**  
+📧 *Email disponible bajo solicitud académica*
+
+---
