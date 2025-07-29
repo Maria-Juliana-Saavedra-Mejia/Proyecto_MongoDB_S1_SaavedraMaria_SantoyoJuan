@@ -165,9 +165,9 @@ db.Tratamiento_Area.aggregate([
 
     db.Paciente.find({ hospital_id: 1 })
 
-//20. Busca medicamentos cuyo nombre contenga "paracetamol".
+//20. Busca medicamentos cuyo nombre contenga "Ranitidina".
 
-    db.medicamento.find({nombre:/paracetamol/i})
+    db.Medicamento.find({nombre:/Ranitidina/i})
 
 //21. Muestra los trabajadores con `numero_colegiatura` igual a 003.
 
