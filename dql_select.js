@@ -186,7 +186,7 @@
 
 //25. Encuentra medicamentos de un tipo específico.
 
-  db.Tratamiento.find({ tipo_tratamiento_id: 1 })
+    db.Tratamiento.find({ tipo_tratamiento_id: 1 })
 
 //26. Muestra medicamentos de un fabricante en particular.
 
@@ -206,11 +206,11 @@
 
 //29. Muestra todos los historiales médicos de un paciente.
 
-    
+    db.Historial_Medico.find({paciente_id:1})
 
 //30. Consulta diagnósticos que contengan "asma" en su descripción.
 
-    
+    db.Diagnostico.find({descripcion:/asma/i})
 
 //31. Cuenta cuántos médicos hay en total por hospital.
 
