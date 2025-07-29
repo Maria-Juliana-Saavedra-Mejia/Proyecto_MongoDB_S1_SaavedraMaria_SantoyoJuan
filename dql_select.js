@@ -112,9 +112,9 @@
 
 //16. Consulta los tratamientos por área médica.
 
-    db.Area_Especializada.aggregate([
+    db.Tratamiento_Area.aggregate([
       {$lookup: {
-          from: "Tratamiento_Area",
+          from: "Area_Especializada",
           localField: "_id",
           foreignField: "area_id",
           as: "relacion"
