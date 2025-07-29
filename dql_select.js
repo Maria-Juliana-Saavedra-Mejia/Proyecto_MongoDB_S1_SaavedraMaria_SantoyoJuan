@@ -183,7 +183,7 @@ db.Tratamiento_Area.aggregate([
 
 //24. Busca tratamientos de un tipo específico.
 
-    db.Tratamiento.find({ tipo_tratamiento_id: 1 }
+    db.Tratamiento.find({ tipo_tratamiento_id: 1 })
 
 //25. Encuentra medicamentos de un tipo específico.
 
@@ -191,7 +191,7 @@ db.Tratamiento_Area.aggregate([
 
 //26. Muestra medicamentos de un fabricante en particular.
 
-    db.Medicamento.find({ fabricante_id: 1 })
+    db.Medicamento.find({ fabricante_id: 6 })
 
 //27. Consulta todos los pacientes que tienen asignado un seguro médico.
 
@@ -207,7 +207,7 @@ db.Tratamiento_Area.aggregate([
 
 //29. Muestra todos los historiales médicos de un paciente.
 
-    db.Historial_Medico.find({paciente_id:1})
+    db.Historial_Medico.find({paciente_id:18})
 
 //30. Consulta diagnósticos que contengan "asma" en su descripción.
 
@@ -215,19 +215,38 @@ db.Tratamiento_Area.aggregate([
 
 //31. Cuenta cuántos médicos hay en total por hospital.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: { numero_colegiatura: { $regex: /^002/ }
+    }},
+  {$group: {
+      _id: "$hospital_id",
+      totalMedicos: { $sum: 1 }
+    }}])
+//32. Muestra los hospitales con más de 5 áreas especializadas.
 
-//32. Muestra los hospitales con más de //10 áreas especializadas.
 
-    
 
 //33. Relaciona cada hospital con su director (usando su número de colegiatura).
 
-    
 
 //34. Muestra el nombre del hospital donde trabaja cada médico.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: { numero_colegiatura: { $regex: /^002/ }
+    }},
+  {$lookup: {
+    from: "Hospital",
+    localField: "hospital_id",
+    foreignField: "_id",
+    as: "hospital"
+    }},
+    { $unwind: "$hospital" },
+  {$project: {
+            _id: 0,
+            nombre: "$nombre",
+            hospital: "$hospital.nombre"
+}}])
+
 
 //35. Muestra los nombres de las áreas de especialidad de un hospital.
 
@@ -235,15 +254,70 @@ db.Tratamiento_Area.aggregate([
 
 //36. Muestra los médicos con su nombre de especialidad.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: { numero_colegiatura: { $regex: /^002/ }
+    }},
+  {$lookup: {
+    from: "Especialidad",
+    localField: "especialidad_id",
+    foreignField: "_id",
+    as: "hospital"
+    }},
+    { $unwind: "$hospital" },
+  {$project: {
+            _id: 0,
+            nombre: "$nombre",
+            hospital: "$hospital.nombre"
+}}])
 
 //37. Agrupa a los médicos por especialidad y cuenta cuántos hay por cada una.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: {
+      numero_colegiatura: { $regex: /^002/ }
+    }},
+  {$lookup: {
+      from: "Especialidad",
+      localField: "especialidad_id",
+      foreignField: "_id",
+      as: "especialidad"
+    }},
+  { $unwind: "$especialidad" },
+  {$group: {
+      _id: "$especialidad.nombre",
+      cantidad_medicos: { $sum: 1 }
+    }},
+  {$project: {
+      _id: 0,
+      especialidad: "$_id",
+      cantidad_medicos: 1
+}}])
 
 //38. Ordena los hospitales por cantidad de personal médico.
 
-    
+db.MedicosYPersonal.aggregate([
+  {$match: {
+      numero_colegiatura: { $regex: /^002/ }
+    }},
+    {$group: {
+        _id: "$hospital_id",
+        cantidad_medicos: { $sum: 1 }
+      }},
+    {$lookup: {
+        from: "Hospital",
+        localField: "_id",
+        foreignField: "_id",
+        as: "hospital"
+      }},
+    { $unwind: "$hospital" },
+    {$project: {
+        _id: 0,
+        hospital: "$hospital.nombre",
+        cantidad_medicos: 1
+      }},
+    {$sort: {
+        cantidad_medicos: -1 
+  }}])    
 
 //39. Muestra el total de personal médico agrupado por hospital (nombre).
 
