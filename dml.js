@@ -8590,253 +8590,253 @@ db.Resultado.insertMany([
 db.Tratamiento_Area.insertMany([
   {
     _id: 1,
-    tratamiento_id: 1, // Cirugía
-    area_id: 1 // Quirófano
+    tratamiento_id: 1,
+    area_id: 201
   },
   {
     _id: 2,
-    tratamiento_id: 2, // Terapia Física
-    area_id: 2 // Fisioterapia
+    tratamiento_id: 2,
+    area_id: 202
   },
   {
     _id: 3,
-    tratamiento_id: 3, // Tratamiento Farmacológico
-    area_id: 3 // Farmacia
+    tratamiento_id: 3,
+    area_id: 203
   },
   {
     _id: 4,
-    tratamiento_id: 4, // Quimioterapia
-    area_id: 4 // Oncología
+    tratamiento_id: 4,
+    area_id: 204
   },
   {
     _id: 5,
-    tratamiento_id: 5, // Radioterapia
-    area_id: 5 // Radiología
+    tratamiento_id: 5,
+    area_id: 205
   },
   {
     _id: 6,
-    tratamiento_id: 6, // Terapia Ocupacional
-    area_id: 6 // Rehabilitación
+    tratamiento_id: 6,
+    area_id: 206
   },
   {
     _id: 7,
-    tratamiento_id: 7, // Rehabilitación Cardíaca
-    area_id: 7 // Cardiología
+    tratamiento_id: 7,
+    area_id: 207
   },
   {
     _id: 8,
-    tratamiento_id: 8, // Diálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 8,
+    area_id: 208
   },
   {
     _id: 9,
-    tratamiento_id: 9, // Transfusión Sanguínea
-    area_id: 9 // Hematología
+    tratamiento_id: 9,
+    area_id: 209
   },
   {
     _id: 10,
-    tratamiento_id: 10, // Vacunación
-    area_id: 10 // Medicina Preventiva
+    tratamiento_id: 10,
+    area_id: 210
   },
   {
     _id: 11,
-    tratamiento_id: 11, // Fisioterapia Respiratoria
-    area_id: 11 // Neumología
+    tratamiento_id: 11,
+    area_id: 211
   },
   {
     _id: 12,
-    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
-    area_id: 12 // Neurología
+    tratamiento_id: 12,
+    area_id: 212
   },
   {
     _id: 13,
-    tratamiento_id: 13, // Terapia del Lenguaje
-    area_id: 13 // Fonoaudiología
+    tratamiento_id: 13,
+    area_id: 213
   },
   {
     _id: 14,
-    tratamiento_id: 14, // Hemodiálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 14,
+    area_id: 208
   },
   {
     _id: 15,
-    tratamiento_id: 1, // Cirugía
-    area_id: 16 // Anestesiología
+    tratamiento_id: 1,
+    area_id: 216
   },
   {
     _id: 16,
-    tratamiento_id: 3, // Tratamiento Farmacológico
-    area_id: 15 // Consultorios Externos
+    tratamiento_id: 3,
+    area_id: 215
   },
   {
     _id: 17,
-    tratamiento_id: 2, // Terapia Física
-    area_id: 2 // Fisioterapia
+    tratamiento_id: 2,
+    area_id: 202
   },
   {
     _id: 18,
-    tratamiento_id: 4, // Quimioterapia
-    area_id: 4 // Oncología
+    tratamiento_id: 4,
+    area_id: 204
   },
   {
     _id: 19,
-    tratamiento_id: 1, // Cirugía
-    area_id: 1 // Quirófano
+    tratamiento_id: 1,
+    area_id: 201
   },
   {
     _id: 20,
-    tratamiento_id: 6, // Terapia Ocupacional
-    area_id: 6 // Rehabilitación
+    tratamiento_id: 6,
+    area_id: 206
   },
   {
     _id: 21,
-    tratamiento_id: 3, // Tratamiento Farmacológico
-    area_id: 3 // Farmacia
+    tratamiento_id: 3,
+    area_id: 203
   },
   {
     _id: 22,
-    tratamiento_id: 5, // Radioterapia
-    area_id: 5 // Radiología
+    tratamiento_id: 5,
+    area_id: 205
   },
   {
     _id: 23,
-    tratamiento_id: 7, // Rehabilitación Cardíaca
-    area_id: 7 // Cardiología
+    tratamiento_id: 7,
+    area_id: 207
   },
   {
     _id: 24,
-    tratamiento_id: 8, // Diálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 8,
+    area_id: 208
   },
   {
     _id: 25,
-    tratamiento_id: 9, // Transfusión Sanguínea
-    area_id: 9 // Hematología
+    tratamiento_id: 9,
+    area_id: 209
   },
   {
     _id: 26,
-    tratamiento_id: 10, // Vacunación
-    area_id: 10 // Medicina Preventiva
+    tratamiento_id: 10,
+    area_id: 210
   },
   {
     _id: 27,
-    tratamiento_id: 11, // Fisioterapia Respiratoria
-    area_id: 11 // Neumología
+    tratamiento_id: 11,
+    area_id: 211
   },
   {
     _id: 28,
-    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
-    area_id: 12 // Neurología
+    tratamiento_id: 12,
+    area_id: 212
   },
   {
     _id: 29,
-    tratamiento_id: 13, // Terapia del Lenguaje
-    area_id: 13 // Fonoaudiología
+    tratamiento_id: 13,
+    area_id: 213
   },
   {
     _id: 30,
-    tratamiento_id: 14, // Hemodiálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 14,
+    area_id: 208
   },
   {
     _id: 31,
-    tratamiento_id: 1, // Cirugía
-    area_id: 1 // Quirófano
+    tratamiento_id: 1,
+    area_id: 201
   },
   {
     _id: 32,
-    tratamiento_id: 2, // Terapia Física
-    area_id: 2 // Fisioterapia
+    tratamiento_id: 2,
+    area_id: 202
   },
   {
     _id: 33,
-    tratamiento_id: 3, // Tratamiento Farmacológico
-    area_id: 3 // Farmacia
+    tratamiento_id: 3,
+    area_id: 203
   },
   {
     _id: 34,
-    tratamiento_id: 4, // Quimioterapia
-    area_id: 4 // Oncología
+    tratamiento_id: 4,
+    area_id: 204
   },
   {
     _id: 35,
-    tratamiento_id: 5, // Radioterapia
-    area_id: 5 // Radiología
+    tratamiento_id: 5,
+    area_id: 205
   },
   {
     _id: 36,
-    tratamiento_id: 6, // Terapia Ocupacional
-    area_id: 6 // Rehabilitación
+    tratamiento_id: 6,
+    area_id: 206
   },
   {
     _id: 37,
-    tratamiento_id: 7, // Rehabilitación Cardíaca
-    area_id: 7 // Cardiología
+    tratamiento_id: 7,
+    area_id: 207
   },
   {
     _id: 38,
-    tratamiento_id: 8, // Diálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 8,
+    area_id: 208
   },
   {
     _id: 39,
-    tratamiento_id: 9, // Transfusión Sanguínea
-    area_id: 9 // Hematología
+    tratamiento_id: 9,
+    area_id: 209
   },
   {
     _id: 40,
-    tratamiento_id: 10, // Vacunación
-    area_id: 10 // Medicina Preventiva
+    tratamiento_id: 10,
+    area_id: 210
   },
   {
     _id: 41,
-    tratamiento_id: 11, // Fisioterapia Respiratoria
-    area_id: 11 // Neumología
+    tratamiento_id: 11,
+    area_id: 211
   },
   {
     _id: 42,
-    tratamiento_id: 12, // Terapia Ocupacional (para pacientes con ACV)
-    area_id: 12 // Neurología
+    tratamiento_id: 12,
+    area_id: 212
   },
   {
     _id: 43,
-    tratamiento_id: 13, // Terapia del Lenguaje
-    area_id: 13 // Fonoaudiología
+    tratamiento_id: 13,
+    area_id: 213
   },
   {
     _id: 44,
-    tratamiento_id: 14, // Hemodiálisis
-    area_id: 8 // Nefrología
+    tratamiento_id: 14,
+    area_id: 208
   },
   {
     _id: 45,
-    tratamiento_id: 1, // Cirugía
-    area_id: 1 // Quirófano
+    tratamiento_id: 1,
+    area_id: 201
   },
   {
     _id: 46,
-    tratamiento_id: 3, // Tratamiento Farmacológico
-    area_id: 3 // Farmacia
+    tratamiento_id: 3,
+    area_id: 203
   },
   {
     _id: 47,
-    tratamiento_id: 2, // Terapia Física
-    area_id: 2 // Fisioterapia
+    tratamiento_id: 2,
+    area_id: 202
   },
   {
     _id: 48,
-    tratamiento_id: 4, // Quimioterapia
-    area_id: 4 // Oncología
+    tratamiento_id: 4,
+    area_id: 204
   },
   {
     _id: 49,
-    tratamiento_id: 5, // Radioterapia
-    area_id: 5 // Radiología
+    tratamiento_id: 5,
+    area_id: 205
   },
   {
     _id: 50,
-    tratamiento_id: 6, // Terapia Ocupacional
-    area_id: 6 // Rehabilitación
+    tratamiento_id: 6,
+    area_id: 206
   }
 ]);
 
