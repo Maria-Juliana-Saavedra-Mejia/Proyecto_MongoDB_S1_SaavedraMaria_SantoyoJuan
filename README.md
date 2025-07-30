@@ -3828,3 +3828,6 @@ En caso de preguntas, sugerencias o problemas con la implementación del sistema
 📧 juanda.c0512@gmail.com
 
 ---
+## Video de sustentacion 
+
+[Sustentacion](https://drive.google.com/file/d/1ddVMZ5vvQgL9aLaL-CJUVAuJechxamlt/view?usp=drive_link)
