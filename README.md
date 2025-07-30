@@ -3825,6 +3825,6 @@ En caso de preguntas, sugerencias o problemas con la implementación del sistema
 📧 saavedra.mariaju@gmail.com
 
 **Juan David Santoyo Jaimes**  
-📧 *Email disponible bajo solicitud académica*
+📧 juanda.c0512@gmail.com
 
 ---
